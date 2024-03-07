@@ -1,12 +1,12 @@
-const URL_Cocktail = "www.thecocktaildb.com/api/json/v1/1";
-//función que devuelve todos los cocktails de la API
+const URL_Cocktail = "https://www.thecocktaildb.com/api/json/v1/1";
+
+//este no funciona
 export async function getCocktails() {
-  let data = await fetch(URL_Cocktail + "?limit=2000");
+  let data = await fetch(URL_Cocktail);
   let drinks = await data.json();
   console.log(drinks);
   return drinks.results;
 }
-
 
 //ESTE PARA BUSCAR
 export async function getCocktailByName(name) {

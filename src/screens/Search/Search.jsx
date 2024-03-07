@@ -1,41 +1,43 @@
 import React, { useState, useEffect } from 'react';
 import './Search.css';
-//import { getPokes } from '../../services/pokeapi'
+import { getCocktailByName } from '../../services/cocktailapi';
 import SearchBox from '../../components/SearchBox';
-//import CardList from '../../components/CardList/CardList';
+import CardList from '../../components/CardList/CardList';
 
 //declaramos el componente App como función
 function Search() {
 
   //Inicializamos el estado del componente con hooks
-  //const [pokes, setPokes] = useState([]);
-  //const [search, setSearch] = useState('');
+  const [drinks, setDrinks] = useState([]);
+  const [search, setSearch] = useState('');
 
   //hook useEffect que se ejecuta para inicializar el componente
   useEffect(() => {
-
-   // getPokes().then(pokes => setPokes(pokes));
-
-  }, [])
+    if (search) {
+      getCocktailByName(search).then(data => setDrinks(data.drinks)); // Modificación aquí
+    }
+  }, [search])
 
 
   function onSearchChange(searchTerm) {
- //   setSearch(searchTerm)
+   setSearch(searchTerm)
   }
 
- /* const filteredPokemons = pokes.filter(pokemon => {
-    return pokemon.name.toLowerCase().startsWith(search.toLowerCase());
-  }); */
+  const filteredDrinks = drinks.filter(drink => {
+    return drink.strDrink.toLowerCase().startsWith(search.toLowerCase());
+  });
+  
 
   //renderizado del componente:
   return (
     <div className="App">
       <header className="App-header">
-        <h3>Search a Pokemon</h3>
+        <h3>Search a Cocktail</h3>
         <SearchBox
-          placeholder="Write a pokemon name"
+          placeholder="Write a cocktail name"
           onSearchChange={onSearchChange}
         />
+      <CardList drinks={filteredDrinks} />
       </header>
     </div>
   );

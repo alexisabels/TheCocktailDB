@@ -4,8 +4,10 @@ import Search from './screens/Search/Search';
 import Main from './screens/Main/Main';
 import Error from './screens/Error/Error';
 import Ingredients from './screens/Ingredients/Ingredients';
-import Information from './screens/Information/Information';
 import { createBrowserRouter, RouterProvider } from "react-router-dom";
+import Details from './screens/Details/Details';
+
+
 
 const router = createBrowserRouter([
   {
@@ -13,10 +15,6 @@ const router = createBrowserRouter([
     element: <Main />,
     errorElement: <Error />,
     children: [
-      {
-        path: "/",
-        element: <Information />,
-      },
       {
         path: "/search",
         element: <Search />,
@@ -26,6 +24,10 @@ const router = createBrowserRouter([
         element: <Ingredients />
       },
       
+      {
+        path: "/drink/:drinkName",
+        element: <Details />
+      }
     ],
   },
 
