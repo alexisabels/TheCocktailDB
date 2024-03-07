@@ -1,22 +1,22 @@
 import React from 'react'
 import { useEffect, useState } from 'react';
-import { getCocktailByName } from '../../services/cocktailapi';
+import { getCocktailDetail } from '../../services/cocktailapi';
 
-export default function DrinkDetail({ name }) {
+export default function DrinkDetail({ id }) {
 
   const [Data, setData] = useState(null)
 
   useEffect(() => {
-    getCocktailByName(name)
+    getCocktailDetail(id)
       .then(json => {
         setData(json)
         console.log(json)
       })
-  }, [])
+  }, [id])
 
   return (
     <div>
-      {Data && (<div>{Data.name}</div>)}
+      {Data && (<div>{Data.idDrink}</div>)}
       <img
         src={
          "drink.strDrinkThumb"

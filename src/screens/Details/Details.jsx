@@ -5,10 +5,11 @@ import DrinkDetail from '../../components/DrinkDetail/DrinkDetail';
 
 export default function Details() {
 
-  const { drinkName } = useParams();
-  console.log(drinkName);
+  const { idDrink } = useParams();
+  console.log("hola")
+  console.log(idDrink);
 
   return (
-    <DrinkDetail name={drinkName} />
+    <DrinkDetail id={idDrink} />
   )
 }

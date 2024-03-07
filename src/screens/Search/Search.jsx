@@ -24,8 +24,9 @@ function Search() {
   }
 
   const filteredDrinks = drinks.filter(drink => {
-    return drink.strDrink.toLowerCase().startsWith(search.toLowerCase());
-  });
+    return drink.strDrink.toLowerCase().includes(search.toLowerCase());
+});
+
   
 
   //renderizado del componente:

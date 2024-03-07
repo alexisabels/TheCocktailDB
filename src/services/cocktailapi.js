@@ -34,12 +34,17 @@ export async function getIngredientByName(name) {
 }
 //este para ver el cocktail dentro
 export async function getCocktailDetail(id) {
-  let data = await fetch(URL_Cocktail + "/lookup.php?i=" + id);
-  let detail = await data.json();
-  console.log(detail);
-  return detail;
-
+  try {
+    let data = await fetch(URL_Cocktail + "/lookup.php?i=" + id);
+    let detail = await data.json();
+    console.log(detail);
+    return detail;
+  } catch (error) {
+    console.error('Error fetching cocktail detail:', error);
+    throw error;
+  }
 }
+
 //este para moostrar los randoms
 export async function getRandomCocktail() {
   let data = await fetch(URL_Cocktail + "/random.php");
