@@ -36,14 +36,18 @@ export async function getIngredientByName(name) {
 export async function getCocktailDetail(id) {
   try {
     let data = await fetch(URL_Cocktail + "/lookup.php?i=" + id);
+    if (!data.ok) {
+      throw new Error('La solicitud no pudo ser completada');
+    }
     let detail = await data.json();
-    console.log(detail);
+    console.log(detail); // Agrega este console.log para ver los detalles devueltos por la API
     return detail;
   } catch (error) {
     console.error('Error fetching cocktail detail:', error);
     throw error;
   }
 }
+
 
 //este para moostrar los randoms
 export async function getRandomCocktail() {

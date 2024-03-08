@@ -1,28 +1,33 @@
-import React from 'react'
-import { useEffect, useState } from 'react';
+import React, { useEffect, useState } from 'react';
 import { getCocktailDetail } from '../../services/cocktailapi';
+import DrinkIngredients from '../Ingredients/DrinkIngredients';
 
 export default function DrinkDetail({ id }) {
-
-  const [Data, setData] = useState(null)
+  const [data, setData] = useState(null);
 
   useEffect(() => {
     getCocktailDetail(id)
-      .then(json => {
-        setData(json)
-        console.log(json)
+      .then((json) => {
+        setData(json.drinks[0]); // Accede al primer elemento de la matriz de bebidas
       })
-  }, [id])
+      .catch((error) => {
+        console.error('Error fetching cocktail detail:', error);
+      });
+  }, [id]);
 
   return (
-    <div>
-      {Data && (<div>{Data.idDrink}</div>)}
-      <img
-        src={
-         "drink.strDrinkThumb"
-        }
-        alt={""}
-      />
+    <div className="drink-detail">
+      {data && (
+        <div className="drink-info">
+          <div>Id: {data.idDrink}</div>
+          <div>Nombre: {data.strDrink}</div>
+          <div>Vaso: {data.strGlass}</div>
+          <div>Instrucciones: {data.strInstructions}</div>
+          <img src={data.strDrinkThumb} alt={data.strDrink} />
+        </div>
+      )}
+
+      {data && <DrinkIngredients ingredients={data} />}
     </div>
-  )
+  );
 }
