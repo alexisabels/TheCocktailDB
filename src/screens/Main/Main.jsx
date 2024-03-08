@@ -1,20 +1,17 @@
 import React from 'react';
-import { Outlet, Link } from 'react-router-dom';
+import { Outlet } from 'react-router-dom';
 import Footer from '../../components/Footer/Footer';
+import Header from '../../components/Header/Header';
+import './Main.css'; 
 
-export default function Main() {
+const Main = () => {
   return (
-    <>
-      <div>
-        <Link to="/">
-          <h1>The Cocktail DB</h1>
-        </Link>
-        <ul>
-          <li><Link to={'search'}>Search cocktails</Link></li>
-        </ul>
-      </div>
+    <div className="main-container"> {/* Aplica la clase main-container */}
+      <Header />
       <Outlet />
       <Footer /> 
-    </>
+    </div>
   );
 }
+
+export default Main;

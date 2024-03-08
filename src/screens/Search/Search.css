@@ -2,3 +2,50 @@ body {
     margin: 0;
     font-family: sans-serif;
   }
+  .search-container {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+  }
+  
+  .search-content {
+    text-align: center;
+    margin-top: 50px;
+  }
+  
+  .search-heading {
+    font-size: 2.5rem;
+    margin-bottom: 2rem;
+  }
+  .txt-white {
+    color: white;
+  }
+  .no-results {
+    color: #FF0000;
+    margin-top: 1rem;
+  }
+  .search-container {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100%;
+  }
+  
+  .search-content {
+    text-align: center;
+    max-width: 70%; /* Ancho máximo del contenido */
+    padding: 20px;
+    margin-top: 50px;
+  }
+  
+  .search-heading {
+    font-size: 2.5rem;
+    margin-bottom: 2rem;
+  }
+  
+  .no-results {
+    color: #FF0000;
+    margin-top: 1rem;
+  }
+    

@@ -16,10 +16,10 @@
   height: 250px;
 }
 
-.card a {
+.card h3 {
   text-decoration: none;
   color: black;
-  font-family: fantasy;
+  font-family: Arial;
 }
 
 /* On mouse-over, add a deeper shadow */

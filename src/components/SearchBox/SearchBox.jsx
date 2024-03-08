@@ -1,4 +1,5 @@
 import React from 'react';
+import './SearchBox.css';
 
 const SearchBox = ({ placeholder, onSearchChange }) => {
 
@@ -8,12 +9,12 @@ const SearchBox = ({ placeholder, onSearchChange }) => {
 
   return (
     <input
-      className='search'
+      className='search-box'
       type='search'
       placeholder={placeholder}
       onChange={onInputChange}
-    />);
+    />
+  );
 }
-
 
 export default SearchBox;

@@ -1,0 +1,36 @@
+.header {
+    background-color: #1d000d;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 10px 20px;
+    color: white;
+  }
+  
+  .logo img {
+    width: 150%; /* Ajusta el tamaño según necesites */
+  }
+  
+  .search {
+    margin-right: 20px; /* Ajusta el margen derecho según necesites */
+
+  }
+  .search-button {
+    background-color: #ff0000; /* Rojo intenso */
+    color: #ffffff; /* Texto blanco */
+    padding: 10px 20px; /* Ajusta el espaciado interior */
+    border-radius: 5px; /* Bordes redondeados */
+    text-decoration: none; /* Quita el subrayado del enlace */
+    font-size: 16px; /* Tamaño del texto */
+  }
+  
+  .search-button:hover {
+    background-color: #cc0000; /* Cambia el color al pasar el mouse */
+  }
+  
+  
+  .search a {
+    color: white;
+    text-decoration: none;
+  }
+  

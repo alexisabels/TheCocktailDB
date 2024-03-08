@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from 'react';
 import './Search.css';
 import { getCocktailByName } from '../../services/cocktailapi';
-import SearchBox from '../../components/SearchBox';
+import SearchBox from '../../components/SearchBox/SearchBox';
 import CardList from '../../components/CardList/CardList';
 
 function Search() {
@@ -29,18 +29,18 @@ function Search() {
   }
 
   return (
-    <div className="App">
-      <header className="App-header">
-        <h3>Search a Cocktail</h3>
+    <div className="search-container">
+      <div className="search-content">
+        <h1 className="search-heading txt-white">Buscar un Cocktail</h1>
         <SearchBox
-          placeholder="Write a cocktail name"
+          placeholder="Enter a cocktail name"
           onSearchChange={onSearchChange}
         />
         {filteredDrinks.length === 0 && search && (
-          <p>No hay ningún cocktail que se llame "{search}"</p>
+          <p className="no-results">No cocktails found with the name "{search}"</p>
         )}
         <CardList drinks={filteredDrinks} />
-      </header>
+      </div>
     </div>
   );
 }
