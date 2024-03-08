@@ -4,32 +4,30 @@ import { getCocktailByName } from '../../services/cocktailapi';
 import SearchBox from '../../components/SearchBox';
 import CardList from '../../components/CardList/CardList';
 
-//declaramos el componente App como función
 function Search() {
-
-  //Inicializamos el estado del componente con hooks
   const [drinks, setDrinks] = useState([]);
   const [search, setSearch] = useState('');
+  const [filteredDrinks, setFilteredDrinks] = useState([]);
 
-  //hook useEffect que se ejecuta para inicializar el componente
   useEffect(() => {
     if (search) {
-      getCocktailByName(search).then(data => setDrinks(data.drinks)); // Modificación aquí
+      getCocktailByName(search).then(data => {
+        if (data && data.drinks) {
+          setDrinks(data.drinks);
+          setFilteredDrinks(data.drinks);
+        } else {
+          setFilteredDrinks([]);
+        }
+      });
+    } else {
+      setFilteredDrinks([]);
     }
-  }, [search])
-
+  }, [search]);
 
   function onSearchChange(searchTerm) {
-   setSearch(searchTerm)
+    setSearch(searchTerm);
   }
 
-  const filteredDrinks = drinks.filter(drink => {
-    return drink.strDrink.toLowerCase().includes(search.toLowerCase());
-});
-
-  
-
-  //renderizado del componente:
   return (
     <div className="App">
       <header className="App-header">
@@ -38,7 +36,10 @@ function Search() {
           placeholder="Write a cocktail name"
           onSearchChange={onSearchChange}
         />
-      <CardList drinks={filteredDrinks} />
+        {filteredDrinks.length === 0 && search && (
+          <p>No hay ningún cocktail que se llame "{search}"</p>
+        )}
+        <CardList drinks={filteredDrinks} />
       </header>
     </div>
   );

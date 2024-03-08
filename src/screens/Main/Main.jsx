@@ -1,5 +1,6 @@
-import React from 'react'
-import { Outlet, Link } from 'react-router-dom'
+import React from 'react';
+import { Outlet, Link } from 'react-router-dom';
+import Footer from '../../components/Footer/Footer';
 
 export default function Main() {
   return (
@@ -13,7 +14,7 @@ export default function Main() {
         </ul>
       </div>
       <Outlet />
+      <Footer /> 
     </>
-  )
+  );
 }
-
