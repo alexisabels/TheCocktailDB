@@ -1,6 +1,7 @@
 import React, { useEffect, useState } from 'react';
-import { useParams } from 'react-router-dom';
+import { Link, useParams } from 'react-router-dom';
 import { getCocktailsByIngredient } from '../../services/cocktailapi';
+import './Ingredients.css'; // Agrega tu CSS de estilos aquí
 
 const Ingredients = () => {
   const { ingredient } = useParams();
@@ -22,12 +23,14 @@ const Ingredients = () => {
   return (
     <div className="cocktail-list">
       <h2>Cócteles con {ingredient}:</h2>
-      
+      <img src="" alt="" />
       <div className="cocktail-cards">
         {cocktails.map(cocktail => (
-          <div key={cocktail.idDrink} className="cocktail-card">
-            <img src={cocktail.strDrinkThumb} alt={cocktail.strDrink} />
-            <div className="cocktail-name">{cocktail.strDrink}</div>
+          <div key={cocktail.idDrink} className="card">
+            <Link to={`/drink/${cocktail.idDrink}`}>
+              <img src={cocktail.strDrinkThumb} alt={cocktail.strDrink} />
+              <h3>{cocktail.strDrink}</h3>
+            </Link>
           </div>
         ))}
       </div>

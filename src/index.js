@@ -6,7 +6,7 @@ import Error from './screens/Error/Error';
 import Ingredients from './screens/Ingredients/Ingredients';
 import { createBrowserRouter, RouterProvider } from "react-router-dom";
 import Details from './screens/Details/Details';
-
+import CocktailsByLetter from './components/CocktailsByLetter/CocktailsByLetter';
 
 
 const router = createBrowserRouter([
@@ -26,7 +26,11 @@ const router = createBrowserRouter([
       {
         path: "/drink/:idDrink",
         element: <Details />,
-      }      
+      },
+      {
+        path: "/cocktails/:letter",
+        element: <CocktailsByLetter />,
+      },  
     ],
   },
 

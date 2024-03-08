@@ -5,7 +5,7 @@ const DrinkIngredients = ({ ingredients }) => {
   const ingredientNames = Object.keys(ingredients)
     .filter((key) => key.startsWith('strIngredient') && ingredients[key])
     .map((key) => ingredients[key]);
-
+  
   return (
     <div className="ingredient-grid">
       <h2>Ingredientes:</h2>
