@@ -1,26 +1,29 @@
-.random-cocktails-container {
-  margin-top: 20px;
-  color: #fff;
-  text-align: center;
-}
-
 .cocktail-grid {
   display: flex;
   flex-wrap: wrap;
   justify-content: space-between;
+  color: white;
 }
 
 .col-3 {
   flex: 0 0 calc(25% - 20px); /* Establece el ancho al 25% del contenedor padre menos el margen */
   max-width: calc(25% - 20px); /* Establece el ancho máximo al 25% del contenedor padre menos el margen */
-  margin: 10px; /* Agrega un margen entre las cartas */
+  margin: 10px 0; /* Agrega un margen vertical entre las cartas */
 }
 
 .cocktail-card {
   width: 100%; /* Ajusta el ancho al 100% del contenedor padre */
   text-align: center;
+  text-decoration: none;
+  
 }
+h2 {
+  color: white;
+}
+.cocktail-card:hover {
+  color:rgb(178, 178, 42)
 
+}
 .text-link{
   text-decoration: none;
 }
@@ -29,10 +32,9 @@
 
 }
 .cocktail-card img {
-  width: 100%;
-  max-height: 200px; /* Establece la altura máxima de las imágenes */
-  object-fit: cover; 
-  border-radius: 10px; 
+  width: 80%;
+  object-fit: cover;
+  border-radius: 10px;
 }
 
 .cocktail-name {

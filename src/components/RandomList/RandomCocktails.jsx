@@ -26,19 +26,11 @@ const RandomCocktails = () => {
   return (
     <div className="random-cocktails-container">
       <h2>Random Cocktails</h2>
-      <div className="cocktail-grid">
+      <div className="cocktail-grid text-link">
         {cocktails.map((cocktail) => (
-          <Link key={cocktail.idDrink} to={"/drink/" + cocktail.idDrink}>
-            <div>
-              <a
-                key={cocktail.idDrink}
-                href={`https://www.thecocktaildb.com/api/json/v1/1/lookup.php?i=${cocktail.idDrink}`}
-                className="col-3 cocktail-card text-link" 
-              >
-                <img src={cocktail.strDrinkThumb} alt={cocktail.strDrink} />
-                <div className="cocktail-name text-link">{cocktail.strDrink}</div>
-              </a>
-            </div>
+          <Link key={cocktail.idDrink} to={"/drink/" + cocktail.idDrink} className="col-3 cocktail-card text-link">
+            <img src={cocktail.strDrinkThumb} alt={cocktail.strDrink} />
+            <div className="cocktail-name text-link">{cocktail.strDrink}</div>
           </Link>
         ))}
       </div>

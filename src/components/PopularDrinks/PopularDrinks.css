@@ -1,0 +1,50 @@
+.cocktail-grid {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-between;
+    color: white;
+  }
+  
+  .col-3 {
+    flex: 0 0 calc(25% - 20px);
+    max-width: calc(25% - 20px); 
+    margin: 10px 0;
+  }
+  
+  .cocktail-card {
+    width: 100%; 
+    text-align: center;
+    text-decoration: none;
+    color:white;
+    
+  }
+  .cocktail-card:hover {
+    color:rgb(178, 178, 42)
+  
+  }
+  h2 {
+    color: white;
+    text-align: center;
+  }
+  .text-link{
+    text-decoration: none;
+    color: white;
+  }
+  .text-link:hover{
+    color:rgb(178, 178, 42)
+  
+  }
+  .cocktail-card img {
+    width: 80%;
+    object-fit: cover;
+    border-radius: 10px;
+  }
+  
+  .cocktail-name {
+    margin-top: 10px;
+    font-weight: bold;
+    color: white;
+    text-decoration: none;
+  }
+  
+  

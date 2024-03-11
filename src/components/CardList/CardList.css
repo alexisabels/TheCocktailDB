@@ -1,3 +1,6 @@
 .card-list {
-  max-width: 1024;
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-around; /* Puedes ajustar a space-between si prefieres más espacio en los extremos */
+  margin-top: 20px; /* Ajusta el margen superior según tus necesidades */
 }

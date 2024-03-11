@@ -1,6 +1,10 @@
 import React from 'react';
 import RandomCocktails from '../../components/RandomList/RandomCocktails';
+import PopularDrinks from '../../components/PopularDrinks/PopularDrink';
+
 import "./Home.css";
+
+
 const Home = () => {
   return (
     
@@ -21,6 +25,8 @@ const Home = () => {
     <hr />
       <RandomCocktails />
       <hr />
+      <PopularDrinks />
+<hr />
     </div>
   );
 };
