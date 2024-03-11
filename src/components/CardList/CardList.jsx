@@ -1,7 +1,7 @@
 import React from 'react';
 import Card from '../Card/Card';
 import { Link } from 'react-router-dom';
-
+import './CardList.css'
 const CardList = ({ drinks }) => {
   return (
     <div className='card-list'>

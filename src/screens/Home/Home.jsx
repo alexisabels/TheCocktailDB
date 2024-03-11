@@ -1,6 +1,7 @@
 import React from 'react';
 import RandomCocktails from '../../components/RandomList/RandomCocktails';
 import PopularDrinks from '../../components/PopularDrinks/PopularDrink';
+import PopularIngredients from '../../components/PopularIngredients/PopularIngredients';
 
 import "./Home.css";
 
@@ -24,6 +25,8 @@ const Home = () => {
     </div>
     <hr />
       <RandomCocktails />
+      <hr />
+      <PopularIngredients/>
       <hr />
       <PopularDrinks />
 <hr />

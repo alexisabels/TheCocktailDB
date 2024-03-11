@@ -21,7 +21,6 @@ const PopularDrinks = () => {
       try {
         const cocktailsArray = [];
 
-        // Iterar sobre los IDs de los cócteles y obtener los detalles para cada uno
         for (let id of cocktailIds) {
           const cocktailDetail = await getCocktailDetail(id);
           cocktailsArray.push(cocktailDetail.drinks[0]);
@@ -38,7 +37,7 @@ const PopularDrinks = () => {
 
   return (
     <div className="random-cocktails-container">
-      <h2>Nuestros Favoritos</h2>
+      <h2>Cocktails Favoritos</h2>
       <div className="cocktail-grid text-link">
         {cocktails.map((cocktail) => (
           <Link key={cocktail.idDrink} to={"/drink/" + cocktail.idDrink} className="col-3 cocktail-card text-link">

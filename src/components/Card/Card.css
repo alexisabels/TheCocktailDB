@@ -1,5 +1,6 @@
 .card_1 {
-  width: calc(25% - 20px); /* Ajusta el ancho de cada tarjeta según tus necesidades */
+  width: 90%;
+  max-width: 250px; /* Ajusta el ancho máximo según tus necesidades */
   margin: 10px;
   text-align: center;
   overflow: hidden;
@@ -9,14 +10,24 @@
 .card_1 a {
   text-decoration: none;
   color: inherit;
+  display: block; 
 }
 
 .card_1 img {
-  width: 100%;
+  width: 50%; 
   height: auto;
   border-radius: 8px;
 }
 
 .card_1 h3 {
   margin: 10px 0;
+  color: white; /* Letras en blanco */
+  transition: color 0.3s ease; 
+}
+
+.card_1:hover h3 {
+  color: rgb(178, 178, 42);
+}
+.card_1 img:hover + h3 {
+  color: rgb(178, 178, 42); 
 }
