@@ -1,6 +1,7 @@
 import React, { useEffect, useState } from 'react';
 import { getCocktailDetail } from '../../services/cocktailapi';
 import DrinkIngredients from '../Ingredients/DrinkIngredients';
+import './DrinkDetail.css';
 
 export default function DrinkDetail({ id }) {
   const [data, setData] = useState(null);
@@ -16,18 +17,35 @@ export default function DrinkDetail({ id }) {
   }, [id]);
 
   return (
-    <div className="drink-detail">
+    <div>
+    <div className="drink-detail-container text-white">
       {data && (
-        <div className="drink-info">
-          <div>Id: {data.idDrink}</div>
-          <div>Nombre: {data.strDrink}</div>
-          <div>Vaso: {data.strGlass}</div>
-          <div>Instrucciones: {data.strInstructions}</div>
-          <img src={data.strDrinkThumb} alt={data.strDrink} />
+        <div className="drink-info-left">
+          <div className="drink-name">{data.strDrink}</div>
+          <img className="drink-image" src={data.strDrinkThumb} alt={data.strDrink} />
         </div>
       )}
 
-      {data && <DrinkIngredients ingredients={data} />}
+      {data && (
+        <div className="drink-info-right">
+          <DrinkIngredients ingredients={data} />
+        </div>
+      )}
+      
     </div>
+    {data && (
+        <div className="drink-additional-info">
+          <div className="drink-glass info-center">
+            <h1>Vaso:</h1>
+            <p>{data.strGlass}</p>
+          </div>
+          <div className="drink-instructions ">
+        <h1>Instrucciones:</h1>
+        <p>{data.strInstructions}</p>
+      </div>
+        </div>
+      )}
+    </div>
+
   );
 }

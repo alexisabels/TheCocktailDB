@@ -1,0 +1,37 @@
+.ingredient-grid {
+  max-width: 1200px; 
+  margin: 0 auto;
+}
+
+.ingredient-cards {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr); /* Tres columnas por fila */
+  gap: 20px; 
+}
+.ingredient-card {
+  text-align: center;
+  padding: 10px;
+  text-decoration: none;
+  color: white;
+  
+}
+
+
+.ingredient-card img {
+ width: 200px;
+  height: auto;
+}
+
+
+.ingredient-name {
+  margin-top: 10px;
+  text-decoration: none;
+  
+
+}
+
+.ingredient-card:hover {
+   color:rgb(178, 178, 42)
+    
+  
+  }

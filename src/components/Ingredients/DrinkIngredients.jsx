@@ -1,6 +1,6 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
-
+import './DrinkIngredients.css';
 const DrinkIngredients = ({ ingredients }) => {
   const ingredientNames = Object.keys(ingredients)
     .filter((key) => key.startsWith('strIngredient') && ingredients[key])
@@ -11,7 +11,7 @@ const DrinkIngredients = ({ ingredients }) => {
       <h2>Ingredientes:</h2>
       <div className="ingredient-cards">
         {ingredientNames.map((ingredient, index) => (
-          <Link key={index} to={`/ingredients/${ingredient}`}>
+          <Link key={index} to={`/ingredients/${ingredient}`} style={{ textDecoration: 'none' }}>
             <div className="ingredient-card">
               <img
                 src={`https://www.thecocktaildb.com/images/ingredients/${ingredient}-Medium.png`}

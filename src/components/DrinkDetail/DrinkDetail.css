@@ -1,0 +1,55 @@
+.text-white {
+    color: white;
+}
+
+.drink-detail-container {
+    display: flex;
+    justify-content: center;
+    align-items: flex-start;
+}
+
+.drink-info {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: flex-start;
+    align-items: flex-start;
+    margin-bottom: 20px; /* Ajusta el margen inferior */
+}
+
+.drink-info-left {
+    flex: 0 0 50%; /* Establece el ancho al 50% del contenedor padre */
+    max-width: 50%; /* Establece el ancho máximo al 50% del contenedor padre */
+    padding-right: 20px; /* Ajusta el espacio entre la foto y los ingredientes */
+    text-align: left;
+}
+
+.drink-info-right {
+    flex: 1;
+    text-align: left;
+}
+
+.drink-image {
+    width: 400px; /* Tamaño deseado para la imagen */
+    height: auto; /* Altura automática para mantener la proporción */
+    display: block; /* Asegura que la imagen no tenga espacios en blanco alrededor */
+    margin-bottom: 10px; /* Ajusta el margen inferior de la imagen */
+    margin-top: 10px; /* Ajusta el margen superior de la imagen */
+}
+
+.info-center {
+    text-align: center;
+}
+
+.drink-name {
+    font-size: 30px; /* Tamaño de fuente para el nombre del cocktail */
+    font-weight: bold; /* Fuente en negrita para destacar */
+}
+
+.drink-glass, .drink-instructions {
+    margin-top: 10px; /* Espacio entre el vaso y las instrucciones */
+    text-align: center; /* Alineación centrada para la información adicional */
+}
+.drink-additional-info{
+    color: white;
+    margin-top: 60px;
+}
