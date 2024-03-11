@@ -7,7 +7,7 @@ import Ingredients from './screens/Ingredients/Ingredients';
 import { createBrowserRouter, RouterProvider } from "react-router-dom";
 import Details from './screens/Details/Details';
 import CocktailsByLetter from './components/CocktailsByLetter/CocktailsByLetter';
-
+import Home from './screens/Home/Home'
 
 const router = createBrowserRouter([
   {
@@ -15,9 +15,15 @@ const router = createBrowserRouter([
     element: <Main />,
     errorElement: <Error />,
     children: [
+      
+    
       {
         path: "/search",
         element: <Search />,
+      },
+      {
+        path: "/home",
+        element: <Home />,
       },
       {
         path: "/ingredients/:ingredient",

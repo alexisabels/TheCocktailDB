@@ -10,7 +10,7 @@ const Footer = () => {
       <h2>Browse By Name</h2>
       <div className="alphabet-links">
         {alphabet.map(letter => (
-          <Link key={letter} to={`/cocktails/${letter}`}>{letter}</Link>
+          <Link key={letter} to={`/cocktails/${letter}`} style={{ textDecoration: 'none', color: 'white'}}>{letter} / </Link>
         ))}
       </div>
     </footer>

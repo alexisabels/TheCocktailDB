@@ -1,36 +1,35 @@
 .header {
-    background-color: #1d000d;
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-    padding: 10px 20px;
-    color: white;
-  }
-  
-  .logo img {
-    width: 100%; /* Ajusta el tamaño según necesites */
-  }
-  
-  .search {
-    margin-right: 20px; /* Ajusta el margen derecho según necesites */
+  background-color: #1d000d;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 10px 20px;
+  color: white;
+}
 
-  }
-  .search-button {
-    background-color: #ff0000; /* Rojo intenso */
-    color: #ffffff; /* Texto blanco */
-    padding: 10px 20px; /* Ajusta el espaciado interior */
-    border-radius: 5px; /* Bordes redondeados */
-    text-decoration: none; /* Quita el subrayado del enlace */
-    font-size: 16px; /* Tamaño del texto */
-  }
-  
-  .search-button:hover {
-    background-color: #cc0000; /* Cambia el color al pasar el mouse */
-  }
-  
-  
-  .search a {
-    color: white;
-    text-decoration: none;
-  }
-  
+.logo img {
+  width: 100%;
+}
+
+.button-container {
+  display: flex;
+}
+
+.search {
+  margin-right: 20px;
+}
+
+.search-button,
+.home-link {
+  background-color: #ff0000;
+  color: #ffffff;
+  padding: 10px 20px;
+  border-radius: 5px;
+  text-decoration: none;
+  font-size: 16px;
+}
+
+.search-button:hover,
+.home-link:hover {
+  background-color: #cc0000;
+}
