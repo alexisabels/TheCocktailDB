@@ -39,7 +39,7 @@ export async function getCocktailDetail(id) {
       throw new Error('La solicitud no pudo ser completada');
     }
     const detail = await data.json();
-    console.log(detail); // Agrega este console.log para ver los detalles devueltos por la API
+    console.log(detail);
     return detail;
   } catch (error) {
     console.error('Error fetching cocktail detail:', error);

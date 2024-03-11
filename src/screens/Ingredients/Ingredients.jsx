@@ -3,7 +3,7 @@
 import React, { useEffect, useState } from 'react';
 import { Link, useParams } from 'react-router-dom';
 import { getCocktailsByIngredient } from '../../services/cocktailapi';
-import './Ingredients.css'; // Agrega tu CSS de estilos aquí
+import './Ingredients.css'; 
 
 function Ingredients() {
   const { ingredient } = useParams();

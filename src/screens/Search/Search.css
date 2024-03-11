@@ -34,7 +34,7 @@ body {
   
   .search-content {
     text-align: center;
-    max-width: 70%; /* Ancho máximo del contenido */
+    max-width: 70%;
     padding: 20px;
     margin-top: 50px;
   }
