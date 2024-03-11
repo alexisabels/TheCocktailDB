@@ -3,15 +3,15 @@ import { Outlet } from 'react-router-dom';
 import Footer from '../../components/Footer/Footer';
 import Header from '../../components/Header/Header';
 
-import './Main.css'; 
+import './Main.css';
 
-const Main = () => {
+function Main() {
   return (
     <div className="main-container">
-      
+
       <Header />
       <Outlet />
-      <Footer /> 
+      <Footer />
     </div>
   );
 }

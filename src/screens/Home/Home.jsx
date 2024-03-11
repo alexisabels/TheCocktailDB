@@ -3,35 +3,34 @@ import RandomCocktails from '../../components/RandomList/RandomCocktails';
 import PopularDrinks from '../../components/PopularDrinks/PopularDrink';
 import PopularIngredients from '../../components/PopularIngredients/PopularIngredients';
 
-import "./Home.css";
+import './Home.css';
 
-
-const Home = () => {
+function Home() {
   return (
-    
-    <div> 
+
+    <div>
       <hr />
-       <div className="home-container">
-      <div className="left-image">
-        <img src="/cocktail.png" alt="Cocktail" />
+      <div className="home-container">
+        <div className="left-image">
+          <img src="/cocktail.png" alt="Cocktail" />
+        </div>
+        <div className="center-text">
+          <h1>Welcome to TheCocktailDB</h1>
+        </div>
+        <div className="right-image">
+          <img src="/cocktail.png" alt="Cocktail" />
+        </div>
+
       </div>
-      <div className="center-text">
-        <h1>Welcome to TheCocktailDB</h1>
-      </div>
-      <div className="right-image">
-        <img src="/cocktail.png" alt="Cocktail" />
-      </div>
-      
-    </div>
-    <hr />
+      <hr />
       <RandomCocktails />
       <hr />
-      <PopularIngredients/>
+      <PopularIngredients />
       <hr />
       <PopularDrinks />
-<hr />
+      <hr />
     </div>
   );
-};
+}
 
 export default Home;

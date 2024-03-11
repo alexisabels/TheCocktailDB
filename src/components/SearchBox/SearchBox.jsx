@@ -1,16 +1,16 @@
+/* eslint-disable react/prop-types */
 import React from 'react';
 import './SearchBox.css';
 
-const SearchBox = ({ placeholder, onSearchChange }) => {
-
+function SearchBox({ placeholder, onSearchChange }) {
   function onInputChange(e) {
-    onSearchChange(e.target.value)
+    onSearchChange(e.target.value);
   }
 
   return (
     <input
-      className='search-box'
-      type='search'
+      className="search-box"
+      type="search"
       placeholder={placeholder}
       onChange={onInputChange}
     />

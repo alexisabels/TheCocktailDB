@@ -1,11 +1,14 @@
+/* eslint-disable react/prop-types */
+/* eslint-disable react/no-array-index-key */
 import React from 'react';
 import { Link } from 'react-router-dom';
 import './DrinkIngredients.css';
-const DrinkIngredients = ({ ingredients }) => {
+
+function DrinkIngredients({ ingredients }) {
   const ingredientNames = Object.keys(ingredients)
     .filter((key) => key.startsWith('strIngredient') && ingredients[key])
     .map((key) => ingredients[key]);
-  
+
   return (
     <div className="ingredient-grid">
       <h2>Ingredientes:</h2>
@@ -24,6 +27,6 @@ const DrinkIngredients = ({ ingredients }) => {
       </div>
     </div>
   );
-};
+}
 
 export default DrinkIngredients;

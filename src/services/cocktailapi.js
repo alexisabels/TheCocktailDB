@@ -1,45 +1,44 @@
-const URL_Cocktail = "https://www.thecocktaildb.com/api/json/v1/1";
+/* eslint-disable camelcase */
+const URL_Cocktail = 'https://www.thecocktaildb.com/api/json/v1/1';
 
-//este no funciona
+// este no funciona
 export async function getCocktails() {
-  let data = await fetch(URL_Cocktail);
-  let drinks = await data.json();
+  const data = await fetch(URL_Cocktail);
+  const drinks = await data.json();
   console.log(drinks);
   return drinks.results;
 }
 
-//ESTE PARA BUSCAR
+// ESTE PARA BUSCAR
 export async function getCocktailByName(name) {
-  let data = await fetch(URL_Cocktail + "/search.php?s=" + name);
-  let drink = await data.json();
+  const data = await fetch(`${URL_Cocktail}/search.php?s=${name}`);
+  const drink = await data.json();
   console.log(drink);
   return drink;
-
 }
 
 export async function getCocktailsByURL(URL) {
-  let data = await fetch(URL);
-  let coktail = await data.json();
+  const data = await fetch(URL);
+  const coktail = await data.json();
   console.log(coktail);
   return coktail;
 }
 
-//este para buscar un ingerdiente (este creo que no lo usamos)
+// este para buscar un ingerdiente (este creo que no lo usamos)
 export async function getIngredientByName(name) {
-  let data = await fetch(URL_Cocktail + "/search.php?i=" + name);
-  let ingredient = await data.json();
+  const data = await fetch(`${URL_Cocktail}/search.php?i=${name}`);
+  const ingredient = await data.json();
   console.log(ingredient);
   return ingredient;
-
 }
-//este para ver el cocktail dentro
+// este para ver el cocktail dentro
 export async function getCocktailDetail(id) {
   try {
-    let data = await fetch(URL_Cocktail + "/lookup.php?i=" + id);
+    const data = await fetch(`${URL_Cocktail}/lookup.php?i=${id}`);
     if (!data.ok) {
       throw new Error('La solicitud no pudo ser completada');
     }
-    let detail = await data.json();
+    const detail = await data.json();
     console.log(detail); // Agrega este console.log para ver los detalles devueltos por la API
     return detail;
   } catch (error) {
@@ -48,28 +47,24 @@ export async function getCocktailDetail(id) {
   }
 }
 
-
-//este para moostrar los randoms
+// este para moostrar los randoms
 export async function getRandomCocktail() {
-  let data = await fetch(URL_Cocktail + "/random.php");
-  let drink = await data.json();
+  const data = await fetch(`${URL_Cocktail}/random.php`);
+  const drink = await data.json();
   console.log(drink);
   return drink;
-
 }
-//este para sacar los cocktails de un ingrediente
+// este para sacar los cocktails de un ingrediente
 export async function getCocktailsByIngredient(name) {
-  let data = await fetch(URL_Cocktail + "/filter.php?i=" + name);
-  let drinks = await data.json();
+  const data = await fetch(`${URL_Cocktail}/filter.php?i=${name}`);
+  const drinks = await data.json();
   console.log(drinks);
   return drinks;
-
 }
-//este para buscar por la primera letra
+// este para buscar por la primera letra
 export async function getCocktailByLetter(letter) {
-  let data = await fetch(URL_Cocktail + "/search.php?f=" + letter);
-  let drinks = await data.json();
+  const data = await fetch(`${URL_Cocktail}/search.php?f=${letter}`);
+  const drinks = await data.json();
   console.log(drinks);
   return drinks;
-
 }

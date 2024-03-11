@@ -1,9 +1,9 @@
 import React, { useState, useEffect } from 'react';
 import { useParams } from 'react-router-dom';
 import { getCocktailByLetter } from '../../services/cocktailapi';
-import CardList from '../../components/CardList/CardList';
+import CardList from '../CardList/CardList';
 
-const CocktailsByLetter = () => {
+function CocktailsByLetter() {
   const [cocktails, setCocktails] = useState([]);
   const { letter } = useParams();
 
@@ -22,10 +22,14 @@ const CocktailsByLetter = () => {
 
   return (
     <div className="cocktails-by-letter">
-      <h2>Cocktails starting with letter "{letter}"</h2>
+      <h2>
+        Cocktails starting with letter `&quot;`
+        {letter}
+        `&quot;`
+      </h2>
       <CardList drinks={cocktails} />
     </div>
   );
-};
+}
 
 export default CocktailsByLetter;

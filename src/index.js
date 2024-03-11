@@ -1,41 +1,42 @@
+/* eslint-disable react/jsx-filename-extension */
 import React from 'react';
 import ReactDOM from 'react-dom';
+import { createBrowserRouter, RouterProvider } from 'react-router-dom';
 import Search from './screens/Search/Search';
 import Main from './screens/Main/Main';
 import Error from './screens/Error/Error';
 import Ingredients from './screens/Ingredients/Ingredients';
-import { createBrowserRouter, RouterProvider } from "react-router-dom";
 import Details from './screens/Details/Details';
 import CocktailsByLetter from './components/CocktailsByLetter/CocktailsByLetter';
-import Home from './screens/Home/Home'
+import Home from './screens/Home/Home';
 
 const router = createBrowserRouter([
   {
-    path: "/",
+    path: '/',
     element: <Main />,
     errorElement: <Error />,
     children: [
-          
+
       {
-        path: "/search",
+        path: '/search',
         element: <Search />,
       },
       {
-        path: "/home",
+        path: '/home',
         element: <Home />,
       },
       {
-        path: "/ingredients/:ingredient",
-        element: <Ingredients />
+        path: '/ingredients/:ingredient',
+        element: <Ingredients />,
       },
       {
-        path: "/drink/:idDrink",
+        path: '/drink/:idDrink',
         element: <Details />,
       },
       {
-        path: "/cocktails/:letter",
+        path: '/cocktails/:letter',
         element: <CocktailsByLetter />,
-      },  
+      },
     ],
   },
 
@@ -45,6 +46,5 @@ ReactDOM.render(
   <React.StrictMode>
     <RouterProvider router={router} />
   </React.StrictMode>,
-  document.getElementById('root')
+  document.getElementById('root'),
 );
-

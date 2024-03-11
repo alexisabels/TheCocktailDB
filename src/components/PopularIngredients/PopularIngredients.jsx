@@ -1,15 +1,17 @@
-import React, { useEffect, useState } from "react";
-import { getIngredientByName } from "../../services/cocktailapi";
-import "./PopularIngredients.css";
-import { Link } from "react-router-dom";
+/* eslint-disable no-await-in-loop */
+/* eslint-disable no-restricted-syntax */
+import React, { useEffect, useState } from 'react';
+import { Link } from 'react-router-dom';
+import { getIngredientByName } from '../../services/cocktailapi';
+import './PopularIngredients.css';
 
-const PopularIngredients = () => {
+function PopularIngredients() {
   const [ingredients, setIngredients] = useState([]);
   const ingredientNames = [
-    "Whisky", 
-    "Sugar", 
-    "Gin", 
-    "Tequila", 
+    'Whisky',
+    'Sugar',
+    'Gin',
+    'Tequila',
   ];
 
   useEffect(() => {
@@ -17,14 +19,14 @@ const PopularIngredients = () => {
       try {
         const ingredientsArray = [];
 
-        for (let ingredientName of ingredientNames) {
+        for (const ingredientName of ingredientNames) {
           const ingredient = await getIngredientByName(ingredientName);
           ingredientsArray.push(ingredient.ingredients[0]);
         }
 
         setIngredients(ingredientsArray);
       } catch (error) {
-        console.error("Error fetching ingredients:", error);
+        console.error('Error fetching ingredients:', error);
       }
     };
 
@@ -36,7 +38,7 @@ const PopularIngredients = () => {
       <h2>Ingredientes Favoritos</h2>
       <div className="cocktail-grid text-link">
         {ingredients.map((ingredient) => (
-          <Link key={ingredient.idIngredient} to={"/ingredients/" + ingredient.strIngredient} className="col-3 cocktail-card text-link">
+          <Link key={ingredient.idIngredient} to={`/ingredients/${ingredient.strIngredient}`} className="col-3 cocktail-card text-link">
             <img src={`https://www.thecocktaildb.com/images/ingredients/${ingredient.strIngredient}-Medium.png`} alt={ingredient.strIngredient} />
             <div className="cocktail-name text-link">{ingredient.strIngredient}</div>
           </Link>
@@ -44,6 +46,6 @@ const PopularIngredients = () => {
       </div>
     </div>
   );
-};
+}
 
 export default PopularIngredients;

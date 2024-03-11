@@ -1,3 +1,5 @@
+/* eslint-disable no-unused-vars */
+/* eslint-disable react/jsx-no-bind */
 import React, { useState, useEffect } from 'react';
 import './Search.css';
 import { getCocktailByName } from '../../services/cocktailapi';
@@ -11,7 +13,7 @@ function Search() {
 
   useEffect(() => {
     if (search) {
-      getCocktailByName(search).then(data => {
+      getCocktailByName(search).then((data) => {
         if (data && data.drinks) {
           setDrinks(data.drinks);
           setFilteredDrinks(data.drinks);
@@ -37,7 +39,11 @@ function Search() {
           onSearchChange={onSearchChange}
         />
         {filteredDrinks.length === 0 && search && (
-          <p className="no-results">No cocktails found with the name "{search}"</p>
+          <p className="no-results">
+            No cocktails found with the name `&quot;`
+            {search}
+            `&quot;`
+          </p>
         )}
         <CardList drinks={filteredDrinks} />
       </div>

@@ -1,9 +1,12 @@
-import React, { useEffect, useState } from "react";
-import { getRandomCocktail } from "../../services/cocktailapi";
-import "./RandomCocktail.css";
-import { Link } from "react-router-dom";
+/* eslint-disable no-plusplus */
+/* eslint-disable no-console */
+/* eslint-disable no-await-in-loop */
+import React, { useEffect, useState } from 'react';
+import { Link } from 'react-router-dom';
+import { getRandomCocktail } from '../../services/cocktailapi';
+import './RandomCocktail.css';
 
-const RandomCocktails = () => {
+function RandomCocktails() {
   const [cocktails, setCocktails] = useState([]);
 
   useEffect(() => {
@@ -16,7 +19,7 @@ const RandomCocktails = () => {
         }
         setCocktails(cocktailsArray);
       } catch (error) {
-        console.error("Error fetching random cocktails:", error);
+        console.error('Error fetching random cocktails:', error);
       }
     };
 
@@ -28,7 +31,7 @@ const RandomCocktails = () => {
       <h2>Random Cocktails</h2>
       <div className="cocktail-grid text-link">
         {cocktails.map((cocktail) => (
-          <Link key={cocktail.idDrink} to={"/drink/" + cocktail.idDrink} className="col-3 cocktail-card text-link">
+          <Link key={cocktail.idDrink} to={`/drink/${cocktail.idDrink}`} className="col-3 cocktail-card text-link">
             <img src={cocktail.strDrinkThumb} alt={cocktail.strDrink} />
             <div className="cocktail-name text-link">{cocktail.strDrink}</div>
           </Link>
@@ -36,6 +39,6 @@ const RandomCocktails = () => {
       </div>
     </div>
   );
-};
+}
 
 export default RandomCocktails;

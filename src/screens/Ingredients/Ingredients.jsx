@@ -1,9 +1,11 @@
+/* eslint-disable react/jsx-indent */
+/* eslint-disable no-trailing-spaces */
 import React, { useEffect, useState } from 'react';
 import { Link, useParams } from 'react-router-dom';
 import { getCocktailsByIngredient } from '../../services/cocktailapi';
 import './Ingredients.css'; // Agrega tu CSS de estilos aquí
 
-const Ingredients = () => {
+function Ingredients() {
   const { ingredient } = useParams();
   const [cocktails, setCocktails] = useState([]);
 
@@ -22,12 +24,17 @@ const Ingredients = () => {
 
   return (
     <div>
-      <h2>Cócteles con {ingredient}:</h2>
+      <h2>
+        Cócteles con 
+        {' '}
+        {ingredient}
+        :
+      </h2>
       <img src="" alt="" />
       <div className="cocktail-cards card-list">
-        {cocktails.map(cocktail => (
+        {cocktails.map((cocktail) => (
           <div key={cocktail.idDrink} className="col-3">
-            <Link to={`/drink/${cocktail.idDrink}`} >
+            <Link to={`/drink/${cocktail.idDrink}`}>
               <img src={cocktail.strDrinkThumb} alt={cocktail.strDrink} />
               <h3>{cocktail.strDrink}</h3>
             </Link>
@@ -36,6 +43,6 @@ const Ingredients = () => {
       </div>
     </div>
   );
-};
+}
 
 export default Ingredients;
