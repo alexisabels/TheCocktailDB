@@ -1,33 +1,34 @@
-.card_1 {
+.card {
   width: 90%;
-  max-width: 250px; /* Ajusta el ancho máximo según tus necesidades */
+  max-width: 250px;
   margin: 10px;
   text-align: center;
   overflow: hidden;
   position: relative;
 }
 
-.card_1 a {
+.card__link {
   text-decoration: none;
   color: inherit;
-  display: block; 
+  display: block;
 }
 
-.card_1 img {
-  width: 50%; 
+.card__image {
+  width: 50%;
   height: auto;
   border-radius: 8px;
 }
 
-.card_1 h3 {
+.card__title {
   margin: 10px 0;
-  color: white; /* Letras en blanco */
-  transition: color 0.3s ease; 
+  color: white;
+  transition: color 0.3s ease;
 }
 
-.card_1:hover h3 {
+.card:hover .card__title {
   color: rgb(178, 178, 42);
 }
-.card_1 img:hover + h3 {
-  color: rgb(178, 178, 42); 
+
+.card__image:hover + .card__title {
+  color: rgb(178, 178, 42);
 }

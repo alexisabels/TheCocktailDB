@@ -7,20 +7,20 @@
   color: white;
 }
 
-.logo img {
+.header__logo img {
   width: 100%;
 }
 
-.button-container {
+.header__button-container {
   display: flex;
 }
 
-.search {
+.header__search {
   margin-right: 20px;
 }
 
-.search-button,
-.home-link {
+.header__search-button,
+.header__home-link {
   background-color: #ff0000;
   color: #ffffff;
   padding: 10px 20px;
@@ -29,7 +29,7 @@
   font-size: 16px;
 }
 
-.search-button:hover,
-.home-link:hover {
+.header__search-button:hover,
+.header__home-link:hover {
   background-color: #cc0000;
 }

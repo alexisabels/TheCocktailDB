@@ -17,6 +17,7 @@ function PopularDrinks() {
     '13020', // Sangria
     '13206', // Caipirissima
   ];
+
   useEffect(() => {
     const fetchCocktails = async () => {
       try {
@@ -37,13 +38,21 @@ function PopularDrinks() {
   }, []);
 
   return (
-    <div className="random-cocktails-container">
-      <h2>Cocktails Favoritos</h2>
+    <div className="popular-cocktails-container">
+      <h2 className="popular-cocktails-container__heading">Cocktails Favoritos</h2>
       <div className="cocktail-grid text-link">
         {cocktails.map((cocktail) => (
-          <Link key={cocktail.idDrink} to={`/drink/${cocktail.idDrink}`} className="col-3 cocktail-card text-link">
-            <img src={cocktail.strDrinkThumb} alt={cocktail.strDrink} />
-            <div className="cocktail-name text-link">{cocktail.strDrink}</div>
+          <Link
+            key={cocktail.idDrink}
+            to={`/drink/${cocktail.idDrink}`}
+            className="col-3 cocktail-card text-link"
+          >
+            <img
+              src={cocktail.strDrinkThumb}
+              alt={cocktail.strDrink}
+              className="cocktail-card__image"
+            />
+            <div className="cocktail-card__name text-link">{cocktail.strDrink}</div>
           </Link>
         ))}
       </div>

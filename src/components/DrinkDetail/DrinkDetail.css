@@ -29,7 +29,7 @@
 .drink-info-right {
     flex: 1;
     text-align: left;
-    align-items: flex-start; /* Alinear al principio */
+    align-items: flex-start; 
     text-align: start;
     margin-top: 18px;
 }
@@ -62,7 +62,7 @@
 .drink-additional-info {
     color: white;
     margin-top: 60px;
-    display: flex; /* Agregado */
-    flex-direction: column; /* Agregado */
-    align-items: flex-center; /* Alinear al principio */
+    display: flex; 
+    flex-direction: column; 
+    align-items: flex-center; 
 }

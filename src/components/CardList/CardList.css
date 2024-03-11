@@ -1,23 +1,23 @@
 .card-list {
   display: flex;
   flex-wrap: wrap;
-  justify-content: space-between;
+  justify-content: center;
   margin-top: 20px;
 }
-.card-list a {
+
+.card-list__item {
+  max-width: calc(25% - 20px);
+  margin: 10px 0;
   text-decoration: none;
   color: inherit;
 }
-.card-list img {
+
+.card-list__item img {
   width: 100%;
   height: auto;
   border-radius: 8px;
 }
-.col-3 {
-  flex: 0 0 calc(25% - 20px); 
-  max-width: calc(25% - 20px); 
-  margin: 10px 0;
-}
-.card-list h3 {
+
+.card-list__item h3 {
   margin: 10px 0;
 }

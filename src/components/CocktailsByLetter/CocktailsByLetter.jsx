@@ -21,11 +21,11 @@ function CocktailsByLetter() {
   }, [letter]);
 
   return (
-    <div className="cocktails-by-letter">
+    <div>
       <h2>
-        Cocktails starting with letter `&quot;`
+        Cocktails starting with letter
+        {' '}
         {letter}
-        `&quot;`
       </h2>
       <CardList drinks={cocktails} />
     </div>

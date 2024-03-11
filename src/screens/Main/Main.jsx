@@ -8,7 +8,6 @@ import './Main.css';
 function Main() {
   return (
     <div className="main-container">
-
       <Header />
       <Outlet />
       <Footer />

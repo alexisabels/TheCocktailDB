@@ -1,10 +1,28 @@
 .text-white {
-    
     color: white;
-}
-.footer {
-background-color: #731515;
-height: 100px;
-text-align: center;
-vertical-align: middle;
-}
+  }
+  
+  .footer {
+    background-color: #731515;
+    height: 100px;
+    text-align: center;
+    vertical-align: middle;
+  }
+  .footer__content{
+    vertical-align: middle;
+  }
+  .footer__heading {
+    margin-bottom: 10px;
+  }
+  
+  .alphabet-links {
+    display: flex;
+    justify-content: center;
+  }
+  
+  .alphabet-link {
+    text-decoration: none;
+    color: white;
+    margin: 0 5px;
+  }
+  

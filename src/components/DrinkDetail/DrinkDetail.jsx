@@ -10,7 +10,7 @@ export default function DrinkDetail({ id }) {
   useEffect(() => {
     getCocktailDetail(id)
       .then((json) => {
-        setData(json.drinks[0]); // Accede al primer elemento de la matriz de bebidas
+        setData(json.drinks[0]);
       })
       .catch((error) => {
         console.error('Error fetching cocktail detail:', error);
@@ -21,32 +21,30 @@ export default function DrinkDetail({ id }) {
     <div>
       <div className="drink-detail-container text-white">
         {data && (
-        <div className="drink-info-left">
-          <div className="drink-name">{data.strDrink}</div>
-          <img className="drink-image" src={data.strDrinkThumb} alt={data.strDrink} />
-        </div>
+          <div className="drink-info-left">
+            <div className="drink-name">{data.strDrink}</div>
+            <img className="drink-image" src={data.strDrinkThumb} alt={data.strDrink} />
+          </div>
         )}
 
         {data && (
-        <div className="drink-info-right">
-          <DrinkIngredients ingredients={data} />
-        </div>
+          <div className="drink-info-right">
+            <DrinkIngredients ingredients={data} />
+          </div>
         )}
-
       </div>
       {data && (
         <div className="drink-additional-info">
           <div className="drink-glass info-center">
-            <h1>Vaso:</h1>
-            <p>{data.strGlass}</p>
+            <h1 className="drink-heading">Vaso:</h1>
+            <p className="drink-text">{data.strGlass}</p>
           </div>
-          <div className="drink-instructions ">
-            <h1>Instrucciones:</h1>
-            <p>{data.strInstructions}</p>
+          <div className="drink-instructions">
+            <h1 className="drink-heading">Instrucciones:</h1>
+            <p className="drink-text">{data.strInstructions}</p>
           </div>
         </div>
       )}
     </div>
-
   );
 }

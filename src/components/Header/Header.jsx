@@ -5,19 +5,19 @@ import './Header.css';
 function Header() {
   return (
     <div className="header">
-      <div className="logo">
+      <div className="header__logo">
         <Link to="/home">
-          <img src="/logo.png" alt="Logo" />
+          <img src="/logo.png" alt="Logo" className="header__logo-image" />
         </Link>
       </div>
-      <div className="button-container">
-        <div className="search">
-          <Link to="/search" className="search-button">
+      <div className="header__button-container">
+        <div className="header__search">
+          <Link to="/search" className="header__search-button">
             Search cocktails
           </Link>
         </div>
-        <div className="home-button">
-          <Link to="/home" className="home-link">
+        <div className="header__home-button">
+          <Link to="/home" className="header__home-link">
             Home
           </Link>
         </div>

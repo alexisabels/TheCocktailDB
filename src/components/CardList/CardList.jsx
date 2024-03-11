@@ -8,7 +8,7 @@ function CardList({ drinks }) {
   return (
     <div className="card-list">
       {drinks.map((drink) => (
-        <Link key={drink.idDrink} className="col-3" to={`/drink/${drink.idDrink}`}>
+        <Link key={drink.idDrink} className="card-list__item" to={`/drink/${drink.idDrink}`}>
           <Card drink={drink} />
         </Link>
       ))}

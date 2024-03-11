@@ -7,16 +7,18 @@ function Footer() {
 
   return (
     <footer className="footer text-white">
-      <h2>Browse By Name</h2>
-      <div className="alphabet-links">
-        {alphabet.map((letter) => (
-          <Link key={letter} to={`/cocktails/${letter}`} style={{ textDecoration: 'none', color: 'white' }}>
-            {letter}
-            {' '}
-            /
-            {' '}
-          </Link>
-        ))}
+      <div className="footer__content">
+        <h2 className="footer__heading">Browse By Name</h2>
+        <div className="alphabet-links">
+          {alphabet.map((letter) => (
+            <Link key={letter} to={`/cocktails/${letter}`} className="alphabet-link">
+              {letter}
+              {' '}
+              /
+              {' '}
+            </Link>
+          ))}
+        </div>
       </div>
     </footer>
   );

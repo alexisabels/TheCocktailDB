@@ -28,11 +28,19 @@ function RandomCocktails() {
 
   return (
     <div className="random-cocktails-container">
-      <h2>Random Cocktails</h2>
+      <h2 className="random-cocktails-container__heading">Random Cocktails</h2>
       <div className="cocktail-grid text-link">
         {cocktails.map((cocktail) => (
-          <Link key={cocktail.idDrink} to={`/drink/${cocktail.idDrink}`} className="col-3 cocktail-card text-link">
-            <img src={cocktail.strDrinkThumb} alt={cocktail.strDrink} />
+          <Link
+            key={cocktail.idDrink}
+            to={`/drink/${cocktail.idDrink}`}
+            className="col-3 cocktail-card text-link"
+          >
+            <img
+              src={cocktail.strDrinkThumb}
+              alt={cocktail.strDrink}
+              className="cocktail-card__image"
+            />
             <div className="cocktail-name text-link">{cocktail.strDrink}</div>
           </Link>
         ))}

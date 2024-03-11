@@ -3,9 +3,12 @@
   flex-wrap: wrap;
   justify-content: center;
   margin-top: 20px;
+  color: white;
 }
 
-
+h2 {
+  color: white;
+}
 .card-list a {
   text-decoration: none;
   color: inherit;

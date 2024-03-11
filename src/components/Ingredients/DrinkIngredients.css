@@ -1,40 +1,40 @@
 .ingredient-grid {
-  max-width: 1200px; 
+  max-width: 1200px;
   margin: 0 auto;
+  color: white;
 }
-.ingredient-grid h2 {
+
+.ingredient-grid__heading {
   text-align: left;
 }
 
 .ingredient-cards {
   display: grid;
-  grid-template-columns: repeat(3, 1fr); /* Tres columnas por fila */
-  gap: 20px; 
+  grid-template-columns: repeat(3, 1fr);
+  gap: 20px;
 }
+
+.ingredient-link {
+  text-decoration: none;
+}
+
 .ingredient-card {
   text-align: center;
   padding: 10px;
   text-decoration: none;
   color: white;
-  
 }
 
-
-.ingredient-card img {
- width: 200px;
+.ingredient-card__image {
+  width: 200px;
   height: auto;
 }
 
-
-.ingredient-name {
+.ingredient-card__name {
   margin-top: 10px;
   text-decoration: none;
-  
-
 }
 
 .ingredient-card:hover {
-   color:rgb(178, 178, 42)
-    
-  
-  }
+  color: rgb(178, 178, 42);
+}

@@ -11,16 +11,17 @@ function DrinkIngredients({ ingredients }) {
 
   return (
     <div className="ingredient-grid">
-      <h2>Ingredientes:</h2>
+      <h2 className="ingredient-grid__heading">Ingredientes:</h2>
       <div className="ingredient-cards">
         {ingredientNames.map((ingredient, index) => (
-          <Link key={index} to={`/ingredients/${ingredient}`} style={{ textDecoration: 'none' }}>
+          <Link key={index} to={`/ingredients/${ingredient}`} className="ingredient-link">
             <div className="ingredient-card">
               <img
                 src={`https://www.thecocktaildb.com/images/ingredients/${ingredient}-Medium.png`}
                 alt={ingredient}
+                className="ingredient-card__image"
               />
-              <div className="ingredient-name">{ingredient}</div>
+              <div className="ingredient-card__name">{ingredient}</div>
             </div>
           </Link>
         ))}

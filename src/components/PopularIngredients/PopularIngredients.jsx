@@ -35,12 +35,20 @@ function PopularIngredients() {
 
   return (
     <div className="popular-ingredients-container">
-      <h2>Ingredientes Favoritos</h2>
-      <div className="cocktail-grid text-link">
+      <h2 className="popular-ingredients-container__heading">Ingredientes Favoritos</h2>
+      <div className="ingredient-grid text-link">
         {ingredients.map((ingredient) => (
-          <Link key={ingredient.idIngredient} to={`/ingredients/${ingredient.strIngredient}`} className="col-3 cocktail-card text-link">
-            <img src={`https://www.thecocktaildb.com/images/ingredients/${ingredient.strIngredient}-Medium.png`} alt={ingredient.strIngredient} />
-            <div className="cocktail-name text-link">{ingredient.strIngredient}</div>
+          <Link
+            key={ingredient.idIngredient}
+            to={`/ingredients/${ingredient.strIngredient}`}
+            className="col-3 ingredient-card text-link"
+          >
+            <img
+              src={`https://www.thecocktaildb.com/images/ingredients/${ingredient.strIngredient}-Medium.png`}
+              alt={ingredient.strIngredient}
+              className="ingredient-card__image"
+            />
+            <div className="ingredient-card__name text-link">{ingredient.strIngredient}</div>
           </Link>
         ))}
       </div>

@@ -25,12 +25,11 @@ function Ingredients() {
   return (
     <div>
       <h2>
-        Cócteles con 
+        Cócteles con
         {' '}
         {ingredient}
         :
       </h2>
-      <img src="" alt="" />
       <div className="cocktail-cards card-list">
         {cocktails.map((cocktail) => (
           <div key={cocktail.idDrink} className="col-3">

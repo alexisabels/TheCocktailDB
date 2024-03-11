@@ -14,9 +14,6 @@
 .right-image {
   flex: 0 0 150px;
 }
-image {
-  width: 400px;
-}
 
 .center-text {
   text-align: center;

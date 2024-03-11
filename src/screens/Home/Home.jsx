@@ -7,7 +7,6 @@ import './Home.css';
 
 function Home() {
   return (
-
     <div>
       <hr />
       <div className="home-container">
@@ -20,7 +19,6 @@ function Home() {
         <div className="right-image">
           <img src="/cocktail.png" alt="Cocktail" />
         </div>
-
       </div>
       <hr />
       <RandomCocktails />
