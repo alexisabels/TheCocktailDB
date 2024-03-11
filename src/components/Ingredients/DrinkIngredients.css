@@ -2,6 +2,9 @@
   max-width: 1200px; 
   margin: 0 auto;
 }
+.ingredient-grid h2 {
+  text-align: left;
+}
 
 .ingredient-cards {
   display: grid;
