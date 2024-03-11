@@ -21,13 +21,13 @@ const Ingredients = () => {
   }, [ingredient]);
 
   return (
-    <div className="cocktail-list">
+    <div>
       <h2>Cócteles con {ingredient}:</h2>
       <img src="" alt="" />
-      <div className="cocktail-cards">
+      <div className="cocktail-cards card-list">
         {cocktails.map(cocktail => (
-          <div key={cocktail.idDrink} className="card">
-            <Link to={`/drink/${cocktail.idDrink}`}>
+          <div key={cocktail.idDrink} className="col-3">
+            <Link to={`/drink/${cocktail.idDrink}`} >
               <img src={cocktail.strDrinkThumb} alt={cocktail.strDrink} />
               <h3>{cocktail.strDrink}</h3>
             </Link>

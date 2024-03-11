@@ -1,31 +1,33 @@
-.card {
-  /* Add shadows to create the "card" effect */
-  box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2);
-  max-width: 200px;
-  transition: 0.3s;
-  display: inline-block;
-  margin: 5px;
-  padding: 10px;
-  border-radius: 5px;
-  overflow: hidden;
-  background-color: rgb(240, 227, 210);
+.card-list {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-between;
+  margin-top: 20px;
 }
 
-.card img {
-  width: 200px;
-  height: 250px;
-}
 
-.card a {
+.card-list a {
   text-decoration: none;
-  color: black;
-  font-family: fantasy;
+  color: inherit;
+  color: white;
 }
 
-/* On mouse-over, add a deeper shadow */
-.card:hover {
-  box-shadow: 0 8px 16px 0 rgba(0, 0, 0, 0.2);
+
+
+.card-list img {
+  width: 90%;
+  height: auto;
+  border-radius: 8px;
 }
+.col-3 {
+  flex: 0 0 calc(25% - 20px); 
+  max-width: calc(25% - 20px); 
+  margin: 10px 0;
+}
+.card-list h3 {
+  margin: 10px 0;
+}
+
 
 /* Add some padding inside the card container */
 .container {
