@@ -26,7 +26,6 @@ function Home() {
       <PopularIngredients />
       <hr />
       <PopularDrinks />
-      <hr />
     </div>
   );
 }
