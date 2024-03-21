@@ -1,5 +1,5 @@
 ﻿![logo](Aspose.Words.0f5617f9-53f8-4306-81a4-53a7da6f4961.001.png)
-En esta práctica realizaremos una aplicación web SPA basada en el framework React de JS. En nuestro caso trabajaremos sobre la API de **TheCocktailDB**.
+### En esta práctica realizaremos una aplicación web SPA basada en el framework React de JS. En este caso trabajaremos sobre la API de **TheCocktailDB**.
 1. # <a name="_heading=h.hq0lofq6dgfk"></a>Requisitos técnicos que ha de cumplir:
 - Se han de programar al menos seis componentes y jerárquicamente organizados en al menos 3 niveles de anidamiento.
 - La aplicación ha de tener distintas rutas usando React Router
@@ -7,16 +7,14 @@ En esta práctica realizaremos una aplicación web SPA basada en el framework Re
 - La aplicación ha de estar bien estructurada escogiendo alguna de las filosofías explicadas en clase: Folder By Type o Folder By Feature. 
 - Los estilos han de ser aplicados usando la terminología BEM
 - El proyecto debe tener instalada la dependencia de Eslint y tiene que estar configurado para validar el código según el estándar de AirBnB
-1. # <a name="_heading=h.wsfng2ied5p9"></a>Prototipo
+2. # <a name="_heading=h.wsfng2ied5p9"></a>Prototipo
    Hemos realizado el siguiente prototipo en Figma: <https://www.figma.com/file/7Wg9gSRaLCMM1ikjMBLFNi/The-Cocktail-DB?type=design&node-id=0%3A1&mode=design&t=m3duvzCwJ4SUxzEv-1>
-1. # <a name="_heading=h.7tuia5fsdk76"></a>Repositorio
-   github.com/[alexisabels/thecocktaild](https://github.com/alexisabels/thecocktaildb)b
 
-1. # <a name="_heading=h.el7y4dgx1m34"></a> Implementación 
+3. # <a name="_heading=h.el7y4dgx1m34"></a> Implementación 
 ### <a name="_heading=h.8ntk4gjnkiha"></a>Elección de la API
-Hemos escogido la API de **TheCocktailDB** que es como una gran biblioteca de información sobre cócteles y bebidas. Proporciona recetas, imágenes, y otra información útil sobre diferentes tipos de bebidas.
+Se ha escogido la API de **TheCocktailDB**, una gran biblioteca de información sobre cócteles. Proporciona recetas, imágenes, y otra información útil sobre diferentes tipos de bebidas.
 
-Para hacer estas solicitudes desde nuestra aplicación, escribimos funciones especiales que utilizan herramientas como fetch para enviar solicitudes a la API y recibir los datos que necesitamos. Luego, podemos usar esos datos para mostrarlos en nuestra aplicación de la manera que queramos, como mostrar imágenes de cócteles, listar recetas, etc.
+Para hacer estas solicitudes desde nuestra aplicación, escribimos funciones especiales que envían solicitudes a la API y reciben los datos que necesitamos. Luego, podemos usar esos datos para mostrarlos en nuestra aplicación de la manera que queramos, como mostrar imágenes de cócteles, listar ingredientes, etc.
 
 ![](Aspose.Words.0f5617f9-53f8-4306-81a4-53a7da6f4961.002.png)
 
