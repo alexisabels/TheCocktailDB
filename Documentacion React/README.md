@@ -1,5 +1,4 @@
 ﻿![logo](Aspose.Words.0f5617f9-53f8-4306-81a4-53a7da6f4961.001.png)
-## Alejandro Isabel / Rubén Burguillo / Youssef Laknaizi
 En esta práctica realizaremos una aplicación web SPA basada en el framework React de JS. En nuestro caso trabajaremos sobre la API de **TheCocktailDB**.
 1. # <a name="_heading=h.hq0lofq6dgfk"></a>Requisitos técnicos que ha de cumplir:
 - Se han de programar al menos seis componentes y jerárquicamente organizados en al menos 3 niveles de anidamiento.
