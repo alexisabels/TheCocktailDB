@@ -2,6 +2,7 @@
 
 ## Práctica de una aplicación web SPA basada en el framework React de JS sobre la API de **TheCocktailDB**.
 Lee la [documentación aquí](Documentacion%20React/README.md)
-### Para poner en marcha la app:
+## Puedes ver la app online aquí: https://thecocktaildb-jsx.vercel.app/
+### Para poner en marcha la app en local:
 - npm install (instala las dependencias de npm que no están en el repositorio)
 - npm start
