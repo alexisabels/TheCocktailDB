@@ -99,10 +99,16 @@ p {
 hr {
   border: none;
   height: 1px;
-  background-color: var(--color-divider-soft);
-  margin: 0 auto;
-  max-width: var(--max-content-width);
-  width: calc(100% - var(--space-xl) * 2);
+  background: linear-gradient(
+    to right,
+    transparent 0%,
+    var(--color-divider) 20%,
+    var(--color-accent) 50%,
+    var(--color-divider) 80%,
+    transparent 100%
+  );
+  margin: var(--space-xl) auto;
+  max-width: 80%;
 }
 
 ::selection {
@@ -118,4 +124,30 @@ hr {
 
 .App {
   text-align: center;
+}
+
+.eyebrow {
+  font-family: var(--font-display);
+  font-style: italic;
+  color: var(--color-accent);
+  letter-spacing: 0.4em;
+  text-transform: uppercase;
+  font-size: 0.85rem;
+  margin: 0 0 var(--space-sm);
+}
+
+.section-heading em {
+  font-family: var(--font-display);
+  font-style: italic;
+  font-weight: 500;
+  color: var(--color-accent);
+}
+
+.gold-rule {
+  display: block;
+  width: 60px;
+  height: 1px;
+  background-color: var(--color-accent);
+  margin: var(--space-md) auto 0;
+  border: none;
 }

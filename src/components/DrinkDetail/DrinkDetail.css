@@ -11,14 +11,37 @@
   margin-bottom: var(--space-2xl);
 }
 
+.recipe__eyebrow {
+  font-family: var(--font-display);
+  font-style: italic;
+  font-size: clamp(0.85rem, 1.5vw, 1rem);
+  letter-spacing: 0.4em;
+  text-transform: uppercase;
+  color: var(--color-accent);
+  margin: 0 0 var(--space-sm);
+}
+
 .recipe__name {
   font-family: var(--font-serif);
   font-weight: 700;
   font-size: clamp(2.2rem, 6vw, 4rem);
-  line-height: 1.05;
-  letter-spacing: 0.005em;
+  line-height: 1.1;
+  letter-spacing: 0.01em;
   margin: 0;
   color: var(--color-text);
+  position: relative;
+  padding-bottom: var(--space-md);
+}
+
+.recipe__name::after {
+  content: '';
+  position: absolute;
+  bottom: 0;
+  left: 50%;
+  transform: translateX(-50%);
+  width: 60px;
+  height: 1px;
+  background-color: var(--color-accent);
 }
 
 .recipe__meta {
@@ -27,7 +50,7 @@
   color: var(--color-text-soft);
   font-size: clamp(1rem, 1.6vw, 1.15rem);
   letter-spacing: 0.05em;
-  margin: var(--space-sm) 0 var(--space-xl);
+  margin: var(--space-md) 0 var(--space-xl);
   display: inline-flex;
   flex-wrap: wrap;
   align-items: center;
@@ -46,6 +69,7 @@
   height: auto;
   margin: 0 auto;
   border-radius: var(--radius-md);
+  border: 1px solid var(--color-divider-soft);
   box-shadow: var(--shadow-card);
 }
 
@@ -60,13 +84,25 @@
   font-family: var(--font-display);
   font-style: italic;
   font-weight: 500;
-  font-size: 0.95rem;
+  font-size: 1rem;
   letter-spacing: 0.4em;
   text-transform: uppercase;
   color: var(--color-accent);
   margin: 0 0 var(--space-lg);
+  text-align: center;
+  position: relative;
   padding-bottom: var(--space-sm);
-  border-bottom: 1px solid var(--color-divider-soft);
+}
+
+.recipe__section-title::after {
+  content: '';
+  position: absolute;
+  bottom: 0;
+  left: 50%;
+  transform: translateX(-50%);
+  width: 36px;
+  height: 1px;
+  background-color: var(--color-accent);
 }
 
 .recipe__ingredient-list {
@@ -112,16 +148,35 @@
   outline: none;
 }
 
+.recipe__method {
+  text-align: left;
+}
+
 .recipe__instructions {
   font-family: var(--font-serif);
   font-size: clamp(1.15rem, 1.8vw, 1.3rem);
-  line-height: 1.8;
+  line-height: 1.85;
   color: var(--color-text);
   margin: 0;
   letter-spacing: 0.005em;
+  background-color: rgba(245, 236, 217, 0.03);
+  border: 1px solid var(--color-divider-soft);
+  border-radius: var(--radius-md);
+  padding: clamp(var(--space-lg), 4vw, var(--space-xl));
+  position: relative;
 }
 
-.drink-detail-empty {
+.recipe__instructions::first-letter {
+  font-family: var(--font-serif);
+  font-size: 3.5rem;
+  font-weight: 700;
+  float: left;
+  line-height: 0.9;
+  margin: 0.05em 0.15em 0 0;
+  color: var(--color-accent);
+}
+
+.recipe-empty {
   min-height: 60vh;
 }
 
@@ -141,6 +196,11 @@
 
   .recipe__instructions {
     font-size: 1.1rem;
-    line-height: 1.75;
+    line-height: 1.8;
+    padding: var(--space-lg) var(--space-md);
+  }
+
+  .recipe__instructions::first-letter {
+    font-size: 2.75rem;
   }
 }

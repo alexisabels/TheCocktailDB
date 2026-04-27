@@ -40,16 +40,21 @@ function Search() {
   return (
     <div className="search-container">
       <div className="search-content">
-        <h1 className="search-heading">Search cocktails</h1>
+        <p className="search-eyebrow">The Cocktail Compendium</p>
+        <h1 className="search-heading">
+          Find your
+          {' '}
+          <em>cocktail</em>
+        </h1>
         <SearchBox
-          placeholder="Type a cocktail name"
+          placeholder="Enter a cocktail name"
           onSearchChange={onSearchChange}
         />
         {filteredDrinks.length === 0 && search && (
           <p className="no-results">
-            No cocktails found for &ldquo;
+            No cocktails found with the name &ldquo;
             {search}
-            &rdquo;.
+            &rdquo;
           </p>
         )}
         <CardList drinks={filteredDrinks} />

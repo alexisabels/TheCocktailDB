@@ -9,20 +9,34 @@ import './Home.css';
 function Home() {
   usePageMeta({
     title: 'Classic Cocktail Recipes & Ingredients',
-    description: 'A library of classic and modern cocktail recipes. Browse drinks by name, letter or ingredient, with full method and glassware for every cocktail.',
+    description: 'A curated journey through timeless cocktail recipes, refined ingredients and the art of the perfectly balanced glass. Browse hundreds of drinks by name, letter or ingredient.',
     path: '/',
   });
 
   return (
     <div>
       <section className="home-hero">
-        <h1 className="home-hero__title">A library of cocktails.</h1>
+        <p className="home-hero__eyebrow">Est. Recipes from the Classic Era</p>
+        <h1 className="home-hero__title">
+          The
+          {' '}
+          <em>Cocktail</em>
+          {' '}
+          Compendium
+        </h1>
+        <div className="home-hero__ornament" aria-hidden="true">
+          <span>&#9670;</span>
+        </div>
         <p className="home-hero__subtitle">
-          Browse hundreds of recipes by name, letter or ingredient.
+          A curated journey through timeless drinks, refined ingredients
+          and the art of the perfectly balanced glass.
         </p>
       </section>
+      <hr />
       <RandomCocktails />
+      <hr />
       <PopularIngredients />
+      <hr />
       <PopularDrinks />
     </div>
   );

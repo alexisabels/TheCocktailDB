@@ -3,33 +3,74 @@
   color: var(--color-text);
   max-width: var(--max-content-width);
   margin: 0 auto;
-  padding: var(--space-2xl) var(--space-md);
+  padding: var(--space-xl) var(--space-md);
 }
 
 .random-cocktails-container__heading {
   color: var(--color-text);
   font-family: var(--font-serif);
-  font-size: clamp(1.5rem, 2.5vw, 2rem);
+  font-size: clamp(1.6rem, 3vw, 2.25rem);
   font-weight: 600;
-  margin: 0 0 var(--space-xl);
-  letter-spacing: 0.005em;
+  margin-bottom: var(--space-lg);
+  letter-spacing: 0.01em;
+  position: relative;
+  padding-bottom: var(--space-sm);
+}
+
+.random-cocktails-container__heading::after {
+  content: '';
+  position: absolute;
+  bottom: 0;
+  left: 50%;
+  transform: translateX(-50%);
+  width: 60px;
+  height: 1px;
+  background-color: var(--color-accent);
 }
 
 .random-cocktails-container .cocktail-grid {
   display: grid;
-  grid-template-columns: repeat(auto-fill, minmax(190px, 1fr));
-  gap: var(--space-xl) var(--space-lg);
+  grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
+  gap: var(--space-lg);
   width: 100%;
 }
 
 .random-cocktails-container .cocktail-card {
+  width: 100%;
+  text-align: center;
   text-decoration: none;
   color: var(--color-text);
-  background: none;
-  border: none;
-  padding: 0;
+  background-color: var(--color-bg-elevated);
+  border: 1px solid var(--color-divider-soft);
+  border-radius: var(--radius-md);
+  padding: var(--space-md);
+  position: relative;
+  transition: transform var(--transition-fast), border-color var(--transition-fast),
+    box-shadow var(--transition-fast);
   min-width: 0;
-  display: block;
+}
+
+.random-cocktails-container .cocktail-card::before {
+  content: '';
+  position: absolute;
+  inset: 6px;
+  border: 1px solid transparent;
+  border-radius: var(--radius-sm);
+  pointer-events: none;
+  transition: border-color var(--transition-fast);
+}
+
+.random-cocktails-container .cocktail-card:hover,
+.random-cocktails-container .cocktail-card:focus-visible {
+  transform: translateY(-3px);
+  border-color: var(--color-accent);
+  box-shadow: var(--shadow-card);
+  outline: none;
+}
+
+.random-cocktails-container .cocktail-card:hover::before,
+.random-cocktails-container .cocktail-card:focus-visible::before {
+  border-color: var(--color-divider);
 }
 
 .random-cocktails-container .cocktail-card__image {
@@ -39,33 +80,35 @@
   height: auto;
   margin: 0 auto;
   object-fit: cover;
-  border-radius: 2px;
-  box-shadow: 0 8px 22px rgba(0, 0, 0, 0.45);
-  transition: transform var(--transition-fast);
+  border-radius: var(--radius-sm);
+  border: 1px solid var(--color-divider-soft);
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.4);
+  transition: border-color var(--transition-fast);
 }
 
 .random-cocktails-container .cocktail-card:hover .cocktail-card__image,
 .random-cocktails-container .cocktail-card:focus-visible .cocktail-card__image {
-  transform: scale(1.02);
+  border-color: var(--color-accent);
 }
 
 .random-cocktails-container .cocktail-name {
   margin-top: var(--space-md);
   font-family: var(--font-serif);
   font-weight: 500;
+  color: var(--color-text);
+  text-decoration: none;
   font-size: 1.05rem;
-  letter-spacing: 0.01em;
+  letter-spacing: 0.02em;
   transition: color var(--transition-fast);
 }
 
-.random-cocktails-container .cocktail-card:hover .cocktail-name,
-.random-cocktails-container .cocktail-card:focus-visible .cocktail-name {
+.random-cocktails-container .cocktail-card:hover .cocktail-name {
   color: var(--color-accent);
 }
 
 @media (max-width: 480px) {
   .random-cocktails-container .cocktail-grid {
-    grid-template-columns: repeat(auto-fill, minmax(140px, 1fr));
-    gap: var(--space-lg) var(--space-md);
+    grid-template-columns: repeat(auto-fill, minmax(150px, 1fr));
+    gap: var(--space-md);
   }
 }

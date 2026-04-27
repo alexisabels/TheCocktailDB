@@ -32,6 +32,7 @@ function CocktailsByLetter() {
 
   return (
     <section className="ingredients-screen">
+      <p className="ingredients-screen__eyebrow">Browse the bar</p>
       <h1 className="ingredients-screen__heading">
         Cocktails beginning with
         {' '}

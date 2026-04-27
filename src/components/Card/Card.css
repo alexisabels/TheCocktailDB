@@ -2,9 +2,34 @@
   width: 100%;
   text-align: center;
   position: relative;
-  background: none;
-  border: none;
-  padding: 0;
+  background-color: var(--color-bg-elevated);
+  border: 1px solid var(--color-divider-soft);
+  border-radius: var(--radius-md);
+  padding: var(--space-md);
+  transition: transform var(--transition-fast), border-color var(--transition-fast),
+    box-shadow var(--transition-fast);
+}
+
+.card::before {
+  content: '';
+  position: absolute;
+  inset: 6px;
+  border: 1px solid transparent;
+  border-radius: var(--radius-sm);
+  pointer-events: none;
+  transition: border-color var(--transition-fast);
+}
+
+.card:hover,
+.card:focus-within {
+  transform: translateY(-3px);
+  border-color: var(--color-accent);
+  box-shadow: var(--shadow-card);
+}
+
+.card:hover::before,
+.card:focus-within::before {
+  border-color: var(--color-divider);
 }
 
 .card__link {
@@ -15,18 +40,19 @@
 
 .card__image {
   width: 100%;
-  max-width: 240px;
+  max-width: 220px;
   height: auto;
   margin: 0 auto;
+  border-radius: var(--radius-sm);
+  border: 1px solid var(--color-divider-soft);
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.4);
   display: block;
-  border-radius: 2px;
-  box-shadow: 0 8px 22px rgba(0, 0, 0, 0.45);
-  transition: transform var(--transition-fast);
+  transition: border-color var(--transition-fast);
 }
 
 .card:hover .card__image,
 .card:focus-within .card__image {
-  transform: scale(1.02);
+  border-color: var(--color-accent);
 }
 
 .card__title {
@@ -35,7 +61,7 @@
   font-family: var(--font-serif);
   font-size: 1.05rem;
   font-weight: 500;
-  letter-spacing: 0.01em;
+  letter-spacing: 0.02em;
   transition: color var(--transition-fast);
 }
 

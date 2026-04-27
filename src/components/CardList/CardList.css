@@ -1,8 +1,8 @@
 .card-list {
   display: grid;
-  grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
-  gap: var(--space-xl) var(--space-lg);
-  margin: var(--space-xl) auto 0;
+  grid-template-columns: repeat(auto-fill, minmax(220px, 1fr));
+  gap: var(--space-lg);
+  margin: var(--space-lg) auto 0;
   padding: 0 var(--space-md);
   max-width: var(--max-content-width);
   list-style: none;
@@ -18,8 +18,8 @@
 
 @media (max-width: 480px) {
   .card-list {
-    grid-template-columns: repeat(auto-fill, minmax(140px, 1fr));
-    gap: var(--space-lg) var(--space-md);
+    grid-template-columns: repeat(auto-fill, minmax(150px, 1fr));
+    gap: var(--space-md);
     padding: 0 var(--space-sm);
   }
 }

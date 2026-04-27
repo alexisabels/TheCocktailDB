@@ -70,18 +70,20 @@ export default function DrinkDetail({ id }) {
     path: `/drink/${id}`,
   });
 
-  if (!data) return <div className="drink-detail-empty" />;
+  if (!data) return <div className="recipe-empty" />;
 
   const ingredients = getIngredientList(data);
-  const meta = [data.strCategory, data.strAlcoholic, data.strGlass]
-    .filter(Boolean);
+  const meta = [data.strCategory, data.strAlcoholic, data.strGlass].filter(Boolean);
 
   return (
     <article className="recipe">
       <RecipeSchema drink={data} />
 
       <header className="recipe__hero">
-        <h1 className="recipe__name">{data.strDrink}</h1>
+        <p className="recipe__eyebrow">The Recipe</p>
+        <h1 className="recipe__name">
+          {data.strDrink}
+        </h1>
         {meta.length > 0 && (
           <p className="recipe__meta">
             {meta.map((m, i) => (
@@ -102,7 +104,9 @@ export default function DrinkDetail({ id }) {
 
       <div className="recipe__body">
         <section className="recipe__ingredients" aria-labelledby="recipe-ingredients">
-          <h2 id="recipe-ingredients" className="recipe__section-title">Ingredients</h2>
+          <h2 id="recipe-ingredients" className="recipe__section-title">
+            <span>Ingredients</span>
+          </h2>
           <ul className="recipe__ingredient-list">
             {ingredients.map((ing) => (
               <li key={ing.name} className="recipe__ingredient">
@@ -116,7 +120,9 @@ export default function DrinkDetail({ id }) {
         </section>
 
         <section className="recipe__method" aria-labelledby="recipe-method">
-          <h2 id="recipe-method" className="recipe__section-title">Method</h2>
+          <h2 id="recipe-method" className="recipe__section-title">
+            <span>Method</span>
+          </h2>
           <p className="recipe__instructions">{data.strInstructions}</p>
         </section>
       </div>
