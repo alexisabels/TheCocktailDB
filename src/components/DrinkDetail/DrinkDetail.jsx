@@ -1,5 +1,6 @@
 /* eslint-disable react/prop-types */
 /* eslint-disable no-console */
+/* eslint-disable object-curly-newline */
 import React, { useEffect, useState } from 'react';
 import { Link } from 'react-router-dom';
 import { getCocktailDetail } from '../../services/cocktailapi';
@@ -20,33 +21,71 @@ function getIngredientList(drink) {
     });
 }
 
+const SITE_URL = 'https://cocktail.alexisabel.com';
+
 function RecipeSchema({ drink }) {
   if (!drink) return null;
   const ingredients = getIngredientList(drink).map((i) => (i.measure ? `${i.measure} ${i.name}` : i.name));
-  const schema = {
+  const recipe = {
     '@context': 'https://schema.org',
     '@type': 'Recipe',
     name: drink.strDrink,
-    image: drink.strDrinkThumb,
-    description: `${drink.strDrink} cocktail recipe with full ingredients and method. Served in a ${drink.strGlass}.`,
+    image: [drink.strDrinkThumb],
+    description: `How to make a ${drink.strDrink}: full ingredients with measures, glassware (${drink.strGlass}) and step-by-step method for the classic ${drink.strDrink} cocktail.`,
     recipeCategory: drink.strCategory || 'Cocktail',
     recipeCuisine: 'Cocktail',
-    keywords: [drink.strDrink, drink.strCategory, drink.strAlcoholic, 'cocktail recipe']
+    keywords: [
+      drink.strDrink,
+      `${drink.strDrink} recipe`,
+      `how to make a ${drink.strDrink}`,
+      drink.strCategory,
+      drink.strAlcoholic,
+      'cocktail recipe',
+    ]
       .filter(Boolean)
       .join(', '),
+    recipeYield: '1 serving',
+    prepTime: 'PT5M',
+    totalTime: 'PT5M',
     recipeIngredient: ingredients,
     recipeInstructions: drink.strInstructions
-      ? [{ '@type': 'HowToStep', text: drink.strInstructions }]
+      ? drink.strInstructions
+        .split(/\.(?:\s+|$)/)
+        .map((s) => s.trim())
+        .filter(Boolean)
+        .map((text, i) => ({ '@type': 'HowToStep', position: i + 1, text }))
       : undefined,
     inLanguage: 'en',
+    url: `${SITE_URL}/drink/${drink.idDrink}`,
+  };
+
+  const breadcrumb = {
+    '@context': 'https://schema.org',
+    '@type': 'BreadcrumbList',
+    itemListElement: [
+      { '@type': 'ListItem', position: 1, name: 'Home', item: `${SITE_URL}/` },
+      {
+        '@type': 'ListItem',
+        position: 2,
+        name: drink.strDrink,
+        item: `${SITE_URL}/drink/${drink.idDrink}`,
+      },
+    ],
   };
 
   return (
-    <script
-      type="application/ld+json"
-      // eslint-disable-next-line react/no-danger
-      dangerouslySetInnerHTML={{ __html: JSON.stringify(schema) }}
-    />
+    <>
+      <script
+        type="application/ld+json"
+        // eslint-disable-next-line react/no-danger
+        dangerouslySetInnerHTML={{ __html: JSON.stringify(recipe) }}
+      />
+      <script
+        type="application/ld+json"
+        // eslint-disable-next-line react/no-danger
+        dangerouslySetInnerHTML={{ __html: JSON.stringify(breadcrumb) }}
+      />
+    </>
   );
 }
 
@@ -61,13 +100,14 @@ export default function DrinkDetail({ id }) {
 
   usePageMeta({
     title: data
-      ? `${data.strDrink} Recipe - Ingredients & Method`
+      ? `How to Make a ${data.strDrink} - ${data.strDrink} Recipe`
       : 'Cocktail Recipe',
     description: data
-      ? `Learn how to make a ${data.strDrink}: ingredients, glassware (${data.strGlass}) and step-by-step method.`
+      ? `How to make a ${data.strDrink}: full ingredients with measures, glassware (${data.strGlass}) and step-by-step method. The classic ${data.strDrink} cocktail recipe.`
       : 'Cocktail recipe with full ingredients and method.',
     image: data ? data.strDrinkThumb : undefined,
     path: `/drink/${id}`,
+    type: 'article',
   });
 
   if (!data) return <div className="recipe-empty" />;

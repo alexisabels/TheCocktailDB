@@ -30,6 +30,7 @@ export default function usePageMeta({
   description = DEFAULT_DESCRIPTION,
   image,
   path,
+  type = 'website',
 } = {}) {
   useEffect(() => {
     const fullTitle = title ? `${title} | ${SITE_NAME}` : SITE_NAME;
@@ -38,6 +39,7 @@ export default function usePageMeta({
     setMeta('description', description);
     setMeta('og:title', fullTitle, 'property');
     setMeta('og:description', description, 'property');
+    setMeta('og:type', type, 'property');
     setMeta('twitter:title', fullTitle);
     setMeta('twitter:description', description);
 
@@ -53,5 +55,5 @@ export default function usePageMeta({
       setMeta('og:url', url, 'property');
       setCanonical(url);
     }
-  }, [title, description, image, path]);
+  }, [title, description, image, path, type]);
 }

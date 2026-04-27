@@ -13,8 +13,8 @@ function Search() {
   const [filteredDrinks, setFilteredDrinks] = useState([]);
 
   usePageMeta({
-    title: 'Search Cocktails by Name',
-    description: 'Find any cocktail recipe by name. Search hundreds of classic and modern cocktail recipes with full ingredients and method.',
+    title: 'Cocktail Search - Find Any Cocktail Recipe by Name',
+    description: 'Search hundreds of cocktail recipes by name. Type a cocktail name to see full ingredients with measures, glassware and method. Classic and modern drinks.',
     path: '/search',
   });
 
