@@ -1,3 +1,4 @@
+/* eslint-disable no-console */
 import React from 'react';
 import { useParams } from 'react-router-dom';
 import DrinkDetail from '../../components/DrinkDetail/DrinkDetail';

@@ -1,4 +1,5 @@
 /* eslint-disable camelcase */
+/* eslint-disable no-console */
 const URL_Cocktail = 'https://www.thecocktaildb.com/api/json/v1/1';
 
 // este no funciona

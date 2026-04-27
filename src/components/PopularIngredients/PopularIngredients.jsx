@@ -1,5 +1,6 @@
 /* eslint-disable no-await-in-loop */
 /* eslint-disable no-restricted-syntax */
+/* eslint-disable no-console */
 import React, { useEffect, useState } from 'react';
 import { Link } from 'react-router-dom';
 import { getIngredientByName } from '../../services/cocktailapi';

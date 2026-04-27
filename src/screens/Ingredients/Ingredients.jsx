@@ -1,5 +1,6 @@
 /* eslint-disable react/jsx-indent */
 /* eslint-disable no-trailing-spaces */
+/* eslint-disable no-console */
 import React, { useEffect, useState } from 'react';
 import { Link, useParams } from 'react-router-dom';
 import { getCocktailsByIngredient } from '../../services/cocktailapi';

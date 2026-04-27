@@ -1,4 +1,5 @@
 /* eslint-disable react/prop-types */
+/* eslint-disable no-console */
 import React, { useEffect, useState } from 'react';
 import { getCocktailDetail } from '../../services/cocktailapi';
 import DrinkIngredients from '../Ingredients/DrinkIngredients';
