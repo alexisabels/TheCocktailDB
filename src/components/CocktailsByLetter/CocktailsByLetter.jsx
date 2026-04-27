@@ -2,6 +2,7 @@ import React, { useState, useEffect } from 'react';
 import { useParams } from 'react-router-dom';
 import { getCocktailByLetter } from '../../services/cocktailapi';
 import CardList from '../CardList/CardList';
+import '../../screens/Ingredients/Ingredients.css';
 
 function CocktailsByLetter() {
   const [cocktails, setCocktails] = useState([]);
@@ -21,14 +22,18 @@ function CocktailsByLetter() {
   }, [letter]);
 
   return (
-    <div>
-      <h2>
+    <section className="ingredients-screen">
+      <h2 className="ingredients-screen__heading">
         Cocktails starting with letter
         {' '}
-        {letter}
+        <span>{letter}</span>
       </h2>
-      <CardList drinks={cocktails} />
-    </div>
+      {cocktails.length === 0 ? (
+        <p className="no-results">No cocktails found.</p>
+      ) : (
+        <CardList drinks={cocktails} />
+      )}
+    </section>
   );
 }
 

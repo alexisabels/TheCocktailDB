@@ -1,10 +1,19 @@
 .card {
-  width: 90%;
-  max-width: 250px;
-  margin: 10px;
+  width: 100%;
+  margin: 0;
   text-align: center;
-  overflow: hidden;
   position: relative;
+  background-color: rgba(255, 255, 255, 0.04);
+  border-radius: var(--radius-md);
+  padding: var(--space-md);
+  transition: transform var(--transition-fast), background-color var(--transition-fast),
+    box-shadow var(--transition-fast);
+}
+
+.card:hover {
+  transform: translateY(-3px);
+  background-color: rgba(255, 255, 255, 0.08);
+  box-shadow: var(--shadow-card);
 }
 
 .card__link {
@@ -14,21 +23,22 @@
 }
 
 .card__image {
-  width: 50%;
+  width: 100%;
+  max-width: 220px;
   height: auto;
-  border-radius: 8px;
+  margin: 0 auto;
+  border-radius: var(--radius-sm);
+  display: block;
 }
 
 .card__title {
-  margin: 10px 0;
-  color: white;
-  transition: color 0.3s ease;
+  margin: var(--space-sm) 0 0;
+  color: var(--color-text);
+  font-size: 1rem;
+  transition: color var(--transition-fast);
 }
 
-.card:hover .card__title {
-  color: rgb(178, 178, 42);
-}
-
-.card__image:hover + .card__title {
-  color: rgb(178, 178, 42);
+.card:hover .card__title,
+.card:focus-within .card__title {
+  color: var(--color-link-hover);
 }

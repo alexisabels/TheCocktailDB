@@ -1,52 +1,58 @@
 .random-cocktails-container {
   text-align: center;
-  color: white;
+  color: var(--color-text);
+  max-width: var(--max-content-width);
+  margin: 0 auto;
+  padding: var(--space-lg) var(--space-md);
 }
 
 .random-cocktails-container__heading {
-  color: white;
+  color: var(--color-text);
+  font-size: clamp(1.4rem, 3vw, 1.8rem);
+  margin-bottom: var(--space-md);
+  letter-spacing: 0.02em;
 }
 
-.cocktail-grid {
-  display: flex;
-  flex-wrap: wrap;
-  justify-content: space-between;
-  color: white;
+.random-cocktails-container .cocktail-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(180px, 1fr));
+  gap: var(--space-md);
 }
 
-.col-3 {
-  flex: 0 0 calc(25% - 20px);
-  max-width: calc(25% - 20px);
-  margin: 10px 0;
-}
-
-.cocktail-card {
+.random-cocktails-container .cocktail-card {
   width: 100%;
   text-align: center;
   text-decoration: none;
+  color: var(--color-text);
+  background-color: rgba(255, 255, 255, 0.04);
+  border-radius: var(--radius-md);
+  padding: var(--space-md);
+  transition: transform var(--transition-fast), background-color var(--transition-fast),
+    box-shadow var(--transition-fast);
 }
 
-.cocktail-card:hover {
-  color: rgb(178, 178, 42);
+.random-cocktails-container .cocktail-card:hover,
+.random-cocktails-container .cocktail-card:focus-visible {
+  transform: translateY(-3px);
+  background-color: rgba(255, 255, 255, 0.08);
+  box-shadow: var(--shadow-card);
+  color: var(--color-link-hover);
+  outline: none;
 }
 
-.text-link {
-  text-decoration: none;
-}
-
-.text-link:hover {
-  color: rgb(178, 178, 42);
-}
-
-.cocktail-card__image {
-  width: 80%;
+.random-cocktails-container .cocktail-card__image {
+  width: 100%;
+  max-width: 200px;
+  height: auto;
+  margin: 0 auto;
   object-fit: cover;
-  border-radius: 10px;
+  border-radius: var(--radius-sm);
 }
 
-.cocktail-name {
-  margin-top: 10px;
-  font-weight: bold;
-  color: white;
+.random-cocktails-container .cocktail-name {
+  margin-top: var(--space-sm);
+  font-weight: 600;
+  color: inherit;
   text-decoration: none;
+  font-size: 1rem;
 }

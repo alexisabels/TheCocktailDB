@@ -1,51 +1,30 @@
-body {
-    margin: 0;
-    font-family: sans-serif;
-  }
-  .search-container {
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    height: 100vh;
-  }
-  
-  .search-content {
-    text-align: center;
-    margin-top: 50px;
-  }
-  
-  .search-heading {
-    font-size: 2.5rem;
-    margin-bottom: 2rem;
-  }
-  .txt-white {
-    color: white;
-  }
-  .no-results {
-    color: #FF0000;
-    margin-top: 1rem;
-  }
-  .search-container {
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    height: 100%;
-  }
-  
-  .search-content {
-    text-align: center;
-    max-width: 70%;
-    padding: 20px;
-    margin-top: 50px;
-  }
-  
-  .search-heading {
-    font-size: 2.5rem;
-    margin-bottom: 2rem;
-  }
-  
-  .no-results {
-    color: #FF0000;
-    margin-top: 1rem;
-  }
-    
+.search-container {
+  display: flex;
+  justify-content: center;
+  align-items: flex-start;
+  min-height: 60vh;
+  padding: var(--space-lg) var(--space-md);
+}
+
+.search-content {
+  text-align: center;
+  width: 100%;
+  max-width: 720px;
+  padding: var(--space-md);
+}
+
+.search-heading {
+  font-size: clamp(1.8rem, 4vw, 2.5rem);
+  margin-bottom: var(--space-lg);
+  color: var(--color-text);
+}
+
+.txt-white {
+  color: var(--color-text);
+}
+
+.no-results {
+  color: var(--color-error);
+  margin-top: var(--space-md);
+  font-weight: 600;
+}

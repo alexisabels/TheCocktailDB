@@ -40,9 +40,9 @@ function Search() {
         />
         {filteredDrinks.length === 0 && search && (
           <p className="no-results">
-            No cocktails found with the name `&quot;`
+            No cocktails found with the name &quot;
             {search}
-            `&quot;`
+            &quot;
           </p>
         )}
         <CardList drinks={filteredDrinks} />

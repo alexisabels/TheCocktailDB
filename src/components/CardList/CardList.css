@@ -1,23 +1,26 @@
 .card-list {
-  display: flex;
-  flex-wrap: wrap;
-  justify-content: center;
-  margin-top: 20px;
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
+  gap: var(--space-md);
+  margin: var(--space-lg) auto 0;
+  padding: 0 var(--space-md);
+  max-width: var(--max-content-width);
+  list-style: none;
 }
 
 .card-list__item {
-  max-width: calc(25% - 20px);
-  margin: 10px 0;
   text-decoration: none;
   color: inherit;
+  display: block;
 }
 
 .card-list__item img {
   width: 100%;
   height: auto;
-  border-radius: 8px;
+  border-radius: var(--radius-sm);
 }
 
 .card-list__item h3 {
-  margin: 10px 0;
+  margin: var(--space-sm) 0;
+  color: var(--color-text);
 }

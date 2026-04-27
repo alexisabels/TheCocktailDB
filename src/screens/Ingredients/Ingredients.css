@@ -1,38 +1,64 @@
-.card-list {
-  display: flex;
-  flex-wrap: wrap;
-  justify-content: center;
-  margin-top: 20px;
-  color: white;
+.ingredients-screen {
+  max-width: var(--max-content-width);
+  margin: 0 auto;
+  padding: var(--space-lg) var(--space-md);
+  color: var(--color-text);
 }
 
-h2 {
-  color: white;
+.ingredients-screen__heading {
+  font-size: clamp(1.5rem, 3vw, 2rem);
+  margin-bottom: var(--space-lg);
+  text-align: center;
+  color: var(--color-text);
 }
-.card-list a {
+
+.ingredients-screen__heading span {
+  color: var(--color-link-hover);
+  text-transform: capitalize;
+}
+
+.ingredient-cocktails {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
+  gap: var(--space-md);
+  list-style: none;
+  margin: 0;
+  padding: 0;
+}
+
+.ingredient-cocktail {
+  background-color: rgba(255, 255, 255, 0.04);
+  border-radius: var(--radius-md);
+  padding: var(--space-md);
+  text-align: center;
+  transition: transform var(--transition-fast), background-color var(--transition-fast),
+    box-shadow var(--transition-fast);
+}
+
+.ingredient-cocktail:hover {
+  transform: translateY(-3px);
+  background-color: rgba(255, 255, 255, 0.08);
+  box-shadow: var(--shadow-card);
+}
+
+.ingredient-cocktail a {
   text-decoration: none;
-  color: inherit;
-  color: white;
+  color: var(--color-text);
+  display: block;
 }
 
-
-
-.card-list img {
-  width: 90%;
+.ingredient-cocktail img {
+  width: 100%;
   height: auto;
-  border-radius: 8px;
-}
-.col-3 {
-  flex: 0 0 calc(25% - 20px); 
-  max-width: calc(25% - 20px); 
-  margin: 10px 0;
-}
-.card-list h3 {
-  margin: 10px 0;
+  border-radius: var(--radius-sm);
 }
 
+.ingredient-cocktail h3 {
+  margin: var(--space-sm) 0 0;
+  font-size: 1rem;
+  transition: color var(--transition-fast);
+}
 
-/* Add some padding inside the card container */
-.container {
-  padding: 2px 16px;
+.ingredient-cocktail:hover h3 {
+  color: var(--color-link-hover);
 }

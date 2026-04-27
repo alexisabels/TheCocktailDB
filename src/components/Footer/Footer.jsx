@@ -13,9 +13,6 @@ function Footer() {
           {alphabet.map((letter) => (
             <Link key={letter} to={`/cocktails/${letter}`} className="alphabet-link">
               {letter}
-              {' '}
-              /
-              {' '}
             </Link>
           ))}
         </div>

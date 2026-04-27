@@ -23,24 +23,23 @@ function Ingredients() {
   }, [ingredient]);
 
   return (
-    <div>
-      <h2>
+    <section className="ingredients-screen">
+      <h2 className="ingredients-screen__heading">
         Cócteles con
         {' '}
-        {ingredient}
-        :
+        <span>{ingredient}</span>
       </h2>
-      <div className="cocktail-cards card-list">
-        {cocktails.map((cocktail) => (
-          <div key={cocktail.idDrink} className="col-3">
+      <ul className="ingredient-cocktails">
+        {cocktails && cocktails.map((cocktail) => (
+          <li key={cocktail.idDrink} className="ingredient-cocktail">
             <Link to={`/drink/${cocktail.idDrink}`}>
               <img src={cocktail.strDrinkThumb} alt={cocktail.strDrink} />
               <h3>{cocktail.strDrink}</h3>
             </Link>
-          </div>
+          </li>
         ))}
-      </div>
-    </div>
+      </ul>
+    </section>
   );
 }
 

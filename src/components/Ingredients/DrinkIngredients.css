@@ -1,40 +1,55 @@
 .ingredient-grid {
-  max-width: 1200px;
+  width: 100%;
+  max-width: 720px;
   margin: 0 auto;
-  color: white;
+  color: var(--color-text);
 }
 
 .ingredient-grid__heading {
   text-align: left;
+  font-size: 1.25rem;
+  margin-bottom: var(--space-md);
+  color: var(--color-link-hover);
 }
 
 .ingredient-cards {
   display: grid;
-  grid-template-columns: repeat(3, 1fr);
-  gap: 20px;
+  grid-template-columns: repeat(auto-fill, minmax(140px, 1fr));
+  gap: var(--space-md);
 }
 
 .ingredient-link {
   text-decoration: none;
+  color: inherit;
 }
 
 .ingredient-card {
   text-align: center;
-  padding: 10px;
+  padding: var(--space-sm);
   text-decoration: none;
-  color: white;
+  color: var(--color-text);
+  border-radius: var(--radius-md);
+  background-color: rgba(255, 255, 255, 0.04);
+  transition: background-color var(--transition-fast), transform var(--transition-fast);
+}
+
+.ingredient-card:hover,
+.ingredient-card:focus-within {
+  color: var(--color-link-hover);
+  background-color: rgba(255, 255, 255, 0.08);
+  transform: translateY(-2px);
 }
 
 .ingredient-card__image {
-  width: 200px;
+  width: 100%;
+  max-width: 140px;
   height: auto;
+  margin: 0 auto;
+  display: block;
 }
 
 .ingredient-card__name {
-  margin-top: 10px;
+  margin-top: var(--space-xs);
+  font-size: 0.95rem;
   text-decoration: none;
-}
-
-.ingredient-card:hover {
-  color: rgb(178, 178, 42);
 }
