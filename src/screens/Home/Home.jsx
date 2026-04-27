@@ -8,18 +8,23 @@ import './Home.css';
 function Home() {
   return (
     <div>
-      <hr />
-      <div className="home-container">
-        <div className="left-image">
-          <img src="/cocktail.png" alt="Cocktail" />
+      <section className="home-hero">
+        <p className="home-hero__eyebrow">Est. Recipes from the Classic Era</p>
+        <h1 className="home-hero__title">
+          The
+          {' '}
+          <em>Cocktail</em>
+          {' '}
+          Compendium
+        </h1>
+        <div className="home-hero__ornament" aria-hidden="true">
+          <span>&#9670;</span>
         </div>
-        <div className="center-text">
-          <h1>Welcome to TheCocktailDB</h1>
-        </div>
-        <div className="right-image">
-          <img src="/cocktail.png" alt="Cocktail" />
-        </div>
-      </div>
+        <p className="home-hero__subtitle">
+          A curated journey through timeless drinks, refined ingredients
+          and the art of the perfectly balanced glass.
+        </p>
+      </section>
       <hr />
       <RandomCocktails />
       <hr />

@@ -24,8 +24,9 @@ function CocktailsByLetter() {
 
   return (
     <section className="ingredients-screen">
+      <p className="ingredients-screen__eyebrow">Browse the bar</p>
       <h2 className="ingredients-screen__heading">
-        Cocktails starting with letter
+        Cocktails beginning with
         {' '}
         <span>{letter}</span>
       </h2>

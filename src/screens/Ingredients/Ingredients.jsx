@@ -25,6 +25,7 @@ function Ingredients() {
 
   return (
     <section className="ingredients-screen">
+      <p className="ingredients-screen__eyebrow">Crafted with</p>
       <h2 className="ingredients-screen__heading">
         Cócteles con
         {' '}

@@ -33,7 +33,12 @@ function Search() {
   return (
     <div className="search-container">
       <div className="search-content">
-        <h1 className="search-heading txt-white">Buscar un Cocktail</h1>
+        <p className="search-eyebrow">The Cocktail Compendium</p>
+        <h1 className="search-heading">
+          Find your
+          {' '}
+          <em>cocktail</em>
+        </h1>
         <SearchBox
           placeholder="Enter a cocktail name"
           onSearchChange={onSearchChange}

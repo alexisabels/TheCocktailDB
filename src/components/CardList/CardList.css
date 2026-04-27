@@ -1,17 +1,19 @@
 .card-list {
   display: grid;
   grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
-  gap: var(--space-md);
+  gap: var(--space-lg);
   margin: var(--space-lg) auto 0;
   padding: 0 var(--space-md);
   max-width: var(--max-content-width);
   list-style: none;
+  width: 100%;
 }
 
 .card-list__item {
   text-decoration: none;
   color: inherit;
   display: block;
+  min-width: 0;
 }
 
 .card-list__item img {
@@ -23,4 +25,13 @@
 .card-list__item h3 {
   margin: var(--space-sm) 0;
   color: var(--color-text);
+  font-family: var(--font-serif);
+}
+
+@media (max-width: 480px) {
+  .card-list {
+    grid-template-columns: repeat(auto-fill, minmax(150px, 1fr));
+    gap: var(--space-md);
+    padding: 0 var(--space-sm);
+  }
 }

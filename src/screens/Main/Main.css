@@ -1,10 +1,14 @@
 .main-container {
-  background-color: var(--color-bg);
   min-height: 100vh;
   display: flex;
   flex-direction: column;
+  width: 100%;
+  overflow-x: hidden;
 }
 
+.main-container > main,
+.main-container > .outlet,
 .main-container > :not(.header):not(.footer) {
   flex: 1;
+  width: 100%;
 }
