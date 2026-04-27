@@ -29,6 +29,16 @@
   min-width: 0;
 }
 
+.drink-eyebrow {
+  font-family: var(--font-display);
+  font-style: italic;
+  font-size: clamp(0.8rem, 1.5vw, 0.95rem);
+  letter-spacing: 0.4em;
+  text-transform: uppercase;
+  color: var(--color-accent);
+  margin: 0 0 var(--space-sm);
+}
+
 .drink-info-right {
   flex: 2 1 320px;
   text-align: left;
@@ -71,29 +81,94 @@
 
 .drink-glass,
 .drink-instructions {
-  margin-top: var(--space-lg);
+  margin-top: 0;
   text-align: center;
-  padding: 0 var(--space-md);
+  padding: 0;
   width: 100%;
+}
+
+.drink-glass {
+  max-width: 520px;
+  margin: 0 auto;
+}
+
+.drink-instructions {
+  max-width: 720px;
+  margin-left: auto;
+  margin-right: auto;
 }
 
 .drink-heading {
   font-family: var(--font-display);
   font-style: italic;
-  font-size: 1rem;
+  font-size: 0.95rem;
   font-weight: 500;
-  letter-spacing: 0.25em;
+  letter-spacing: 0.4em;
   text-transform: uppercase;
-  margin-bottom: var(--space-sm);
+  margin: 0 0 var(--space-lg);
   color: var(--color-accent);
+  position: relative;
+  padding-bottom: var(--space-sm);
+  display: inline-block;
+}
+
+.drink-heading::after {
+  content: '';
+  position: absolute;
+  bottom: 0;
+  left: 50%;
+  transform: translateX(-50%);
+  width: 36px;
+  height: 1px;
+  background-color: var(--color-accent);
 }
 
 .drink-text {
   margin: 0 auto;
-  max-width: 720px;
-  line-height: 1.75;
-  color: var(--color-text-soft);
-  font-size: 1rem;
+  max-width: 680px;
+  line-height: 1.7;
+  color: var(--color-text);
+  font-family: var(--font-serif);
+  font-weight: 400;
+  letter-spacing: 0.005em;
+  font-size: clamp(1.25rem, 2.2vw, 1.5rem);
+}
+
+.drink-text--instructions {
+  text-align: left;
+  font-size: clamp(1.15rem, 2vw, 1.4rem);
+  line-height: 1.85;
+  color: var(--color-text);
+  background-color: rgba(245, 236, 217, 0.03);
+  border: 1px solid var(--color-divider-soft);
+  border-radius: var(--radius-md);
+  padding: clamp(var(--space-lg), 4vw, var(--space-xl));
+}
+
+.drink-text--instructions::first-letter {
+  font-family: var(--font-serif);
+  font-size: 3.5rem;
+  font-weight: 700;
+  float: left;
+  line-height: 0.9;
+  margin: 0.05em 0.15em 0 0;
+  color: var(--color-accent);
+}
+
+@media (max-width: 480px) {
+  .drink-text {
+    font-size: 1.2rem;
+  }
+
+  .drink-text--instructions {
+    font-size: 1.1rem;
+    line-height: 1.8;
+    padding: var(--space-lg) var(--space-md);
+  }
+
+  .drink-text--instructions::first-letter {
+    font-size: 2.75rem;
+  }
 }
 
 .drink-additional-info {
@@ -103,8 +178,8 @@
   display: flex;
   flex-direction: column;
   align-items: center;
-  gap: var(--space-xl);
-  padding: var(--space-xl) var(--space-md);
+  gap: var(--space-2xl);
+  padding: var(--space-2xl) var(--space-md);
   border-top: 1px solid var(--color-divider-soft);
 }
 

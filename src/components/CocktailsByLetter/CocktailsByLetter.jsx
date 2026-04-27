@@ -3,11 +3,19 @@ import React, { useState, useEffect } from 'react';
 import { useParams } from 'react-router-dom';
 import { getCocktailByLetter } from '../../services/cocktailapi';
 import CardList from '../CardList/CardList';
+import usePageMeta from '../../hooks/usePageMeta';
 import '../../screens/Ingredients/Ingredients.css';
 
 function CocktailsByLetter() {
   const [cocktails, setCocktails] = useState([]);
   const { letter } = useParams();
+  const upper = letter ? letter.toUpperCase() : '';
+
+  usePageMeta({
+    title: `Cocktails Beginning with ${upper}`,
+    description: `Browse every cocktail recipe that begins with the letter ${upper}. Classic and modern drinks listed alphabetically with full recipes.`,
+    path: `/cocktails/${letter}`,
+  });
 
   useEffect(() => {
     const fetchCocktailsByLetter = async () => {
@@ -25,11 +33,11 @@ function CocktailsByLetter() {
   return (
     <section className="ingredients-screen">
       <p className="ingredients-screen__eyebrow">Browse the bar</p>
-      <h2 className="ingredients-screen__heading">
+      <h1 className="ingredients-screen__heading">
         Cocktails beginning with
         {' '}
-        <span>{letter}</span>
-      </h2>
+        <span>{upper}</span>
+      </h1>
       {cocktails.length === 0 ? (
         <p className="no-results">No cocktails found.</p>
       ) : (

@@ -9,7 +9,9 @@ function Main() {
   return (
     <div className="main-container">
       <Header />
-      <Outlet />
+      <main className="main-content">
+        <Outlet />
+      </main>
       <Footer />
     </div>
   );

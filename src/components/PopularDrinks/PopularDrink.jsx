@@ -39,25 +39,27 @@ function PopularDrinks() {
   }, []);
 
   return (
-    <div className="popular-cocktails-container">
-      <h2 className="popular-cocktails-container__heading">Cocktails Favoritos</h2>
-      <div className="cocktail-grid text-link">
+    <section className="popular-cocktails-container" aria-labelledby="house-favourites-heading">
+      <h2 id="house-favourites-heading" className="popular-cocktails-container__heading">House Favourites</h2>
+      <div className="cocktail-grid">
         {cocktails.map((cocktail) => (
           <Link
             key={cocktail.idDrink}
             to={`/drink/${cocktail.idDrink}`}
-            className="col-3 cocktail-card text-link"
+            className="cocktail-card"
+            aria-label={`View ${cocktail.strDrink} recipe`}
           >
             <img
               src={cocktail.strDrinkThumb}
-              alt={cocktail.strDrink}
+              alt={`${cocktail.strDrink} cocktail`}
               className="cocktail-card__image"
+              loading="lazy"
             />
-            <div className="cocktail-card__name text-link">{cocktail.strDrink}</div>
+            <div className="cocktail-card__name">{cocktail.strDrink}</div>
           </Link>
         ))}
       </div>
-    </div>
+    </section>
   );
 }
 

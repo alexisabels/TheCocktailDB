@@ -10,23 +10,29 @@ function DrinkIngredients({ ingredients }) {
     .map((key) => ingredients[key]);
 
   return (
-    <div className="ingredient-grid">
-      <h2 className="ingredient-grid__heading">Ingredientes:</h2>
+    <section className="ingredient-grid" aria-label="Ingredients">
+      <h2 className="ingredient-grid__heading">Ingredients</h2>
       <div className="ingredient-cards">
         {ingredientNames.map((ingredient, index) => (
-          <Link key={index} to={`/ingredients/${ingredient}`} className="ingredient-link">
+          <Link
+            key={index}
+            to={`/ingredients/${ingredient}`}
+            className="ingredient-link"
+            aria-label={`Browse cocktails with ${ingredient}`}
+          >
             <div className="ingredient-card">
               <img
                 src={`https://www.thecocktaildb.com/images/ingredients/${ingredient}-Medium.png`}
-                alt={ingredient}
+                alt={`${ingredient} ingredient`}
                 className="ingredient-card__image"
+                loading="lazy"
               />
               <div className="ingredient-card__name">{ingredient}</div>
             </div>
           </Link>
         ))}
       </div>
-    </div>
+    </section>
   );
 }
 

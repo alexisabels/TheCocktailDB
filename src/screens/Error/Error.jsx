@@ -16,23 +16,58 @@ export default function Error() {
         textAlign: 'center',
       }}
     >
-      <h1 style={{ fontSize: '3rem', margin: 0, color: 'var(--color-link-hover)' }}>404</h1>
-      <p style={{ marginTop: '0.5rem', fontSize: '1.1rem' }}>
-        Esta ruta no existe.
+      <p
+        style={{
+          fontFamily: 'var(--font-display)',
+          fontStyle: 'italic',
+          letterSpacing: '0.4em',
+          textTransform: 'uppercase',
+          color: 'var(--color-accent)',
+          margin: 0,
+          fontSize: '0.9rem',
+        }}
+      >
+        Page not found
+      </p>
+      <h1
+        style={{
+          fontFamily: 'var(--font-serif)',
+          fontSize: 'clamp(3rem, 10vw, 5rem)',
+          margin: '0.5rem 0 0',
+          color: 'var(--color-text)',
+          letterSpacing: '0.05em',
+        }}
+      >
+        404
+      </h1>
+      <p
+        style={{
+          marginTop: '1rem',
+          fontSize: '1.1rem',
+          color: 'var(--color-text-soft)',
+          maxWidth: '480px',
+          fontStyle: 'italic',
+          fontFamily: 'var(--font-display)',
+        }}
+      >
+        The page you&apos;re looking for is not on the menu.
       </p>
       <Link
         to="/"
         style={{
-          marginTop: '1.5rem',
-          backgroundColor: 'var(--color-accent)',
-          color: '#fff',
-          padding: '0.6rem 1.2rem',
-          borderRadius: '6px',
+          marginTop: '2rem',
+          color: 'var(--color-text)',
+          padding: '0.55rem 1.4rem',
+          border: '1px solid var(--color-divider)',
+          borderRadius: 'var(--radius-sm)',
           textDecoration: 'none',
-          fontWeight: 600,
+          fontFamily: 'var(--font-display)',
+          fontWeight: 500,
+          letterSpacing: '0.18em',
+          textTransform: 'uppercase',
         }}
       >
-        Volver al inicio
+        Return to the bar
       </Link>
     </div>
   );

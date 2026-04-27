@@ -35,25 +35,27 @@ function PopularIngredients() {
   }, []);
 
   return (
-    <div className="popular-ingredients-container">
-      <h2 className="popular-ingredients-container__heading">Ingredientes Favoritos</h2>
-      <div className="ingredient-grid text-link">
+    <section className="popular-ingredients-container" aria-labelledby="popular-ingredients-heading">
+      <h2 id="popular-ingredients-heading" className="popular-ingredients-container__heading">Favourite Ingredients</h2>
+      <div className="ingredient-grid">
         {ingredients.map((ingredient) => (
           <Link
             key={ingredient.idIngredient}
             to={`/ingredients/${ingredient.strIngredient}`}
-            className="col-3 ingredient-card text-link"
+            className="ingredient-card"
+            aria-label={`Browse cocktails with ${ingredient.strIngredient}`}
           >
             <img
               src={`https://www.thecocktaildb.com/images/ingredients/${ingredient.strIngredient}-Medium.png`}
-              alt={ingredient.strIngredient}
+              alt={`${ingredient.strIngredient} ingredient`}
               className="ingredient-card__image"
+              loading="lazy"
             />
-            <div className="ingredient-card__name text-link">{ingredient.strIngredient}</div>
+            <div className="ingredient-card__name">{ingredient.strIngredient}</div>
           </Link>
         ))}
       </div>
-    </div>
+    </section>
   );
 }
 

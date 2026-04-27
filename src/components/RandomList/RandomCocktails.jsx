@@ -27,25 +27,27 @@ function RandomCocktails() {
   }, []);
 
   return (
-    <div className="random-cocktails-container">
-      <h2 className="random-cocktails-container__heading">Random Cocktails</h2>
-      <div className="cocktail-grid text-link">
+    <section className="random-cocktails-container" aria-labelledby="random-heading">
+      <h2 id="random-heading" className="random-cocktails-container__heading">Tonight&apos;s Selection</h2>
+      <div className="cocktail-grid">
         {cocktails.map((cocktail) => (
           <Link
             key={cocktail.idDrink}
             to={`/drink/${cocktail.idDrink}`}
-            className="col-3 cocktail-card text-link"
+            className="cocktail-card"
+            aria-label={`View ${cocktail.strDrink} recipe`}
           >
             <img
               src={cocktail.strDrinkThumb}
-              alt={cocktail.strDrink}
+              alt={`${cocktail.strDrink} cocktail`}
               className="cocktail-card__image"
+              loading="lazy"
             />
-            <div className="cocktail-name text-link">{cocktail.strDrink}</div>
+            <div className="cocktail-name">{cocktail.strDrink}</div>
           </Link>
         ))}
       </div>
-    </div>
+    </section>
   );
 }
 

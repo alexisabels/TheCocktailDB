@@ -1,6 +1,8 @@
 {
-  "short_name": "The Cocktail DB",
-  "name": "The Cocktail Database",
+  "short_name": "Cocktail Compendium",
+  "name": "The Cocktail Compendium",
+  "description": "Discover classic and modern cocktail recipes, ingredients and methods.",
+  "lang": "en",
   "icons": [
     {
       "src": "logoweb.ico",
@@ -18,8 +20,10 @@
       "sizes": "512x512"
     }
   ],
-  "start_url": ".",
+  "start_url": "/",
+  "scope": "/",
   "display": "standalone",
-  "theme_color": "#000000",
-  "background_color": "#ffffff"
+  "theme_color": "#1a0a13",
+  "background_color": "#1a0a13",
+  "categories": ["food", "lifestyle", "reference"]
 }

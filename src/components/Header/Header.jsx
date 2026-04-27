@@ -4,25 +4,25 @@ import './Header.css';
 
 function Header() {
   return (
-    <div className="header">
+    <header className="header">
       <div className="header__logo">
-        <Link to="/">
-          <img src="/logo.png" alt="Logo" className="header__logo-image" />
+        <Link to="/" aria-label="The Cocktail Compendium - Home">
+          <img
+            src="/logo.png"
+            alt="The Cocktail Compendium logo"
+            className="header__logo-image"
+          />
         </Link>
       </div>
-      <div className="header__button-container">
-        <div className="header__search">
-          <Link to="/search" className="header__search-button">
-            Search cocktails
-          </Link>
-        </div>
-        <div className="header__home-button">
-          <Link to="/" className="header__home-link">
-            Home
-          </Link>
-        </div>
-      </div>
-    </div>
+      <nav className="header__button-container" aria-label="Primary">
+        <Link to="/search" className="header__search-button">
+          Search cocktails
+        </Link>
+        <Link to="/" className="header__home-link">
+          Home
+        </Link>
+      </nav>
+    </header>
   );
 }
 

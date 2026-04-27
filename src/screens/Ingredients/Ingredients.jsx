@@ -4,11 +4,18 @@
 import React, { useEffect, useState } from 'react';
 import { Link, useParams } from 'react-router-dom';
 import { getCocktailsByIngredient } from '../../services/cocktailapi';
-import './Ingredients.css'; 
+import usePageMeta from '../../hooks/usePageMeta';
+import './Ingredients.css';
 
 function Ingredients() {
   const { ingredient } = useParams();
   const [cocktails, setCocktails] = useState([]);
+
+  usePageMeta({
+    title: `Cocktails with ${ingredient}`,
+    description: `Browse cocktail recipes that use ${ingredient}. Discover classic and modern drinks featuring ${ingredient} as a key ingredient.`,
+    path: `/ingredients/${ingredient}`,
+  });
 
   useEffect(() => {
     const fetchCocktails = async () => {
@@ -26,11 +33,11 @@ function Ingredients() {
   return (
     <section className="ingredients-screen">
       <p className="ingredients-screen__eyebrow">Crafted with</p>
-      <h2 className="ingredients-screen__heading">
-        Cócteles con
+      <h1 className="ingredients-screen__heading">
+        Cocktails with
         {' '}
         <span>{ingredient}</span>
-      </h2>
+      </h1>
       <ul className="ingredient-cocktails">
         {cocktails && cocktails.map((cocktail) => (
           <li key={cocktail.idDrink} className="ingredient-cocktail">

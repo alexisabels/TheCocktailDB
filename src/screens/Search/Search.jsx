@@ -5,11 +5,18 @@ import './Search.css';
 import { getCocktailByName } from '../../services/cocktailapi';
 import SearchBox from '../../components/SearchBox/SearchBox';
 import CardList from '../../components/CardList/CardList';
+import usePageMeta from '../../hooks/usePageMeta';
 
 function Search() {
   const [drinks, setDrinks] = useState([]);
   const [search, setSearch] = useState('');
   const [filteredDrinks, setFilteredDrinks] = useState([]);
+
+  usePageMeta({
+    title: 'Search Cocktails by Name',
+    description: 'Find any cocktail recipe by name. Search hundreds of classic and modern cocktail recipes with full ingredients and method.',
+    path: '/search',
+  });
 
   useEffect(() => {
     if (search) {

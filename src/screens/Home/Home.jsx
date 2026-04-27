@@ -2,10 +2,17 @@ import React from 'react';
 import RandomCocktails from '../../components/RandomList/RandomCocktails';
 import PopularDrinks from '../../components/PopularDrinks/PopularDrink';
 import PopularIngredients from '../../components/PopularIngredients/PopularIngredients';
+import usePageMeta from '../../hooks/usePageMeta';
 
 import './Home.css';
 
 function Home() {
+  usePageMeta({
+    title: 'Classic Cocktail Recipes & Ingredients',
+    description: 'A curated journey through timeless cocktail recipes, refined ingredients and the art of the perfectly balanced glass. Browse hundreds of drinks by name, letter or ingredient.',
+    path: '/',
+  });
+
   return (
     <div>
       <section className="home-hero">

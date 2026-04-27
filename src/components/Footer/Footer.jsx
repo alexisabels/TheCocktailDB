@@ -9,13 +9,18 @@ function Footer() {
     <footer className="footer text-white">
       <div className="footer__content">
         <h2 className="footer__heading">Browse By Name</h2>
-        <div className="alphabet-links">
+        <nav className="alphabet-links" aria-label="Browse cocktails alphabetically">
           {alphabet.map((letter) => (
-            <Link key={letter} to={`/cocktails/${letter}`} className="alphabet-link">
+            <Link
+              key={letter}
+              to={`/cocktails/${letter}`}
+              className="alphabet-link"
+              aria-label={`Cocktails starting with ${letter}`}
+            >
               {letter}
             </Link>
           ))}
-        </div>
+        </nav>
       </div>
     </footer>
   );
