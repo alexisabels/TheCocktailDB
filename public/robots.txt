@@ -3,4 +3,4 @@ User-agent: *
 Allow: /
 Disallow: /static/
 
-Sitemap: https://thecocktaildb-iota.vercel.app/sitemap.xml
+Sitemap: https://cocktail.alexisabel.com/sitemap.xml

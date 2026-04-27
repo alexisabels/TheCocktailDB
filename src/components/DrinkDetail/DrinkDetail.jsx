@@ -1,24 +1,28 @@
 /* eslint-disable react/prop-types */
 /* eslint-disable no-console */
 import React, { useEffect, useState } from 'react';
+import { Link } from 'react-router-dom';
 import { getCocktailDetail } from '../../services/cocktailapi';
-import DrinkIngredients from '../Ingredients/DrinkIngredients';
 import usePageMeta from '../../hooks/usePageMeta';
 import './DrinkDetail.css';
 
 function getIngredientList(drink) {
+  if (!drink) return [];
   return Object.keys(drink)
     .filter((key) => key.startsWith('strIngredient') && drink[key])
     .map((key) => {
       const idx = key.replace('strIngredient', '');
       const measure = drink[`strMeasure${idx}`];
-      return measure ? `${measure.trim()} ${drink[key]}` : drink[key];
+      return {
+        name: drink[key],
+        measure: measure ? measure.trim() : '',
+      };
     });
 }
 
 function RecipeSchema({ drink }) {
   if (!drink) return null;
-  const ingredients = getIngredientList(drink);
+  const ingredients = getIngredientList(drink).map((i) => (i.measure ? `${i.measure} ${i.name}` : i.name));
   const schema = {
     '@context': 'https://schema.org',
     '@type': 'Recipe',
@@ -30,9 +34,6 @@ function RecipeSchema({ drink }) {
     keywords: [drink.strDrink, drink.strCategory, drink.strAlcoholic, 'cocktail recipe']
       .filter(Boolean)
       .join(', '),
-    suitableForDiet: drink.strAlcoholic === 'Non alcoholic'
-      ? ['https://schema.org/LowAlcoholDiet']
-      : undefined,
     recipeIngredient: ingredients,
     recipeInstructions: drink.strInstructions
       ? [{ '@type': 'HowToStep', text: drink.strInstructions }]
@@ -41,7 +42,6 @@ function RecipeSchema({ drink }) {
   };
 
   return (
-    // eslint-disable-next-line react/no-danger
     <script
       type="application/ld+json"
       // eslint-disable-next-line react/no-danger
@@ -55,12 +55,8 @@ export default function DrinkDetail({ id }) {
 
   useEffect(() => {
     getCocktailDetail(id)
-      .then((json) => {
-        setData(json.drinks[0]);
-      })
-      .catch((error) => {
-        console.error('Error fetching cocktail detail:', error);
-      });
+      .then((json) => setData(json.drinks[0]))
+      .catch((error) => console.error('Error fetching cocktail detail:', error));
   }, [id]);
 
   usePageMeta({
@@ -74,43 +70,56 @@ export default function DrinkDetail({ id }) {
     path: `/drink/${id}`,
   });
 
-  return (
-    <article>
-      <RecipeSchema drink={data} />
-      <div className="drink-detail-container text-white">
-        {data && (
-          <div className="drink-info-left">
-            <p className="drink-eyebrow">The Recipe</p>
-            <h1 className="drink-name">{data.strDrink}</h1>
-            <img
-              className="drink-image"
-              src={data.strDrinkThumb}
-              alt={`${data.strDrink} cocktail served in a ${data.strGlass}`}
-              loading="lazy"
-            />
-          </div>
-        )}
+  if (!data) return <div className="drink-detail-empty" />;
 
-        {data && (
-          <div className="drink-info-right">
-            <DrinkIngredients ingredients={data} />
-          </div>
+  const ingredients = getIngredientList(data);
+  const meta = [data.strCategory, data.strAlcoholic, data.strGlass]
+    .filter(Boolean);
+
+  return (
+    <article className="recipe">
+      <RecipeSchema drink={data} />
+
+      <header className="recipe__hero">
+        <h1 className="recipe__name">{data.strDrink}</h1>
+        {meta.length > 0 && (
+          <p className="recipe__meta">
+            {meta.map((m, i) => (
+              <React.Fragment key={m}>
+                {i > 0 && <span className="recipe__meta-sep" aria-hidden="true">·</span>}
+                <span>{m}</span>
+              </React.Fragment>
+            ))}
+          </p>
         )}
+        <img
+          className="recipe__image"
+          src={data.strDrinkThumb}
+          alt={`${data.strDrink} cocktail served in a ${data.strGlass}`}
+          loading="lazy"
+        />
+      </header>
+
+      <div className="recipe__body">
+        <section className="recipe__ingredients" aria-labelledby="recipe-ingredients">
+          <h2 id="recipe-ingredients" className="recipe__section-title">Ingredients</h2>
+          <ul className="recipe__ingredient-list">
+            {ingredients.map((ing) => (
+              <li key={ing.name} className="recipe__ingredient">
+                {ing.measure && <span className="recipe__measure">{ing.measure}</span>}
+                <Link to={`/ingredients/${ing.name}`} className="recipe__ingredient-name">
+                  {ing.name}
+                </Link>
+              </li>
+            ))}
+          </ul>
+        </section>
+
+        <section className="recipe__method" aria-labelledby="recipe-method">
+          <h2 id="recipe-method" className="recipe__section-title">Method</h2>
+          <p className="recipe__instructions">{data.strInstructions}</p>
+        </section>
       </div>
-      {data && (
-        <div className="drink-additional-info">
-          <div className="drink-glass info-center">
-            <h2 className="drink-heading">Glassware</h2>
-            <p className="drink-text">{data.strGlass}</p>
-          </div>
-          <div className="drink-instructions">
-            <h2 className="drink-heading">Method</h2>
-            <p className="drink-text drink-text--instructions">
-              {data.strInstructions}
-            </p>
-          </div>
-        </div>
-      )}
     </article>
   );
 }

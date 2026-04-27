@@ -99,16 +99,10 @@ p {
 hr {
   border: none;
   height: 1px;
-  background: linear-gradient(
-    to right,
-    transparent 0%,
-    var(--color-divider) 20%,
-    var(--color-accent) 50%,
-    var(--color-divider) 80%,
-    transparent 100%
-  );
-  margin: var(--space-xl) auto;
-  max-width: 80%;
+  background-color: var(--color-divider-soft);
+  margin: 0 auto;
+  max-width: var(--max-content-width);
+  width: calc(100% - var(--space-xl) * 2);
 }
 
 ::selection {
@@ -124,51 +118,4 @@ hr {
 
 .App {
   text-align: center;
-}
-
-/* Reusable: thin gold ornament between sections */
-.ornament {
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  gap: var(--space-sm);
-  color: var(--color-accent);
-  font-family: var(--font-display);
-  font-size: 1.2rem;
-  letter-spacing: 0.4em;
-  text-transform: uppercase;
-  margin: var(--space-xl) auto;
-  max-width: 720px;
-  padding: 0 var(--space-md);
-}
-
-.ornament::before,
-.ornament::after {
-  content: '';
-  flex: 1;
-  height: 1px;
-  background: linear-gradient(to right, transparent, var(--color-divider), transparent);
-}
-
-.eyebrow {
-  font-family: var(--font-display);
-  font-style: italic;
-  color: var(--color-accent);
-  letter-spacing: 0.15em;
-  text-transform: uppercase;
-  font-size: 0.85rem;
-  margin-bottom: var(--space-xs);
-}
-
-.section-heading {
-  font-family: var(--font-serif);
-  font-size: clamp(1.6rem, 3vw, 2.25rem);
-  text-align: center;
-  color: var(--color-text);
-  margin: 0 auto var(--space-lg);
-}
-
-.section-heading em {
-  font-style: italic;
-  color: var(--color-accent);
 }

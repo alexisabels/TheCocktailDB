@@ -1,39 +1,39 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
   <url>
-    <loc>https://thecocktaildb-iota.vercel.app/</loc>
+    <loc>https://cocktail.alexisabel.com/</loc>
     <changefreq>weekly</changefreq>
     <priority>1.0</priority>
   </url>
   <url>
-    <loc>https://thecocktaildb-iota.vercel.app/search</loc>
+    <loc>https://cocktail.alexisabel.com/search</loc>
     <changefreq>monthly</changefreq>
     <priority>0.8</priority>
   </url>
-  <url><loc>https://thecocktaildb-iota.vercel.app/cocktails/A</loc><priority>0.7</priority></url>
-  <url><loc>https://thecocktaildb-iota.vercel.app/cocktails/B</loc><priority>0.7</priority></url>
-  <url><loc>https://thecocktaildb-iota.vercel.app/cocktails/C</loc><priority>0.7</priority></url>
-  <url><loc>https://thecocktaildb-iota.vercel.app/cocktails/D</loc><priority>0.7</priority></url>
-  <url><loc>https://thecocktaildb-iota.vercel.app/cocktails/E</loc><priority>0.7</priority></url>
-  <url><loc>https://thecocktaildb-iota.vercel.app/cocktails/F</loc><priority>0.7</priority></url>
-  <url><loc>https://thecocktaildb-iota.vercel.app/cocktails/G</loc><priority>0.7</priority></url>
-  <url><loc>https://thecocktaildb-iota.vercel.app/cocktails/H</loc><priority>0.7</priority></url>
-  <url><loc>https://thecocktaildb-iota.vercel.app/cocktails/I</loc><priority>0.7</priority></url>
-  <url><loc>https://thecocktaildb-iota.vercel.app/cocktails/J</loc><priority>0.7</priority></url>
-  <url><loc>https://thecocktaildb-iota.vercel.app/cocktails/K</loc><priority>0.7</priority></url>
-  <url><loc>https://thecocktaildb-iota.vercel.app/cocktails/L</loc><priority>0.7</priority></url>
-  <url><loc>https://thecocktaildb-iota.vercel.app/cocktails/M</loc><priority>0.7</priority></url>
-  <url><loc>https://thecocktaildb-iota.vercel.app/cocktails/N</loc><priority>0.7</priority></url>
-  <url><loc>https://thecocktaildb-iota.vercel.app/cocktails/O</loc><priority>0.7</priority></url>
-  <url><loc>https://thecocktaildb-iota.vercel.app/cocktails/P</loc><priority>0.7</priority></url>
-  <url><loc>https://thecocktaildb-iota.vercel.app/cocktails/Q</loc><priority>0.7</priority></url>
-  <url><loc>https://thecocktaildb-iota.vercel.app/cocktails/R</loc><priority>0.7</priority></url>
-  <url><loc>https://thecocktaildb-iota.vercel.app/cocktails/S</loc><priority>0.7</priority></url>
-  <url><loc>https://thecocktaildb-iota.vercel.app/cocktails/T</loc><priority>0.7</priority></url>
-  <url><loc>https://thecocktaildb-iota.vercel.app/cocktails/U</loc><priority>0.7</priority></url>
-  <url><loc>https://thecocktaildb-iota.vercel.app/cocktails/V</loc><priority>0.7</priority></url>
-  <url><loc>https://thecocktaildb-iota.vercel.app/cocktails/W</loc><priority>0.7</priority></url>
-  <url><loc>https://thecocktaildb-iota.vercel.app/cocktails/X</loc><priority>0.7</priority></url>
-  <url><loc>https://thecocktaildb-iota.vercel.app/cocktails/Y</loc><priority>0.7</priority></url>
-  <url><loc>https://thecocktaildb-iota.vercel.app/cocktails/Z</loc><priority>0.7</priority></url>
+  <url><loc>https://cocktail.alexisabel.com/cocktails/A</loc><priority>0.7</priority></url>
+  <url><loc>https://cocktail.alexisabel.com/cocktails/B</loc><priority>0.7</priority></url>
+  <url><loc>https://cocktail.alexisabel.com/cocktails/C</loc><priority>0.7</priority></url>
+  <url><loc>https://cocktail.alexisabel.com/cocktails/D</loc><priority>0.7</priority></url>
+  <url><loc>https://cocktail.alexisabel.com/cocktails/E</loc><priority>0.7</priority></url>
+  <url><loc>https://cocktail.alexisabel.com/cocktails/F</loc><priority>0.7</priority></url>
+  <url><loc>https://cocktail.alexisabel.com/cocktails/G</loc><priority>0.7</priority></url>
+  <url><loc>https://cocktail.alexisabel.com/cocktails/H</loc><priority>0.7</priority></url>
+  <url><loc>https://cocktail.alexisabel.com/cocktails/I</loc><priority>0.7</priority></url>
+  <url><loc>https://cocktail.alexisabel.com/cocktails/J</loc><priority>0.7</priority></url>
+  <url><loc>https://cocktail.alexisabel.com/cocktails/K</loc><priority>0.7</priority></url>
+  <url><loc>https://cocktail.alexisabel.com/cocktails/L</loc><priority>0.7</priority></url>
+  <url><loc>https://cocktail.alexisabel.com/cocktails/M</loc><priority>0.7</priority></url>
+  <url><loc>https://cocktail.alexisabel.com/cocktails/N</loc><priority>0.7</priority></url>
+  <url><loc>https://cocktail.alexisabel.com/cocktails/O</loc><priority>0.7</priority></url>
+  <url><loc>https://cocktail.alexisabel.com/cocktails/P</loc><priority>0.7</priority></url>
+  <url><loc>https://cocktail.alexisabel.com/cocktails/Q</loc><priority>0.7</priority></url>
+  <url><loc>https://cocktail.alexisabel.com/cocktails/R</loc><priority>0.7</priority></url>
+  <url><loc>https://cocktail.alexisabel.com/cocktails/S</loc><priority>0.7</priority></url>
+  <url><loc>https://cocktail.alexisabel.com/cocktails/T</loc><priority>0.7</priority></url>
+  <url><loc>https://cocktail.alexisabel.com/cocktails/U</loc><priority>0.7</priority></url>
+  <url><loc>https://cocktail.alexisabel.com/cocktails/V</loc><priority>0.7</priority></url>
+  <url><loc>https://cocktail.alexisabel.com/cocktails/W</loc><priority>0.7</priority></url>
+  <url><loc>https://cocktail.alexisabel.com/cocktails/X</loc><priority>0.7</priority></url>
+  <url><loc>https://cocktail.alexisabel.com/cocktails/Y</loc><priority>0.7</priority></url>
+  <url><loc>https://cocktail.alexisabel.com/cocktails/Z</loc><priority>0.7</priority></url>
 </urlset>
