@@ -91,11 +91,30 @@ function RecipeSchema({ drink }) {
 
 export default function DrinkDetail({ id }) {
   const [data, setData] = useState(null);
+  const [status, setStatus] = useState('loading');
 
   useEffect(() => {
+    let cancelled = false;
+    setStatus('loading');
     getCocktailDetail(id)
-      .then((json) => setData(json.drinks[0]))
-      .catch((error) => console.error('Error fetching cocktail detail:', error));
+      .then((json) => {
+        if (cancelled) return;
+        const drink = json && json.drinks && json.drinks[0];
+        if (!drink) {
+          setData(null);
+          setStatus('not-found');
+          return;
+        }
+        setData(drink);
+        setStatus('done');
+      })
+      .catch(() => {
+        if (cancelled) return;
+        setStatus('error');
+      });
+    return () => {
+      cancelled = true;
+    };
   }, [id]);
 
   usePageMeta({
@@ -110,7 +129,25 @@ export default function DrinkDetail({ id }) {
     type: 'article',
   });
 
-  if (!data) return <div className="recipe-empty" />;
+  if (status === 'loading') {
+    return <div className="recipe-empty" aria-busy="true" />;
+  }
+
+  if (status === 'not-found') {
+    return (
+      <div className="recipe-empty recipe-empty--message">
+        <p>This cocktail is not in the bar. Try the search or browse by letter.</p>
+      </div>
+    );
+  }
+
+  if (status === 'error' || !data) {
+    return (
+      <div className="recipe-empty recipe-empty--message">
+        <p>Could not load this cocktail. Please try again.</p>
+      </div>
+    );
+  }
 
   const ingredients = getIngredientList(data);
   const meta = [data.strCategory, data.strAlcoholic, data.strGlass].filter(Boolean);

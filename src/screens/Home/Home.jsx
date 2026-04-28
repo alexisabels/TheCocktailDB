@@ -1,5 +1,5 @@
 import React from 'react';
-import { Link } from 'react-router-dom';
+import { NavLink } from 'react-router-dom';
 import RandomCocktails from '../../components/RandomList/RandomCocktails';
 import PopularDrinks from '../../components/PopularDrinks/PopularDrink';
 import PopularIngredients from '../../components/PopularIngredients/PopularIngredients';
@@ -51,14 +51,14 @@ function Home() {
         </p>
         <nav className="home-browse__grid" aria-label="Browse cocktails alphabetically">
           {ALPHABET.map((letter) => (
-            <Link
+            <NavLink
               key={letter}
               to={`/cocktails/${letter}`}
-              className="home-browse__link"
+              className={({ isActive }) => `home-browse__link${isActive ? ' home-browse__link--active' : ''}`}
               aria-label={`Cocktails starting with ${letter}`}
             >
               {letter}
-            </Link>
+            </NavLink>
           ))}
         </nav>
       </section>

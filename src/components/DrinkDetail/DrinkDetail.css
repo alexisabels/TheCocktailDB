@@ -180,6 +180,18 @@
   min-height: 60vh;
 }
 
+.recipe-empty--message {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  text-align: center;
+  padding: var(--space-2xl) var(--space-md);
+  color: var(--color-text-soft);
+  font-family: var(--font-display);
+  font-style: italic;
+  font-size: 1.1rem;
+}
+
 @media (max-width: 760px) {
   .recipe {
     padding: var(--space-xl) var(--space-md);

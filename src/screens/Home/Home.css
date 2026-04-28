@@ -153,6 +153,18 @@
   outline: none;
 }
 
+.home-browse__link--active {
+  color: var(--color-burgundy-deep);
+  background-color: var(--color-accent);
+  border-color: var(--color-accent);
+}
+
+.home-browse__link--active:hover,
+.home-browse__link--active:focus-visible {
+  color: var(--color-burgundy-deep);
+  background-color: var(--color-accent);
+}
+
 @media (max-width: 480px) {
   .home-browse__link {
     width: 2.4rem;

@@ -77,6 +77,18 @@
   outline: none;
 }
 
+.alphabet-link--active {
+  color: var(--color-burgundy-deep);
+  background-color: var(--color-accent);
+  border-color: var(--color-accent);
+}
+
+.alphabet-link--active:hover,
+.alphabet-link--active:focus-visible {
+  color: var(--color-burgundy-deep);
+  background-color: var(--color-accent);
+}
+
 @media (max-width: 480px) {
   .footer {
     padding: var(--space-lg) var(--space-sm);

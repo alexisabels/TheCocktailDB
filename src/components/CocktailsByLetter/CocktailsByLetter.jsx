@@ -61,6 +61,7 @@ function ListSchema({ letter, drinks }) {
 
 function CocktailsByLetter() {
   const [cocktails, setCocktails] = useState([]);
+  const [status, setStatus] = useState('loading');
   const { letter } = useParams();
   const upper = letter ? letter.toUpperCase() : '';
   const count = cocktails.length;
@@ -74,16 +75,22 @@ function CocktailsByLetter() {
   });
 
   useEffect(() => {
-    const fetchCocktailsByLetter = async () => {
-      try {
-        const data = await getCocktailByLetter(letter);
+    let cancelled = false;
+    setStatus('loading');
+    getCocktailByLetter(letter)
+      .then((data) => {
+        if (cancelled) return;
         setCocktails(data.drinks || []);
-      } catch (error) {
-        console.error('Error fetching cocktails:', error);
-      }
+        setStatus('done');
+      })
+      .catch(() => {
+        if (cancelled) return;
+        setCocktails([]);
+        setStatus('error');
+      });
+    return () => {
+      cancelled = true;
     };
-
-    fetchCocktailsByLetter();
   }, [letter]);
 
   return (
@@ -102,17 +109,29 @@ function CocktailsByLetter() {
           {count === 1 ? 'recipe' : 'recipes'}
         </p>
       )}
-      <p className="ingredients-screen__intro">
-        Every cocktail recipe that starts with the letter
-        {' '}
-        <strong>{upper}</strong>
-        . Tap any drink to see the full ingredients, glassware and method.
-      </p>
-      {cocktails.length === 0 ? (
-        <p className="no-results">No cocktails found.</p>
-      ) : (
-        <CardList drinks={cocktails} />
+      {count > 0 && (
+        <p className="ingredients-screen__intro">
+          Every cocktail recipe that starts with the letter
+          {' '}
+          <strong>{upper}</strong>
+          . Tap any drink to see the full ingredients, glassware and method.
+        </p>
       )}
+      {status === 'loading' && (
+        <p className="no-results">Loading cocktails&hellip;</p>
+      )}
+      {status === 'error' && (
+        <p className="no-results">Could not load cocktails. Please try again.</p>
+      )}
+      {status === 'done' && cocktails.length === 0 && (
+        <p className="no-results">
+          No cocktails start with the letter
+          {' '}
+          {upper}
+          .
+        </p>
+      )}
+      {cocktails.length > 0 && <CardList drinks={cocktails} />}
     </section>
   );
 }

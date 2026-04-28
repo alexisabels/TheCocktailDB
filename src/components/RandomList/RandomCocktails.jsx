@@ -1,30 +1,30 @@
-/* eslint-disable no-plusplus */
-/* eslint-disable no-console */
-/* eslint-disable no-await-in-loop */
 import React, { useEffect, useState } from 'react';
 import { Link } from 'react-router-dom';
 import { getRandomCocktail } from '../../services/cocktailapi';
 import './RandomCocktail.css';
 
+const RANDOM_COUNT = 8;
+
 function RandomCocktails() {
   const [cocktails, setCocktails] = useState([]);
 
   useEffect(() => {
-    const fetchRandomCocktails = async () => {
-      try {
-        const cocktailsArray = [];
-        for (let i = 0; i < 8; i++) {
-          const randomCocktail = await getRandomCocktail();
-          cocktailsArray.push(randomCocktail.drinks[0]);
-        }
-        setCocktails(cocktailsArray);
-      } catch (error) {
-        console.error('Error fetching random cocktails:', error);
-      }
+    let cancelled = false;
+    const requests = Array.from({ length: RANDOM_COUNT }, () => getRandomCocktail());
+    Promise.all(requests)
+      .then((results) => {
+        if (cancelled) return;
+        setCocktails(results.map((r) => r.drinks[0]).filter(Boolean));
+      })
+      .catch(() => {
+        /* swallow — section will simply render empty */
+      });
+    return () => {
+      cancelled = true;
     };
-
-    fetchRandomCocktails();
   }, []);
+
+  if (cocktails.length === 0) return null;
 
   return (
     <section className="random-cocktails-container" aria-labelledby="random-heading">

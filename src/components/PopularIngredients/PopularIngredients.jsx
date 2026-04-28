@@ -1,38 +1,27 @@
-/* eslint-disable no-await-in-loop */
-/* eslint-disable no-restricted-syntax */
-/* eslint-disable no-console */
 import React, { useEffect, useState } from 'react';
 import { Link } from 'react-router-dom';
 import { getIngredientByName } from '../../services/cocktailapi';
 import './PopularIngredients.css';
 
+const INGREDIENT_NAMES = ['Whisky', 'Sugar', 'Gin', 'Tequila'];
+
 function PopularIngredients() {
   const [ingredients, setIngredients] = useState([]);
-  const ingredientNames = [
-    'Whisky',
-    'Sugar',
-    'Gin',
-    'Tequila',
-  ];
 
   useEffect(() => {
-    const fetchIngredients = async () => {
-      try {
-        const ingredientsArray = [];
-
-        for (const ingredientName of ingredientNames) {
-          const ingredient = await getIngredientByName(ingredientName);
-          ingredientsArray.push(ingredient.ingredients[0]);
-        }
-
-        setIngredients(ingredientsArray);
-      } catch (error) {
-        console.error('Error fetching ingredients:', error);
-      }
+    let cancelled = false;
+    Promise.all(INGREDIENT_NAMES.map((name) => getIngredientByName(name)))
+      .then((results) => {
+        if (cancelled) return;
+        setIngredients(results.map((r) => r.ingredients[0]).filter(Boolean));
+      })
+      .catch(() => {});
+    return () => {
+      cancelled = true;
     };
-
-    fetchIngredients();
   }, []);
+
+  if (ingredients.length === 0) return null;
 
   return (
     <section className="popular-ingredients-container" aria-labelledby="popular-ingredients-heading">

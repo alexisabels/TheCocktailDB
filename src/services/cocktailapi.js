@@ -1,71 +1,37 @@
-/* eslint-disable camelcase */
-/* eslint-disable no-console */
-const URL_Cocktail = 'https://www.thecocktaildb.com/api/json/v1/1';
+const BASE_URL = 'https://www.thecocktaildb.com/api/json/v1/1';
 
-// este no funciona
-export async function getCocktails() {
-  const data = await fetch(URL_Cocktail);
-  const drinks = await data.json();
-  console.log(drinks);
-  return drinks.results;
-}
-
-// ESTE PARA BUSCAR
-export async function getCocktailByName(name) {
-  const data = await fetch(`${URL_Cocktail}/search.php?s=${name}`);
-  const drink = await data.json();
-  console.log(drink);
-  return drink;
-}
-
-export async function getCocktailsByURL(URL) {
-  const data = await fetch(URL);
-  const coktail = await data.json();
-  console.log(coktail);
-  return coktail;
-}
-
-// este para buscar un ingerdiente (este creo que no lo usamos)
-export async function getIngredientByName(name) {
-  const data = await fetch(`${URL_Cocktail}/search.php?i=${name}`);
-  const ingredient = await data.json();
-  console.log(ingredient);
-  return ingredient;
-}
-// este para ver el cocktail dentro
-export async function getCocktailDetail(id) {
-  try {
-    const data = await fetch(`${URL_Cocktail}/lookup.php?i=${id}`);
-    if (!data.ok) {
-      throw new Error('La solicitud no pudo ser completada');
-    }
-    const detail = await data.json();
-    console.log(detail);
-    return detail;
-  } catch (error) {
-    console.error('Error fetching cocktail detail:', error);
-    throw error;
+async function fetchJson(url) {
+  const res = await fetch(url);
+  if (!res.ok) {
+    throw new Error(`Request failed: ${res.status}`);
   }
+  return res.json();
 }
 
-// este para moostrar los randoms
-export async function getRandomCocktail() {
-  const data = await fetch(`${URL_Cocktail}/random.php`);
-  const drink = await data.json();
-  console.log(drink);
-  return drink;
+export function getCocktailByName(name) {
+  return fetchJson(`${BASE_URL}/search.php?s=${encodeURIComponent(name)}`);
 }
-// este para sacar los cocktails de un ingrediente
-export async function getCocktailsByIngredient(name) {
-  const data = await fetch(`${URL_Cocktail}/filter.php?i=${name}`);
-  const drinks = await data.json();
-  console.log(drinks);
-  return drinks;
+
+export function getCocktailsByURL(url) {
+  return fetchJson(url);
 }
-// este para buscar por la primera letra
-export async function getCocktailByLetter(letter) {
-  const data = await fetch(`${URL_Cocktail}/search.php?f=${letter}`);
-  const drinks = await data.json();
-  console.log(drinks);
-  return drinks;
+
+export function getIngredientByName(name) {
+  return fetchJson(`${BASE_URL}/search.php?i=${encodeURIComponent(name)}`);
+}
+
+export function getCocktailDetail(id) {
+  return fetchJson(`${BASE_URL}/lookup.php?i=${encodeURIComponent(id)}`);
+}
+
+export function getRandomCocktail() {
+  return fetchJson(`${BASE_URL}/random.php`);
+}
+
+export function getCocktailsByIngredient(name) {
+  return fetchJson(`${BASE_URL}/filter.php?i=${encodeURIComponent(name)}`);
+}
+
+export function getCocktailByLetter(letter) {
+  return fetchJson(`${BASE_URL}/search.php?f=${encodeURIComponent(letter)}`);
 }

@@ -1,42 +1,36 @@
-/* eslint-disable no-await-in-loop */
-/* eslint-disable no-restricted-syntax */
-/* eslint-disable no-console */
 import React, { useEffect, useState } from 'react';
 import { Link } from 'react-router-dom';
 import { getCocktailDetail } from '../../services/cocktailapi';
 import './PopularDrinks.css';
 
+const FEATURED_IDS = [
+  '178365', // Gin Tonic
+  '178366', // Gin Lemon
+  '11007', // Margarita
+  '11202', // Caipirinha
+  '11001', // Old Fashioned
+  '11064', // Banana Daiquiri
+  '13020', // Sangria
+  '13206', // Caipirissima
+];
+
 function PopularDrinks() {
   const [cocktails, setCocktails] = useState([]);
-  const cocktailIds = [
-    '178365', // Gin Tonic
-    '178366', // Gin Lemon
-    '11007', // Margarita
-    '11202', // Caipirinha
-    '11001', // Old Fashioned
-    '11064', // Banana Daiquiri
-    '13020', // Sangria
-    '13206', // Caipirissima
-  ];
 
   useEffect(() => {
-    const fetchCocktails = async () => {
-      try {
-        const cocktailsArray = [];
-
-        for (const id of cocktailIds) {
-          const cocktailDetail = await getCocktailDetail(id);
-          cocktailsArray.push(cocktailDetail.drinks[0]);
-        }
-
-        setCocktails(cocktailsArray);
-      } catch (error) {
-        console.error('Error fetching cocktails:', error);
-      }
+    let cancelled = false;
+    Promise.all(FEATURED_IDS.map((id) => getCocktailDetail(id)))
+      .then((results) => {
+        if (cancelled) return;
+        setCocktails(results.map((r) => r.drinks[0]).filter(Boolean));
+      })
+      .catch(() => {});
+    return () => {
+      cancelled = true;
     };
-
-    fetchCocktails();
   }, []);
+
+  if (cocktails.length === 0) return null;
 
   return (
     <section className="popular-cocktails-container" aria-labelledby="house-favourites-heading">

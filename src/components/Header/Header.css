@@ -35,10 +35,9 @@
 }
 
 .header__logo-image {
-  height: 160px;
+  height: 56px;
   width: auto;
   display: block;
-  margin: -52px 0;
   transition: transform var(--transition-fast);
 }
 
@@ -91,8 +90,7 @@
   }
 
   .header__logo-image {
-    height: 120px;
-    margin: -38px 0;
+    height: 44px;
   }
 
   .header__search-button,

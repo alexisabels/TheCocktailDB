@@ -63,6 +63,7 @@ function ListSchema({ ingredient, drinks }) {
 function Ingredients() {
   const { ingredient } = useParams();
   const [cocktails, setCocktails] = useState([]);
+  const [status, setStatus] = useState('loading');
   const safeList = cocktails || [];
   const count = safeList.length;
   const titleCase = ingredient
@@ -78,16 +79,22 @@ function Ingredients() {
   });
 
   useEffect(() => {
-    const fetchCocktails = async () => {
-      try {
-        const data = await getCocktailsByIngredient(ingredient);
-        setCocktails(data.drinks);
-      } catch (error) {
-        console.error('Error fetching cocktails by ingredient:', error);
-      }
+    let cancelled = false;
+    setStatus('loading');
+    getCocktailsByIngredient(ingredient)
+      .then((data) => {
+        if (cancelled) return;
+        setCocktails(data.drinks || []);
+        setStatus('done');
+      })
+      .catch(() => {
+        if (cancelled) return;
+        setCocktails([]);
+        setStatus('error');
+      });
+    return () => {
+      cancelled = true;
     };
-
-    fetchCocktails();
   }, [ingredient]);
 
   return (
@@ -106,22 +113,40 @@ function Ingredients() {
           {count === 1 ? 'recipe' : 'recipes'}
         </p>
       )}
-      <p className="ingredients-screen__intro">
-        Every cocktail in our database that uses
-        {' '}
-        <strong>{titleCase}</strong>
-        . Tap any drink to see the full recipe with measures, glassware and method.
-      </p>
-      <ul className="ingredient-cocktails">
-        {safeList.map((cocktail) => (
-          <li key={cocktail.idDrink} className="ingredient-cocktail">
-            <Link to={`/drink/${cocktail.idDrink}`}>
-              <img src={cocktail.strDrinkThumb} alt={`${cocktail.strDrink} cocktail`} loading="lazy" />
-              <h3>{cocktail.strDrink}</h3>
-            </Link>
-          </li>
-        ))}
-      </ul>
+      {count > 0 && (
+        <p className="ingredients-screen__intro">
+          Every cocktail in our database that uses
+          {' '}
+          <strong>{titleCase}</strong>
+          . Tap any drink to see the full recipe with measures, glassware and method.
+        </p>
+      )}
+      {status === 'loading' && (
+        <p className="no-results">Loading cocktails&hellip;</p>
+      )}
+      {status === 'error' && (
+        <p className="no-results">Could not load cocktails. Please try again.</p>
+      )}
+      {status === 'done' && count === 0 && (
+        <p className="no-results">
+          No cocktails found with
+          {' '}
+          {titleCase}
+          .
+        </p>
+      )}
+      {count > 0 && (
+        <ul className="ingredient-cocktails">
+          {safeList.map((cocktail) => (
+            <li key={cocktail.idDrink} className="ingredient-cocktail">
+              <Link to={`/drink/${cocktail.idDrink}`}>
+                <img src={cocktail.strDrinkThumb} alt={`${cocktail.strDrink} cocktail`} loading="lazy" />
+                <h3>{cocktail.strDrink}</h3>
+              </Link>
+            </li>
+          ))}
+        </ul>
+      )}
     </section>
   );
 }

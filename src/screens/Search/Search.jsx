@@ -1,5 +1,3 @@
-/* eslint-disable no-unused-vars */
-/* eslint-disable react/jsx-no-bind */
 import React, { useState, useEffect } from 'react';
 import './Search.css';
 import { getCocktailByName } from '../../services/cocktailapi';
@@ -8,9 +6,9 @@ import CardList from '../../components/CardList/CardList';
 import usePageMeta from '../../hooks/usePageMeta';
 
 function Search() {
-  const [drinks, setDrinks] = useState([]);
   const [search, setSearch] = useState('');
-  const [filteredDrinks, setFilteredDrinks] = useState([]);
+  const [drinks, setDrinks] = useState([]);
+  const [status, setStatus] = useState('idle');
 
   usePageMeta({
     title: 'Cocktail Search - Find Any Cocktail Recipe by Name',
@@ -19,23 +17,25 @@ function Search() {
   });
 
   useEffect(() => {
-    if (search) {
-      getCocktailByName(search).then((data) => {
-        if (data && data.drinks) {
-          setDrinks(data.drinks);
-          setFilteredDrinks(data.drinks);
-        } else {
-          setFilteredDrinks([]);
-        }
-      });
-    } else {
-      setFilteredDrinks([]);
+    if (!search) {
+      setDrinks([]);
+      setStatus('idle');
+      return undefined;
     }
+    setStatus('loading');
+    const handle = setTimeout(() => {
+      getCocktailByName(search)
+        .then((data) => {
+          setDrinks(data.drinks || []);
+          setStatus('done');
+        })
+        .catch(() => {
+          setDrinks([]);
+          setStatus('error');
+        });
+    }, 300);
+    return () => clearTimeout(handle);
   }, [search]);
-
-  function onSearchChange(searchTerm) {
-    setSearch(searchTerm);
-  }
 
   return (
     <div className="search-container">
@@ -48,16 +48,22 @@ function Search() {
         </h1>
         <SearchBox
           placeholder="Enter a cocktail name"
-          onSearchChange={onSearchChange}
+          onSearchChange={setSearch}
         />
-        {filteredDrinks.length === 0 && search && (
+        {status === 'loading' && (
+          <p className="no-results">Searching&hellip;</p>
+        )}
+        {status === 'error' && (
+          <p className="no-results">Something went wrong. Please try again.</p>
+        )}
+        {status === 'done' && drinks.length === 0 && (
           <p className="no-results">
-            No cocktails found with the name &ldquo;
+            No cocktails found for &ldquo;
             {search}
-            &rdquo;
+            &rdquo;.
           </p>
         )}
-        <CardList drinks={filteredDrinks} />
+        <CardList drinks={drinks} />
       </div>
     </div>
   );
