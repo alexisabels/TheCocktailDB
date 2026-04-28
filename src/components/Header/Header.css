@@ -35,7 +35,7 @@
 }
 
 .header__logo-image {
-  height: 56px;
+  height: 88px;
   width: auto;
   display: block;
   transition: transform var(--transition-fast);
@@ -90,7 +90,7 @@
   }
 
   .header__logo-image {
-    height: 44px;
+    height: 64px;
   }
 
   .header__search-button,
