@@ -1,13 +1,10 @@
 import React from 'react';
-import { NavLink } from 'react-router-dom';
 import RandomCocktails from '../../components/RandomList/RandomCocktails';
 import PopularDrinks from '../../components/PopularDrinks/PopularDrink';
 import PopularIngredients from '../../components/PopularIngredients/PopularIngredients';
 import usePageMeta from '../../hooks/usePageMeta';
 
 import './Home.css';
-
-const ALPHABET = Array.from(Array(26), (_, i) => String.fromCharCode(65 + i));
 
 function Home() {
   usePageMeta({
@@ -42,26 +39,6 @@ function Home() {
       <PopularIngredients />
       <hr />
       <PopularDrinks />
-      <hr />
-      <section className="home-browse" aria-labelledby="home-browse-heading">
-        <h2 id="home-browse-heading" className="home-browse__heading">Browse Cocktails by Letter</h2>
-        <p className="home-browse__intro">
-          Every cocktail in the database, listed alphabetically. Find drinks
-          starting with any letter from A to Z.
-        </p>
-        <nav className="home-browse__grid" aria-label="Browse cocktails alphabetically">
-          {ALPHABET.map((letter) => (
-            <NavLink
-              key={letter}
-              to={`/cocktails/${letter}`}
-              className={({ isActive }) => `home-browse__link${isActive ? ' home-browse__link--active' : ''}`}
-              aria-label={`Cocktails starting with ${letter}`}
-            >
-              {letter}
-            </NavLink>
-          ))}
-        </nav>
-      </section>
     </div>
   );
 }

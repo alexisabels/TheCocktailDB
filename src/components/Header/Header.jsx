@@ -11,6 +11,8 @@ function Header() {
             src="/logo.png"
             alt="The Cocktail Compendium logo"
             className="header__logo-image"
+            width="240"
+            height="88"
           />
         </Link>
       </div>

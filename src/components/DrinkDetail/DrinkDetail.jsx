@@ -29,7 +29,9 @@ function RecipeSchema({ drink }) {
   const recipe = {
     '@context': 'https://schema.org',
     '@type': 'Recipe',
+    '@id': `${SITE_URL}/drink/${drink.idDrink}#recipe`,
     name: drink.strDrink,
+    headline: `${drink.strDrink} Cocktail Recipe`,
     image: [drink.strDrinkThumb],
     description: `How to make a ${drink.strDrink}: full ingredients with measures, glassware (${drink.strGlass}) and step-by-step method for the classic ${drink.strDrink} cocktail.`,
     recipeCategory: drink.strCategory || 'Cocktail',
@@ -38,6 +40,8 @@ function RecipeSchema({ drink }) {
       drink.strDrink,
       `${drink.strDrink} recipe`,
       `how to make a ${drink.strDrink}`,
+      `${drink.strDrink} cocktail`,
+      `${drink.strDrink} ingredients`,
       drink.strCategory,
       drink.strAlcoholic,
       'cocktail recipe',
@@ -47,14 +51,32 @@ function RecipeSchema({ drink }) {
     recipeYield: '1 serving',
     prepTime: 'PT5M',
     totalTime: 'PT5M',
+    cookingMethod: drink.strCategory === 'Shot' ? 'Build' : 'Mix',
+    suitableForDiet: drink.strAlcoholic === 'Non alcoholic'
+      ? 'https://schema.org/LowAlcoholDiet'
+      : undefined,
     recipeIngredient: ingredients,
     recipeInstructions: drink.strInstructions
       ? drink.strInstructions
         .split(/\.(?:\s+|$)/)
         .map((s) => s.trim())
         .filter(Boolean)
-        .map((text, i) => ({ '@type': 'HowToStep', position: i + 1, text }))
+        .map((text, i) => ({ '@type': 'HowToStep', position: i + 1, text: `${text}.` }))
       : undefined,
+    datePublished: drink.dateModified
+      ? drink.dateModified.slice(0, 10)
+      : '2024-01-01',
+    dateModified: drink.dateModified
+      ? drink.dateModified.slice(0, 10)
+      : new Date().toISOString().slice(0, 10),
+    author: {
+      '@type': 'Organization',
+      '@id': `${SITE_URL}/#organization`,
+      name: 'The Cocktail Compendium',
+    },
+    publisher: { '@id': `${SITE_URL}/#organization` },
+    isPartOf: { '@id': `${SITE_URL}/#website` },
+    mainEntityOfPage: `${SITE_URL}/drink/${drink.idDrink}`,
     inLanguage: 'en',
     url: `${SITE_URL}/drink/${drink.idDrink}`,
   };
@@ -175,7 +197,8 @@ export default function DrinkDetail({ id }) {
           className="recipe__image"
           src={data.strDrinkThumb}
           alt={`${data.strDrink} cocktail served in a ${data.strGlass}`}
-          loading="lazy"
+          width="380"
+          height="380"
         />
       </header>
 

@@ -5,6 +5,12 @@
   <meta charset="utf-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover" />
   <meta name="theme-color" content="#1a0a13" />
+  <meta name="format-detection" content="telephone=no" />
+  <meta name="apple-mobile-web-app-capable" content="yes" />
+  <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent" />
+  <meta name="apple-mobile-web-app-title" content="Cocktail Compendium" />
+  <meta name="application-name" content="Cocktail Compendium" />
+  <meta name="mobile-web-app-capable" content="yes" />
 
   <title>The Cocktail Compendium - Classic Cocktail Recipes & Ingredients</title>
   <meta
@@ -38,7 +44,10 @@
     content="A curated journey through timeless cocktail recipes. Browse drinks by name, letter or ingredient."
   />
   <meta property="og:url" content="https://cocktail.alexisabel.com/" />
-  <meta property="og:image" content="https://cocktail.alexisabel.com/logoweb.png" />
+  <meta property="og:image" content="https://cocktail.alexisabel.com/favicon.png" />
+  <meta property="og:image:width" content="512" />
+  <meta property="og:image:height" content="512" />
+  <meta property="og:image:type" content="image/png" />
   <meta property="og:image:alt" content="The Cocktail Compendium logo" />
   <meta property="og:locale" content="en_US" />
 
@@ -48,21 +57,47 @@
     name="twitter:description"
     content="A curated journey through timeless cocktail recipes. Browse by name, letter or ingredient."
   />
-  <meta name="twitter:image" content="https://cocktail.alexisabel.com/logoweb.png" />
+  <meta name="twitter:image" content="https://cocktail.alexisabel.com/favicon.png" />
+  <meta name="twitter:image:alt" content="The Cocktail Compendium logo" />
 
   <script type="application/ld+json">
     {
       "@context": "https://schema.org",
-      "@type": "WebSite",
-      "name": "The Cocktail Compendium",
-      "url": "https://cocktail.alexisabel.com/",
-      "description": "Discover hundreds of classic and modern cocktail recipes.",
-      "inLanguage": "en",
-      "potentialAction": {
-        "@type": "SearchAction",
-        "target": "https://cocktail.alexisabel.com/search?q={search_term_string}",
-        "query-input": "required name=search_term_string"
-      }
+      "@graph": [
+        {
+          "@type": "WebSite",
+          "@id": "https://cocktail.alexisabel.com/#website",
+          "name": "The Cocktail Compendium",
+          "alternateName": "Cocktail Compendium",
+          "url": "https://cocktail.alexisabel.com/",
+          "description": "Discover hundreds of classic and modern cocktail recipes.",
+          "inLanguage": "en",
+          "publisher": { "@id": "https://cocktail.alexisabel.com/#organization" },
+          "potentialAction": {
+            "@type": "SearchAction",
+            "target": {
+              "@type": "EntryPoint",
+              "urlTemplate": "https://cocktail.alexisabel.com/search?q={search_term_string}"
+            },
+            "query-input": "required name=search_term_string"
+          }
+        },
+        {
+          "@type": "Organization",
+          "@id": "https://cocktail.alexisabel.com/#organization",
+          "name": "The Cocktail Compendium",
+          "url": "https://cocktail.alexisabel.com/",
+          "logo": {
+            "@type": "ImageObject",
+            "@id": "https://cocktail.alexisabel.com/#logo",
+            "url": "https://cocktail.alexisabel.com/favicon.png",
+            "width": 512,
+            "height": 512,
+            "caption": "The Cocktail Compendium"
+          },
+          "image": { "@id": "https://cocktail.alexisabel.com/#logo" }
+        }
+      ]
     }
   </script>
 </head>
