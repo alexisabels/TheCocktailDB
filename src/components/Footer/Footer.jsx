@@ -1,5 +1,5 @@
 import React from 'react';
-import { Link } from 'react-router-dom';
+import { NavLink } from 'react-router-dom';
 import './Footer.css';
 
 function Footer() {
@@ -9,16 +9,18 @@ function Footer() {
     <footer className="footer text-white">
       <div className="footer__content">
         <h2 className="footer__heading">Browse By Name</h2>
-        <div className="alphabet-links">
+        <nav className="alphabet-links" aria-label="Browse cocktails alphabetically">
           {alphabet.map((letter) => (
-            <Link key={letter} to={`/cocktails/${letter}`} className="alphabet-link">
+            <NavLink
+              key={letter}
+              to={`/cocktails/${letter}`}
+              className={({ isActive }) => `alphabet-link${isActive ? ' alphabet-link--active' : ''}`}
+              aria-label={`Cocktails starting with ${letter}`}
+            >
               {letter}
-              {' '}
-              /
-              {' '}
-            </Link>
+            </NavLink>
           ))}
-        </div>
+        </nav>
       </div>
     </footer>
   );

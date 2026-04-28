@@ -1,38 +1,164 @@
-.card-list {
-  display: flex;
-  flex-wrap: wrap;
-  justify-content: center;
-  margin-top: 20px;
-  color: white;
+.ingredients-screen {
+  width: 100%;
+  max-width: var(--max-content-width);
+  margin: 0 auto;
+  padding: var(--space-xl) var(--space-md);
+  color: var(--color-text);
 }
 
-h2 {
-  color: white;
+.ingredients-screen__eyebrow {
+  font-family: var(--font-display);
+  font-style: italic;
+  font-size: clamp(0.8rem, 1.5vw, 0.95rem);
+  letter-spacing: 0.4em;
+  text-transform: uppercase;
+  color: var(--color-accent);
+  text-align: center;
+  margin: 0 0 var(--space-sm);
 }
-.card-list a {
+
+.ingredients-screen__heading {
+  font-family: var(--font-serif);
+  font-size: clamp(1.6rem, 4vw, 2.5rem);
+  font-weight: 700;
+  margin: 0 auto var(--space-lg);
+  text-align: center;
+  color: var(--color-text);
+  position: relative;
+  padding-bottom: var(--space-md);
+  max-width: 800px;
+  word-wrap: break-word;
+}
+
+.ingredients-screen__heading::after {
+  content: '';
+  position: absolute;
+  bottom: 0;
+  left: 50%;
+  transform: translateX(-50%);
+  width: 60px;
+  height: 1px;
+  background-color: var(--color-accent);
+}
+
+.ingredients-screen__heading span {
+  font-family: var(--font-display);
+  font-style: italic;
+  color: var(--color-accent);
+  text-transform: capitalize;
+}
+
+.ingredients-screen__count {
+  font-family: var(--font-display);
+  font-style: italic;
+  font-size: 1rem;
+  letter-spacing: 0.25em;
+  text-transform: uppercase;
+  color: var(--color-accent);
+  text-align: center;
+  margin: 0 auto var(--space-md);
+}
+
+.ingredients-screen__intro {
+  font-family: var(--font-display);
+  font-style: italic;
+  font-size: clamp(1rem, 1.6vw, 1.1rem);
+  color: var(--color-text-soft);
+  text-align: center;
+  max-width: 640px;
+  margin: 0 auto var(--space-xl);
+  line-height: 1.6;
+}
+
+.ingredients-screen__intro strong {
+  font-style: normal;
+  font-weight: 500;
+  color: var(--color-accent);
+  text-transform: capitalize;
+}
+
+.ingredient-cocktails {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(220px, 1fr));
+  gap: var(--space-lg);
+  list-style: none;
+  margin: 0;
+  padding: 0;
+  width: 100%;
+}
+
+.ingredient-cocktail {
+  background-color: var(--color-bg-elevated);
+  border: 1px solid var(--color-divider-soft);
+  border-radius: var(--radius-md);
+  padding: var(--space-md);
+  text-align: center;
+  position: relative;
+  transition: transform var(--transition-fast), border-color var(--transition-fast),
+    box-shadow var(--transition-fast);
+  min-width: 0;
+}
+
+.ingredient-cocktail::before {
+  content: '';
+  position: absolute;
+  inset: 6px;
+  border: 1px solid transparent;
+  border-radius: var(--radius-sm);
+  pointer-events: none;
+  transition: border-color var(--transition-fast);
+}
+
+.ingredient-cocktail:hover {
+  transform: translateY(-3px);
+  border-color: var(--color-accent);
+  box-shadow: var(--shadow-card);
+}
+
+.ingredient-cocktail:hover::before {
+  border-color: var(--color-divider);
+}
+
+.ingredient-cocktail a {
   text-decoration: none;
-  color: inherit;
-  color: white;
+  color: var(--color-text);
+  display: block;
 }
 
-
-
-.card-list img {
-  width: 90%;
+.ingredient-cocktail img {
+  width: 100%;
   height: auto;
-  border-radius: 8px;
-}
-.col-3 {
-  flex: 0 0 calc(25% - 20px); 
-  max-width: calc(25% - 20px); 
-  margin: 10px 0;
-}
-.card-list h3 {
-  margin: 10px 0;
+  border-radius: var(--radius-sm);
+  border: 1px solid var(--color-divider-soft);
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.4);
+  transition: border-color var(--transition-fast);
 }
 
+.ingredient-cocktail:hover img {
+  border-color: var(--color-accent);
+}
 
-/* Add some padding inside the card container */
-.container {
-  padding: 2px 16px;
+.ingredient-cocktail h3 {
+  margin: var(--space-md) 0 0;
+  font-family: var(--font-serif);
+  font-size: 1.05rem;
+  font-weight: 500;
+  letter-spacing: 0.02em;
+  transition: color var(--transition-fast);
+  word-wrap: break-word;
+}
+
+.ingredient-cocktail:hover h3 {
+  color: var(--color-accent);
+}
+
+@media (max-width: 480px) {
+  .ingredients-screen {
+    padding: var(--space-lg) var(--space-sm);
+  }
+
+  .ingredient-cocktails {
+    grid-template-columns: repeat(auto-fill, minmax(150px, 1fr));
+    gap: var(--space-md);
+  }
 }

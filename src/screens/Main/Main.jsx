@@ -8,8 +8,13 @@ import './Main.css';
 function Main() {
   return (
     <div className="main-container">
+      <a href="#main-content" className="skip-to-content">
+        Skip to content
+      </a>
       <Header />
-      <Outlet />
+      <main id="main-content" className="main-content" tabIndex="-1">
+        <Outlet />
+      </main>
       <Footer />
     </div>
   );

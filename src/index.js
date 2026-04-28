@@ -2,6 +2,7 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
 import { createBrowserRouter, RouterProvider } from 'react-router-dom';
+import './App.css';
 import Search from './screens/Search/Search';
 import Main from './screens/Main/Main';
 import Error from './screens/Error/Error';
@@ -23,10 +24,6 @@ const router = createBrowserRouter([
       {
         path: '/search',
         element: <Search />,
-      },
-      {
-        path: '/home',
-        element: <Home />,
       },
       {
         path: '/ingredients/:ingredient',

@@ -1,35 +1,109 @@
 .header {
-  background-color: #3c021c;
+  background-color: var(--color-header);
+  background-image: linear-gradient(
+    to bottom,
+    rgba(0, 0, 0, 0) 0%,
+    rgba(0, 0, 0, 0.25) 100%
+  );
+  border-bottom: 1px solid var(--color-divider);
   display: flex;
+  flex-wrap: wrap;
   justify-content: space-between;
   align-items: center;
-  padding: 10px 20px;
-  color: white;
+  padding: var(--space-md) clamp(var(--space-md), 4vw, var(--space-xl));
+  gap: var(--space-md);
+  color: var(--color-text);
+  position: sticky;
+  top: 0;
+  z-index: 10;
+  box-shadow: 0 2px 12px rgba(0, 0, 0, 0.4);
 }
 
-.header__logo img {
-  width: 100%;
+.header__logo {
+  display: flex;
+  align-items: center;
+  gap: var(--space-sm);
+  flex-shrink: 0;
+}
+
+.header__logo a {
+  display: flex;
+  align-items: center;
+  gap: var(--space-sm);
+  text-decoration: none;
+  color: var(--color-text);
+}
+
+.header__logo-image {
+  height: 88px;
+  width: auto;
+  display: block;
+  transition: transform var(--transition-fast);
+}
+
+.header__logo a:hover .header__logo-image {
+  transform: scale(1.04);
 }
 
 .header__button-container {
   display: flex;
-}
-
-.header__search {
-  margin-right: 20px;
+  flex-wrap: wrap;
+  gap: var(--space-sm);
+  align-items: center;
 }
 
 .header__search-button,
 .header__home-link {
-  background-color: #ff0000;
-  color: #ffffff;
-  padding: 10px 20px;
-  border-radius: 5px;
+  background-color: transparent;
+  color: var(--color-text);
+  padding: 0.55rem 1.1rem;
+  border: 1px solid var(--color-divider);
+  border-radius: var(--radius-sm);
   text-decoration: none;
-  font-size: 16px;
+  font-family: var(--font-display);
+  font-size: 1rem;
+  font-weight: 500;
+  letter-spacing: 0.18em;
+  text-transform: uppercase;
+  transition: color var(--transition-fast), background-color var(--transition-fast),
+    border-color var(--transition-fast), transform var(--transition-fast);
+  display: inline-flex;
+  align-items: center;
+  white-space: nowrap;
 }
 
 .header__search-button:hover,
-.header__home-link:hover {
-  background-color: #cc0000;
+.header__home-link:hover,
+.header__search-button:focus-visible,
+.header__home-link:focus-visible {
+  color: var(--color-accent);
+  border-color: var(--color-accent);
+  background-color: rgba(201, 169, 97, 0.08);
+  transform: translateY(-1px);
+  outline: none;
+}
+
+@media (max-width: 600px) {
+  .header {
+    padding: var(--space-sm) var(--space-md);
+    justify-content: center;
+  }
+
+  .header__logo-image {
+    height: 64px;
+  }
+
+  .header__search-button,
+  .header__home-link {
+    padding: 0.45rem 0.85rem;
+    font-size: 0.85rem;
+    letter-spacing: 0.15em;
+  }
+}
+
+@media (max-width: 380px) {
+  .header__button-container {
+    width: 100%;
+    justify-content: center;
+  }
 }

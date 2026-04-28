@@ -1,54 +1,106 @@
 .popular-ingredients-container {
-  color: white;
+  color: var(--color-text);
+  max-width: var(--max-content-width);
+  margin: 0 auto;
+  padding: var(--space-xl) var(--space-md);
 }
 
 .popular-ingredients-container__heading {
-  color: white;
+  color: var(--color-text);
   text-align: center;
+  font-family: var(--font-serif);
+  font-size: clamp(1.6rem, 3vw, 2.25rem);
+  font-weight: 600;
+  margin-bottom: var(--space-lg);
+  letter-spacing: 0.01em;
+  position: relative;
+  padding-bottom: var(--space-sm);
 }
 
-.ingredient-grid {
-  display: flex;
-  flex-wrap: wrap;
-  justify-content: space-between;
-  color: white;
+.popular-ingredients-container__heading::after {
+  content: '';
+  position: absolute;
+  bottom: 0;
+  left: 50%;
+  transform: translateX(-50%);
+  width: 60px;
+  height: 1px;
+  background-color: var(--color-accent);
 }
 
-.col-3 {
-  flex: 0 0 calc(25% - 20px);
-  max-width: calc(25% - 20px);
-  margin: 10px 0;
+.popular-ingredients-container .ingredient-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(170px, 1fr));
+  gap: var(--space-lg);
+  color: var(--color-text);
+  width: 100%;
 }
 
-.ingredient-card {
+.popular-ingredients-container .ingredient-card {
   width: 100%;
   text-align: center;
   text-decoration: none;
-  color: white;
+  color: var(--color-text);
+  background-color: var(--color-bg-elevated);
+  border: 1px solid var(--color-divider-soft);
+  border-radius: var(--radius-md);
+  padding: var(--space-md);
+  position: relative;
+  transition: transform var(--transition-fast), border-color var(--transition-fast),
+    box-shadow var(--transition-fast);
+  min-width: 0;
 }
 
-.ingredient-card:hover {
-  color: rgb(178, 178, 42);
+.popular-ingredients-container .ingredient-card::before {
+  content: '';
+  position: absolute;
+  inset: 6px;
+  border: 1px solid transparent;
+  border-radius: var(--radius-sm);
+  pointer-events: none;
+  transition: border-color var(--transition-fast);
 }
 
-.text-link {
+.popular-ingredients-container .ingredient-card:hover,
+.popular-ingredients-container .ingredient-card:focus-visible {
+  transform: translateY(-3px);
+  border-color: var(--color-accent);
+  box-shadow: var(--shadow-card);
+  outline: none;
+}
+
+.popular-ingredients-container .ingredient-card:hover::before,
+.popular-ingredients-container .ingredient-card:focus-visible::before {
+  border-color: var(--color-divider);
+}
+
+.popular-ingredients-container .ingredient-card__image {
+  width: 100%;
+  max-width: 140px;
+  height: auto;
+  margin: 0 auto;
+  object-fit: contain;
+  border-radius: var(--radius-sm);
+}
+
+.popular-ingredients-container .ingredient-card__name {
+  margin-top: var(--space-md);
+  font-family: var(--font-serif);
+  font-weight: 500;
+  color: var(--color-text);
   text-decoration: none;
-  color: white;
+  font-size: 1.05rem;
+  letter-spacing: 0.02em;
+  transition: color var(--transition-fast);
 }
 
-.text-link:hover {
-  color: rgb(178, 178, 42);
+.popular-ingredients-container .ingredient-card:hover .ingredient-card__name {
+  color: var(--color-accent);
 }
 
-.ingredient-card__image {
-  width: 80%;
-  object-fit: cover;
-  border-radius: 10px;
-}
-
-.ingredient-card__name {
-  margin-top: 10px;
-  font-weight: bold;
-  color: white;
-  text-decoration: none;
+@media (max-width: 480px) {
+  .popular-ingredients-container .ingredient-grid {
+    grid-template-columns: repeat(auto-fill, minmax(140px, 1fr));
+    gap: var(--space-md);
+  }
 }

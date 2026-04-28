@@ -1,6 +1,12 @@
 .main-container {
-  background-color: #230312;
-  padding: 20px; 
-  padding-bottom: 0;
-  padding-top: 0;
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+  width: 100%;
+  overflow-x: hidden;
+}
+
+.main-content {
+  flex: 1;
+  width: 100%;
 }

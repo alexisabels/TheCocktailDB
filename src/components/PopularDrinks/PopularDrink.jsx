@@ -1,62 +1,59 @@
-/* eslint-disable no-await-in-loop */
-/* eslint-disable no-restricted-syntax */
 import React, { useEffect, useState } from 'react';
 import { Link } from 'react-router-dom';
 import { getCocktailDetail } from '../../services/cocktailapi';
 import './PopularDrinks.css';
 
+const FEATURED_IDS = [
+  '178365', // Gin Tonic
+  '178366', // Gin Lemon
+  '11007', // Margarita
+  '11202', // Caipirinha
+  '11001', // Old Fashioned
+  '11064', // Banana Daiquiri
+  '13020', // Sangria
+  '13206', // Caipirissima
+];
+
 function PopularDrinks() {
   const [cocktails, setCocktails] = useState([]);
-  const cocktailIds = [
-    '178365', // Gin Tonic
-    '178366', // Gin Lemon
-    '11007', // Margarita
-    '11202', // Caipirinha
-    '11001', // Old Fashioned
-    '11064', // Banana Daiquiri
-    '13020', // Sangria
-    '13206', // Caipirissima
-  ];
 
   useEffect(() => {
-    const fetchCocktails = async () => {
-      try {
-        const cocktailsArray = [];
-
-        for (const id of cocktailIds) {
-          const cocktailDetail = await getCocktailDetail(id);
-          cocktailsArray.push(cocktailDetail.drinks[0]);
-        }
-
-        setCocktails(cocktailsArray);
-      } catch (error) {
-        console.error('Error fetching cocktails:', error);
-      }
+    let cancelled = false;
+    Promise.all(FEATURED_IDS.map((id) => getCocktailDetail(id)))
+      .then((results) => {
+        if (cancelled) return;
+        setCocktails(results.map((r) => r.drinks[0]).filter(Boolean));
+      })
+      .catch(() => {});
+    return () => {
+      cancelled = true;
     };
-
-    fetchCocktails();
   }, []);
 
+  if (cocktails.length === 0) return null;
+
   return (
-    <div className="popular-cocktails-container">
-      <h2 className="popular-cocktails-container__heading">Cocktails Favoritos</h2>
-      <div className="cocktail-grid text-link">
+    <section className="popular-cocktails-container" aria-labelledby="house-favourites-heading">
+      <h2 id="house-favourites-heading" className="popular-cocktails-container__heading">House Favourites</h2>
+      <div className="cocktail-grid">
         {cocktails.map((cocktail) => (
           <Link
             key={cocktail.idDrink}
             to={`/drink/${cocktail.idDrink}`}
-            className="col-3 cocktail-card text-link"
+            className="cocktail-card"
+            aria-label={`View ${cocktail.strDrink} recipe`}
           >
             <img
               src={cocktail.strDrinkThumb}
-              alt={cocktail.strDrink}
+              alt={`${cocktail.strDrink} cocktail`}
               className="cocktail-card__image"
+              loading="lazy"
             />
-            <div className="cocktail-card__name text-link">{cocktail.strDrink}</div>
+            <div className="cocktail-card__name">{cocktail.strDrink}</div>
           </Link>
         ))}
       </div>
-    </div>
+    </section>
   );
 }
 

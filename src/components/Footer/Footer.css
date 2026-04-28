@@ -1,30 +1,102 @@
 .text-white {
-  color: white;
+  color: var(--color-text);
 }
 
 .footer {
-  background-color: #731515;
-  height: 100px;
+  background-color: var(--color-footer);
+  border-top: 1px solid var(--color-divider);
+  background-image:
+    radial-gradient(ellipse at top, rgba(201, 169, 97, 0.08), transparent 60%);
+  padding: var(--space-xl) var(--space-md);
   display: flex;
   align-items: center;
   justify-content: center;
+  margin-top: var(--space-2xl);
 }
 
 .footer__content {
-  text-align: center; 
+  text-align: center;
+  width: 100%;
+  max-width: var(--max-content-width);
 }
 
 .footer__heading {
-  margin-top: 0;
-  margin-bottom: 10px;
+  font-family: var(--font-display);
+  font-style: italic;
+  font-size: clamp(1.1rem, 2vw, 1.4rem);
+  letter-spacing: 0.25em;
+  text-transform: uppercase;
+  color: var(--color-accent);
+  margin: 0 0 var(--space-lg);
+  position: relative;
+  padding-bottom: var(--space-sm);
+}
+
+.footer__heading::after {
+  content: '';
+  position: absolute;
+  bottom: 0;
+  left: 50%;
+  transform: translateX(-50%);
+  width: 40px;
+  height: 1px;
+  background-color: var(--color-accent);
 }
 
 .alphabet-links {
   display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  gap: var(--space-xs);
+  max-width: 720px;
+  margin: 0 auto;
 }
 
 .alphabet-link {
   text-decoration: none;
-  color: white;
-  margin: 0 5px;
+  color: var(--color-text-soft);
+  font-family: var(--font-serif);
+  font-size: 1.05rem;
+  font-weight: 500;
+  width: 2.25rem;
+  height: 2.25rem;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  border: 1px solid transparent;
+  border-radius: 50%;
+  transition: color var(--transition-fast), border-color var(--transition-fast),
+    background-color var(--transition-fast);
+}
+
+.alphabet-link:hover,
+.alphabet-link:focus-visible {
+  color: var(--color-accent);
+  border-color: var(--color-accent);
+  background-color: rgba(201, 169, 97, 0.08);
+  outline: none;
+}
+
+.alphabet-link--active {
+  color: var(--color-burgundy-deep);
+  background-color: var(--color-accent);
+  border-color: var(--color-accent);
+}
+
+.alphabet-link--active:hover,
+.alphabet-link--active:focus-visible {
+  color: var(--color-burgundy-deep);
+  background-color: var(--color-accent);
+}
+
+@media (max-width: 480px) {
+  .footer {
+    padding: var(--space-lg) var(--space-sm);
+  }
+
+  .alphabet-link {
+    width: 2rem;
+    height: 2rem;
+    font-size: 0.95rem;
+  }
 }
