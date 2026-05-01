@@ -1,0 +1,113 @@
+.like-button {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  background: transparent;
+  border: 1px solid transparent;
+  color: var(--color-text-soft);
+  cursor: pointer;
+  padding: 0;
+  border-radius: 999px;
+  transition: color var(--transition-fast), background-color var(--transition-fast),
+    border-color var(--transition-fast), transform var(--transition-fast);
+}
+
+.like-button:focus-visible {
+  outline: none;
+  border-color: var(--color-accent);
+  box-shadow: 0 0 0 2px rgba(201, 169, 97, 0.25);
+}
+
+.like-button:hover {
+  color: var(--color-accent);
+}
+
+.like-button.is-liked {
+  color: var(--color-accent);
+}
+
+.like-button__icon {
+  display: block;
+  transition: transform var(--transition-fast);
+}
+
+.like-button.is-pulsing .like-button__icon {
+  animation: like-pulse 0.45s ease-out;
+}
+
+@keyframes like-pulse {
+  0%   { transform: scale(1); }
+  35%  { transform: scale(1.35); }
+  60%  { transform: scale(0.92); }
+  100% { transform: scale(1); }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .like-button.is-pulsing .like-button__icon {
+    animation: none;
+  }
+}
+
+/* Card variant: subtle overlay pinned to the corner of the image */
+.like-button--card {
+  position: absolute;
+  top: calc(var(--space-md) + 8px);
+  right: calc(var(--space-md) + 8px);
+  width: 36px;
+  height: 36px;
+  background-color: rgba(26, 10, 19, 0.55);
+  border: 1px solid var(--color-divider-soft);
+  backdrop-filter: blur(4px);
+  -webkit-backdrop-filter: blur(4px);
+  opacity: 0;
+  transform: translateY(-2px);
+  z-index: 2;
+}
+
+.card-list__item:hover .like-button--card,
+.card-list__item:focus-within .like-button--card,
+.like-button--card:focus-visible,
+.like-button--card.is-liked {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+@media (hover: none) {
+  .like-button--card {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+.like-button--card:hover {
+  background-color: rgba(26, 10, 19, 0.8);
+  border-color: var(--color-accent);
+}
+
+/* Detail variant: pinned to the top-right of the recipe image */
+.like-button--detail {
+  width: 44px;
+  height: 44px;
+  border: 1px solid var(--color-divider);
+  background-color: rgba(26, 10, 19, 0.7);
+  color: var(--color-text);
+  backdrop-filter: blur(4px);
+  -webkit-backdrop-filter: blur(4px);
+}
+
+.like-button--detail .like-button__icon {
+  width: 22px;
+  height: 22px;
+}
+
+.like-button--detail:hover {
+  border-color: var(--color-accent);
+  color: var(--color-accent);
+  background-color: rgba(26, 10, 19, 0.85);
+}
+
+.like-button--detail.is-liked {
+  border-color: var(--color-accent);
+  color: var(--color-accent);
+  background-color: rgba(26, 10, 19, 0.85);
+}
