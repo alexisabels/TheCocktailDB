@@ -10,6 +10,7 @@ import Ingredients from './screens/Ingredients/Ingredients';
 import Details from './screens/Details/Details';
 import CocktailsByLetter from './components/CocktailsByLetter/CocktailsByLetter';
 import Home from './screens/Home/Home';
+import Favorites from './screens/Favorites/Favorites';
 
 const router = createBrowserRouter([
   {
@@ -36,6 +37,10 @@ const router = createBrowserRouter([
       {
         path: '/cocktails/:letter',
         element: <CocktailsByLetter />,
+      },
+      {
+        path: '/favorites',
+        element: <Favorites />,
       },
     ],
   },

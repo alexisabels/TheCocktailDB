@@ -84,13 +84,15 @@
   border-color: var(--color-accent);
 }
 
-/* Detail variant: prominent, integrated near the recipe title */
+/* Detail variant: pinned to the top-right of the recipe image */
 .like-button--detail {
-  width: 48px;
-  height: 48px;
+  width: 44px;
+  height: 44px;
   border: 1px solid var(--color-divider);
-  background-color: var(--color-bg-elevated);
-  color: var(--color-accent);
+  background-color: rgba(26, 10, 19, 0.7);
+  color: var(--color-text);
+  backdrop-filter: blur(4px);
+  -webkit-backdrop-filter: blur(4px);
 }
 
 .like-button--detail .like-button__icon {
@@ -100,33 +102,12 @@
 
 .like-button--detail:hover {
   border-color: var(--color-accent);
-  background-color: rgba(201, 169, 97, 0.08);
+  color: var(--color-accent);
+  background-color: rgba(26, 10, 19, 0.85);
 }
 
 .like-button--detail.is-liked {
   border-color: var(--color-accent);
-  background-color: rgba(201, 169, 97, 0.1);
-}
-
-.recipe__like-wrap {
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  gap: var(--space-sm);
-  margin: 0 0 var(--space-xl);
-  color: var(--color-text-muted);
-  font-family: var(--font-display);
-  font-style: italic;
-  font-size: 0.95rem;
-  letter-spacing: 0.04em;
-}
-
-.recipe__like-hint {
-  min-width: 12ch;
-  text-align: left;
-  transition: color var(--transition-fast);
-}
-
-.recipe__like-wrap.is-liked .recipe__like-hint {
   color: var(--color-accent);
+  background-color: rgba(26, 10, 19, 0.85);
 }

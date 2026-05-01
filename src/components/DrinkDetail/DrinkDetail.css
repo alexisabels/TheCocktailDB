@@ -2,13 +2,13 @@
   width: 100%;
   max-width: 1080px;
   margin: 0 auto;
-  padding: var(--space-2xl) var(--space-md) var(--space-xl);
+  padding: var(--space-lg) var(--space-md) var(--space-xl);
   color: var(--color-text);
 }
 
 .recipe__hero {
   text-align: center;
-  margin-bottom: var(--space-2xl);
+  margin-bottom: var(--space-xl);
 }
 
 .recipe__eyebrow {
@@ -63,6 +63,13 @@
   font-style: normal;
 }
 
+.recipe__image-wrap {
+  position: relative;
+  display: inline-block;
+  max-width: 380px;
+  width: 100%;
+}
+
 .recipe__image {
   width: 100%;
   max-width: 380px;
@@ -71,6 +78,12 @@
   border-radius: var(--radius-md);
   border: 1px solid var(--color-divider-soft);
   box-shadow: var(--shadow-card);
+}
+
+.recipe__like-anchor {
+  position: absolute;
+  top: var(--space-sm);
+  right: var(--space-sm);
 }
 
 .recipe__body {

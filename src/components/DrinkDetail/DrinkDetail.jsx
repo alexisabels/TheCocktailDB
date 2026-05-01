@@ -5,7 +5,6 @@ import React, { useEffect, useState } from 'react';
 import { Link } from 'react-router-dom';
 import { getCocktailDetail } from '../../services/cocktailapi';
 import usePageMeta from '../../hooks/usePageMeta';
-import useLikes from '../../hooks/useLikes';
 import LikeButton from '../LikeButton/LikeButton';
 import './DrinkDetail.css';
 
@@ -116,8 +115,6 @@ function RecipeSchema({ drink }) {
 export default function DrinkDetail({ id }) {
   const [data, setData] = useState(null);
   const [status, setStatus] = useState('loading');
-  const { isLiked } = useLikes();
-  const liked = data ? isLiked(data.idDrink) : false;
 
   useEffect(() => {
     let cancelled = false;
@@ -197,19 +194,18 @@ export default function DrinkDetail({ id }) {
             ))}
           </p>
         )}
-        <div className={`recipe__like-wrap${liked ? ' is-liked' : ''}`}>
-          <LikeButton drinkId={data.idDrink} drinkName={data.strDrink} variant="detail" />
-          <span className="recipe__like-hint" aria-hidden="true">
-            {liked ? 'Saved to your bar book' : 'Save to your bar book'}
-          </span>
+        <div className="recipe__image-wrap">
+          <img
+            className="recipe__image"
+            src={data.strDrinkThumb}
+            alt={`${data.strDrink} cocktail served in a ${data.strGlass}`}
+            width="380"
+            height="380"
+          />
+          <div className="recipe__like-anchor">
+            <LikeButton drinkId={data.idDrink} drinkName={data.strDrink} variant="detail" />
+          </div>
         </div>
-        <img
-          className="recipe__image"
-          src={data.strDrinkThumb}
-          alt={`${data.strDrink} cocktail served in a ${data.strGlass}`}
-          width="380"
-          height="380"
-        />
       </header>
 
       <div className="recipe__body">
