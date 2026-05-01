@@ -180,21 +180,7 @@ export default function DrinkDetail({ id }) {
       <RecipeSchema drink={data} />
 
       <header className="recipe__hero">
-        <p className="recipe__eyebrow">The Recipe</p>
-        <h1 className="recipe__name">
-          {data.strDrink}
-        </h1>
-        {meta.length > 0 && (
-          <p className="recipe__meta">
-            {meta.map((m, i) => (
-              <React.Fragment key={m}>
-                {i > 0 && <span className="recipe__meta-sep" aria-hidden="true">·</span>}
-                <span>{m}</span>
-              </React.Fragment>
-            ))}
-          </p>
-        )}
-        <div className="recipe__image-wrap">
+        <div className="recipe__hero-media">
           <img
             className="recipe__image"
             src={data.strDrinkThumb}
@@ -205,6 +191,22 @@ export default function DrinkDetail({ id }) {
           <div className="recipe__like-anchor">
             <LikeButton drinkId={data.idDrink} drinkName={data.strDrink} variant="detail" />
           </div>
+        </div>
+        <div className="recipe__hero-text">
+          <p className="recipe__eyebrow">The Recipe</p>
+          <h1 className="recipe__name">
+            {data.strDrink}
+          </h1>
+          {meta.length > 0 && (
+            <p className="recipe__meta">
+              {meta.map((m, i) => (
+                <React.Fragment key={m}>
+                  {i > 0 && <span className="recipe__meta-sep" aria-hidden="true">·</span>}
+                  <span>{m}</span>
+                </React.Fragment>
+              ))}
+            </p>
+          )}
         </div>
       </header>
 
